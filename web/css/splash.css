@@ -10,16 +10,52 @@ a:hover {
 }
 
 /* Custom default button */
-.btn-default,
-.btn-default:hover,
-.btn-default:focus {
+.btn-default{
     color: #333;
     text-shadow: none; /* Prevent inheritence from `body` */
     background-color: #fff;
-    border: 1px solid #fff;
+    box-shadow: 5px 5px 15px 1px #262626;
+    border: none;
+}
+.btn-default:hover{
+    background-color: #FF8F00;
+    box-shadow: 10px 10px 15px 1px #262626;
+    border: none;
+}
+.selector{
+    background-color: #FF8F00 ;
+    background-image: none;
+}
+.blocSelector{
+    padding: 30% 10%;
+    margin: 10px;
+    height: 400px;
+    width: 400px;
+    box-shadow: 5px 5px 15px 0px #4C4747;
+    border-radius: 20px;
 }
 
+.selectorFooter{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
 
+.blocSelector:hover{
+    box-shadow: 0px 0px 20px 15px #B26400;
+}
+.emergency{
+    background: red url("../img/emergency.png");
+    background-size: contain;
+}
+.recipes{
+    background: #40EFFF url("../img/recipes.png");
+    background-size: contain;
+}
+.shop{
+    background: #14CCA8 url("../img/shop.png");
+    background-size: contain;
+}
 /*
  * Base structure
  */
@@ -27,7 +63,7 @@ a:hover {
 html,
 body {
     height: 100%;
-    background-color: #333;
+    background: orangered url("../img/bluredPlate.png");
 }
 body {
     color: #fff;
@@ -158,6 +194,6 @@ body {
     .masthead,
     .mastfoot,
     .cover-container {
-        width: 700px;
+        width: 80%;
     }
 }
