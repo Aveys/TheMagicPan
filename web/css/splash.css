@@ -23,15 +23,14 @@ a:hover {
     border: none;
 }
 .selector{
-    background-color: #FF8F00 ;
-    background-image: none;
+    background: #FF8F00 none;
 }
 .blocSelector{
     padding: 30% 10%;
     margin: 10px;
     height: 400px;
     width: 400px;
-    box-shadow: 5px 5px 15px 0px #4C4747;
+    box-shadow: 5px 5px 15px 0 #4C4747;
     border-radius: 20px;
 }
 
@@ -42,7 +41,7 @@ a:hover {
 }
 
 .blocSelector:hover{
-    box-shadow: 0px 0px 20px 15px #B26400;
+    box-shadow: 0 0 20px 15px #B26400;
 }
 .emergency{
     background: red url("../img/emergency.png");
@@ -55,6 +54,9 @@ a:hover {
 .shop{
     background: #14CCA8 url("../img/shop.png");
     background-size: contain;
+}
+.logoMini{
+    padding-right: 10px;
 }
 /*
  * Base structure
@@ -70,7 +72,9 @@ body {
     text-align: center;
     text-shadow: 0 1px 3px rgba(0,0,0,.5);
 }
-
+hr{
+    margin-top: 20px;
+}
 /* Extra markup and styles for table-esque vertical and horizontal centering */
 .site-wrapper {
     display: table;

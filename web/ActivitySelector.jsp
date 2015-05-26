@@ -5,8 +5,11 @@
   Time: 09:25
   To change this template use File | Settings | File Templates.
 --%>
-<html>
+<html lang="en">
 <head>
+    <title>The Magic Pan - </title>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <link rel="stylesheet" href="css/bootstrap.css" type="text/css"/>
     <link rel="stylesheet" href="css/splash.css" type="text/css"/>
 </head>
@@ -36,6 +39,11 @@
                 </div>
             </div>
         </div>
+        <hr>
+        <footer>
+            <img class="pull-right logoMini" src="img/magicPanMini.png">
+            <p>© 2015 The Magic Pan </p>
+        </footer>
     </div>
 </div>
     <script type="javascript" src="js/jquery.js"></script>
