@@ -14,9 +14,9 @@
     <div class="site-wrapper-inner">
         <div class="cover-container">
             <div class="inner cover">
-                <h1 class="cover-heading">The Magic Pan</h1>
+                <div class="cover-heading"><img src="img/magicPan.png" alt="Logo Magic Pan"/></div>
                 <p class="lead">
-                    <a href="#" class="btn btn-lg btn-default">En Savoir plus</a>
+                    <a href="ActivitySelector.jsp" class="btn btn-lg btn-default">Let's cook bro!</a>
                 </p>
             </div>
         </div>
