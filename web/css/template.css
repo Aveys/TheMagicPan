@@ -157,7 +157,9 @@ hr {
     text-transform: uppercase;
     padding-bottom: 20px;
 }
-
+#formLogin{
+    padding: 20px;
+}
 
 /* +++++ Color Wraps / Blog Page +++++ */
 
