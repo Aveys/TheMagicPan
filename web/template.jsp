@@ -31,15 +31,11 @@
                 <li><a href="blog.html">Blog</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">One more separated link</a></li>
-                    </ul>
+                    <form class="form dropdown-menu" role="menu" id="formLogin">
+                        <input name="username" id="username" type="text" placeholder="Username">
+                        <input name="password" id="password" type="password" placeholder="Password"><br>
+                        <button type="button" id="btnLogin" class="btn">Login</button>
+                    </form>
                 </li>
             </ul>
         </div><!--/.nav-collapse -->
