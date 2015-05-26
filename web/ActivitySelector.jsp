@@ -10,7 +10,7 @@
     <title>The Magic Pan - </title>
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <link rel="stylesheet" href="css/bootstrap.css" type="text/css"/>
+    <link rel="stylesheet" href="css/css/bootstrap.min.css" type="text/css"/>
     <link rel="stylesheet" href="css/splash.css" type="text/css"/>
 </head>
 <body class="selector">
