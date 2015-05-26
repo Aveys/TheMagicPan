@@ -84,8 +84,8 @@ hr {
 }
 
 .navbar-inverse {
-    padding-bottom: 70px;
-    padding-top: 70px;
+    padding-bottom: 20px;
+    padding-top: 15px;
 }
 
 .navbar-inverse {
@@ -173,6 +173,9 @@ hr {
     background-color: #ffffff;
 }
 
+.container{
+    height: 90px;
+}
 
 /* Blog Quote */
 .bq {

@@ -27,9 +27,9 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="work.html">Work</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="blog.html">Blog</a></li>
+                <li><a href="work.html">Emergency</a></li>
+                <li><a href="about.html">Recipes</a></li>
+                <li><a href="blog.html">Shop</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> <span class="caret"></span></a>
                     <form class="form dropdown-menu" role="menu" id="formLogin">
