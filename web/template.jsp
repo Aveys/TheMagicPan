@@ -12,6 +12,7 @@
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
     <link rel="stylesheet" href="css/template.css" type="text/css"/>
+    <title>The Magic Pan</title>
 </head>
 <body>
 <div class="navbar navbar-inverse navbar-static-top">
@@ -39,6 +40,22 @@
                 </li>
             </ul>
         </div><!--/.nav-collapse -->
+    </div>
+</div>
+
+<div id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <h4>The Magic Pan</h4>
+            </div><!-- /col-lg-4 -->
+            <div class="col-lg-4">
+            </div><!-- /col-lg-4 -->
+            <div class="col-lg-4">
+                <h4>© The Magic Pan</h4>
+                <p>For the love of good foods & great website.</p>
+            </div><!-- /col-lg-4 -->
+        </div>
     </div>
 </div>
 <script src="js/jquery-1.11.3.min.js"></script>

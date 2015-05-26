@@ -8,6 +8,10 @@
  */
 
 @import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+html{
+    position: relative;
+    min-height: 100%;
+}
 
 body {
     background-color: #ffffff;
@@ -15,7 +19,7 @@ body {
     font-weight: 400;
     font-size: 14px;
     color: #555;
-
+    margin-bottom: 60px;
     -webkit-font-smoothing: antialiased;
     -webkit-overflow-scrolling: touch;
 }
