@@ -32,6 +32,7 @@ a:hover {
     width: 400px;
     box-shadow: 5px 5px 15px 0 #4C4747;
     border-radius: 20px;
+    display:block;
 }
 
 .selectorFooter{
