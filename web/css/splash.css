@@ -67,7 +67,7 @@ html,
 body {
     height: 100%;
     background: orangered url("../img/bluredPlate.png");
-    background-size: contain;
+    background-size: cover;
 }
 body {
     color: #fff;
