@@ -21,16 +21,16 @@
                 <div class="cover-heading">
                     <div class="row">
                         <div class="col-lg-4">
-                            <div class="blocSelector emergency">
-                            </div>
+                            <a class="blocSelector emergency" href="template.jsp">
+                            </a>
                         </div>
                         <div class="col-lg-4">
-                            <div class="blocSelector recipes">
-                            </div>
+                            <a class="blocSelector recipes" href="template.jsp">
+                            </a>
                         </div>
                         <div class="col-lg-4">
-                            <div class="blocSelector shop">
-                            </div>
+                            <a class="blocSelector shop" href="template.jsp">
+                            </a>
                         </div>
                     </div>
                     <div class="row">
