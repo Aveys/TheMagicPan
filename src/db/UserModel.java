@@ -1,16 +1,23 @@
+import java.lang.String;
 public class UserModel {
 
+    private int idUser;
     private String lastname;
     private String surname;
     private int age;
+    private String mail;
     private String login;
     private String pwd;
-    public UserModel(String lastname,String surname,int age,String login,String pwd) {
+    private boolean admin;
+
+    public UserModel(String lastname, String surname, int age, String mail, String login, String pwd, boolean admin) {
         this.lastname = lastname;
         this.surname = surname;
         this.age = age;
+        this.mail = mail;
         this.login = login;
         this.pwd = pwd;
+        this.admin = admin;
     }
     public String getLastname() {
         return lastname;
@@ -38,7 +45,8 @@ public class UserModel {
         return pwd;
     }
     public void setPwd(String pwd) {
-        this.pwd = pwd;}
+        this.pwd = pwd;
+    }
     @Override
     public String toString() {
         return  "[SURNAME]:" + this.getSurname()+
