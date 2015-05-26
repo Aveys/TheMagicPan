@@ -20,8 +20,6 @@ body {
     font-size: 14px;
     color: #555;
     margin-bottom: 60px;
-    -webkit-font-smoothing: antialiased;
-    -webkit-overflow-scrolling: touch;
 }
 
 /* Titles */
@@ -54,11 +52,6 @@ p {
 a {
     color: #1abc9c;
     word-wrap: break-word;
-
-    -webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
-    -moz-transition: color 0.1s ease-in, background 0.1s ease-in;
-    -ms-transition: color 0.1s ease-in, background 0.1s ease-in;
-    -o-transition: color 0.1s ease-in, background 0.1s ease-in;
     transition: color 0.1s ease-in, background 0.1s ease-in;
 }
 
@@ -71,10 +64,7 @@ a:focus {
 
 a:before,
 a:after {
-    -webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
-    -moz-transition: color 0.1s ease-in, background 0.1s ease-in;
-    -ms-transition: color 0.1s ease-in, background 0.1s ease-in;
-    -o-transition: color 0.1s ease-in, background 0.1s ease-in;
+
     transition: color 0.1s ease-in, background 0.1s ease-in;
 }
 
@@ -90,7 +80,7 @@ hr {
 
 .navbar {
     text-transform: uppercase;
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 
 .navbar-inverse {
@@ -184,60 +174,26 @@ hr {
 }
 
 
-
-/* Blog Date*/
-bd {
-    font-size: 12px;
-    text-transform: uppercase;
-    color: #d2d2d2;
-    font-weight: 700;
-}
-
-/* Blog Author*/
-ba {
-    font-size: 12px;
-    text-transform: uppercase;
-}
-
 /* Blog Quote */
 .bq {
     font-size: 22px;
     padding-top: 30px;
 }
 
-/* Blog Tags */
-bt {
-    font-size: 12px;
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    background-color: rgb(47, 47, 47);
 }
-
-/* ================== PORTFOLIO IMAGES HOVER EFFECT ================== */
-/* Effects also are controled by hover.zoom.js */
-.zoom {
-    display:block;
-    position:relative;
-    overflow:hidden;
-    background:transparent url(../img/loader.gif) no-repeat center;
+.container .text-muted {
+    margin: 20px 0;
 }
-
-
-.zoomOverlay {
-    position:absolute;
-    top:0; left:0;
-    bottom:0; right:0;
-    display:none;
-    background-image:url(../img/zoom.png);
-    background-repeat:no-repeat;
-    background-position:center;
+.text-muted{
+    color: #FFF;
 }
-
-.zoom2 {
-    opacity: 1;
-}
-
-.zoom2:hover {
-    opacity: 0.5;
-}
-
 /* glyphicon Configuration */
 
 .glyphicon {

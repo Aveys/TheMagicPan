@@ -43,21 +43,12 @@
     </div>
 </div>
 
-<div id="footer">
+<footer class="footer">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-4">
-                <h4>The Magic Pan</h4>
-            </div><!-- /col-lg-4 -->
-            <div class="col-lg-4">
-            </div><!-- /col-lg-4 -->
-            <div class="col-lg-4">
-                <h4>© The Magic Pan</h4>
-                <p>For the love of good foods & great website.</p>
-            </div><!-- /col-lg-4 -->
-        </div>
+        <img class="pull-right logoMini" src="img/magicPanMini.png">
+        <p class="text-muted">© 2015 The Magic Pan </p>
     </div>
-</div>
+</footer>
 <script src="js/jquery-1.11.3.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 </body>
