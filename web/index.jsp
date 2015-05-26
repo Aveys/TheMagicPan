@@ -22,7 +22,7 @@
         </div>
     </div>
 </div>
-    <script type="javascript" src="js/jquery.js"></script>
-    <script type="javascript" src="js/bootstrap.js"></script>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 </body>
 </html>
