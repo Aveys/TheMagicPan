@@ -2,12 +2,23 @@
 <!DOCTYPE html
         PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xml:lang="en" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
     <title>Affichages des recettes</title>
 </h:head>
 <body>
 <h:commandButton value="Afficher les recettes"
                  action="#{RecipeControlerBean.loadAllRecipe()}"/>
+<h:form id="form">
+    <p:dataList value="#{dataListView.cars1}" var="car" type="ordered">
+        <f:facet name="header">
+            Basic
+        </f:facet>
+        #{car.brand}, #{car.year}
+    </p:dataList>
+</h:form>
 </body>
 </html>
