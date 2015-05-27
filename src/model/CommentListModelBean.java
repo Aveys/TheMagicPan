@@ -16,11 +16,10 @@ public class CommentListModelBean {
     public CommentListModelBean() {
         commentList = new ArrayList<CommentModelBean>();
     }
-    public void addCommentList(CommentModelBean comment){
+    public void addComment(CommentModelBean comment){
         this.commentList.add(comment);
     }
     public List<CommentModelBean> getCommentList() {
         return commentList;
     }
-
 }

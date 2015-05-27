@@ -57,4 +57,8 @@ public class DaoFabric {
 	public RecipesDao createRecipesDao() {
 		return null;
 	}
+
+	public CommentDao createCommentDao() {
+		return null;
+	}
 }
