@@ -1,5 +1,7 @@
+package model;
+
 import java.lang.String;
-public class UserModel {
+public class UserModelBean {
 
     private int idUser;
     private String lastname;
@@ -10,7 +12,7 @@ public class UserModel {
     private String pwd;
     private boolean admin;
 
-    public UserModel(String lastname, String surname, int age, String mail, String login, String pwd, boolean admin) {
+    public UserModelBean(String lastname, String surname, int age, String mail, String login, String pwd, boolean admin) {
         this.lastname = lastname;
         this.surname = surname;
         this.age = age;
