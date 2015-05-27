@@ -17,6 +17,9 @@ public class RecipeModelBean {
 	private int personnes;
 	private String image;
 
+	public RecipeModelBean() {
+	}
+
 	public RecipeModelBean(String titre, String description, String type, Time temps, int personnes, String image) {
 		this.titre = titre;
 		this.description = description;

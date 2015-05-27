@@ -23,7 +23,8 @@ public class UserControlerBean {
         this.userDao = DaoFabric.getInstance().createUserDao();
     }
 
-    public String checkUser(LoginBean loginBean){
+   /* TODO : check
+   public String checkUser(LoginBean loginBean){
         UserModelBean user = this.userDao.checkUser(loginBean.getLogin(), loginBean.getPwd());
         if(user!=null){
         //récupère l'espace de mémoire de JSF
@@ -45,5 +46,5 @@ public class UserControlerBean {
     //Vérifier les propriétés de l'utilisateur
     // TODO ajout de l'utilisateur à la base de données
         this.userDao.addUser(userSubmitted);
-    }
+    }*/
 }
