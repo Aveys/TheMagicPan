@@ -14,7 +14,7 @@ html{
 }
 
 body {
-    background-color: #ffffff;
+    background-color: #FBFCFA;
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     font-size: 14px;
@@ -175,7 +175,7 @@ hr {
     background-color: #ffffff;
 }
 
-.container{
+.containerHeader{
     height: 90px;
 }
 
