@@ -1,7 +1,10 @@
 package dao.fabric;
 
 
-import dao.instance.*;
+import dao.instance.CommentDao;
+import dao.instance.IngredientDao;
+import dao.instance.RecipeDao;
+import dao.instance.UserDao;
 
 public class DaoFabric {
 
@@ -11,11 +14,7 @@ public class DaoFabric {
 	// De Java version 1.2 à 1.4, il est possible d'utiliser la classe
 	// ThreadLocal.
 	private static volatile DaoFabric instance = null;
-	private static final String DB_HOST = "localhost";
-	private static final String DB_PORT = "49916";
-	private static final String DB_NAME = "themagicpanbd";
-	private static final String DB_USER = "root";
-	private static final String DB_PWD = "";
+
 
 	private DaoFabric() {
 		super();
@@ -50,15 +49,15 @@ public class DaoFabric {
 
 	public UserDao createUserDao() {
 		return new
-				UserDao(DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PWD);
+				UserDao(ConfMysql.DB_HOST, ConfMysql.DB_PORT, ConfMysql.DB_NAME, ConfMysql.DB_USER, ConfMysql.DB_PWD);
 	}
 
 	public RecipeDao createRecipeDao() {
 		return new
-				RecipeDao(DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PWD);
+				RecipeDao(ConfMysql.DB_HOST, ConfMysql.DB_PORT, ConfMysql.DB_NAME, ConfMysql.DB_USER, ConfMysql.DB_PWD);
 	}
 	public IngredientDao createIngredientDao(){
-		return new IngredientDao(DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PWD);
+		return new IngredientDao(ConfMysql.DB_HOST, ConfMysql.DB_PORT, ConfMysql.DB_NAME, ConfMysql.DB_USER, ConfMysql.DB_PWD);
 	}
 
 	public CommentDao createCommentDao() {
