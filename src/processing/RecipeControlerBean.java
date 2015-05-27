@@ -2,6 +2,7 @@ package processing;
 
 import dao.fabric.DaoFabric;
 import dao.instance.RecipesDao;
+import model.RecipeModelBean;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
@@ -22,7 +23,7 @@ import java.util.Map;
 
     public void loadAllRecipe(){
 
-        ArrayList<RecipeModel> list = this.recipeDao.getAllRecipes();
+        ArrayList<RecipeModelBean> list = this.recipeDao.getAllRecipes();
 
         RecipeListModelBean recipeList = new RecipeListModelBean();
         for(RecipeModel recipe:list){
