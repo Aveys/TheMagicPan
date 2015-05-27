@@ -2,6 +2,7 @@ package processing;
 
 import dao.fabric.DaoFabric;
 import dao.instance.RecipesDao;
+import model.RecipeListModelBean;
 import model.RecipeModelBean;
 
 import javax.faces.bean.ApplicationScoped;
@@ -26,8 +27,8 @@ import java.util.Map;
         ArrayList<RecipeModelBean> list = this.recipeDao.getAllRecipes();
 
         RecipeListModelBean recipeList = new RecipeListModelBean();
-        for(RecipeModel recipe:list){
-            recipeList.addRecipeList(recipe);
+        for(RecipeModelBean recipe:list){
+            recipeList.addRecipe(recipe);
         }
         //récupère l'espace de mémoire de JSF
         ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();

@@ -49,12 +49,16 @@ public class DaoFabric {
 	}
 
 	public UserDao createUserDao() {
-		UserDao userDao = new
-				UserDao(this.DB_HOST, this.DB_PORT, this.DB_NAME, this.DB_USER, this.DB_PWD);
-		return userDao;
+		return new
+				UserDao(DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PWD);
 	}
 
 	public RecipesDao createRecipesDao() {
-		return null;
+		return new
+				RecipesDao(DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PWD);
+	}
+	public IngredientDao createIngredientDao(){
+		return new
+				IngredientDao(DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PWD);
 	}
 }
