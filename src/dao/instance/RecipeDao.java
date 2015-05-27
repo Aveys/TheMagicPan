@@ -57,10 +57,9 @@ public class RecipeDao{
     }
 
 	public ArrayList<RecipeModelBean> getFilteredRecipe(String title, int note, String type, Time time, int nbPeople){
-
+        ArrayList<RecipeModelBean> listResult = null;
         try {
             connection = java.sql.DriverManager.getConnection("jdbc:mysql://" + dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
-            Statement query = connection.createStatement();
             StringBuilder sql=new StringBuilder();
             sql.append("SELECT * FROM recette WHERE 1=1 ");
 
@@ -75,17 +74,27 @@ public class RecipeDao{
             if(nbPeople != 0) {sql.append("AND personnes = ? ");}
 
 
-            PreparedStatement recherchePersonne = connection.prepareStatement(sql.toString());
+            PreparedStatement query = connection.prepareStatement(sql.toString());
             int i = 1;
-            if(!title.equals(null)){recherchePersonne.setString(i,title);i++;}
+            if(!title.equals(null)){query.setString(i,title);i++;}
 
-            if(note != 0 ){recherchePersonne.setInt(i, note);i++;}
+            if(note != 0 ){query.setInt(i, note);i++;}
 
-            if(!type.equals(null)){recherchePersonne.setString(i,type);i++;}
+            if(!type.equals(null)){query.setString(i,type);i++;}
 
-            if(!time.equals(null)){recherchePersonne.setTime(i,time);i++;}
+            if(!time.equals(null)){query.setTime(i, time);i++;}
 
-            if(nbPeople != 0){recherchePersonne.setInt(i,nbPeople);i++;}
+            if(nbPeople != 0){query.setInt(i, nbPeople);i++;}
+
+            ResultSet result =  query.executeQuery();
+            System.out.println(result);
+            listResult = new ArrayList<>();
+            do {
+                listResult.add(new RecipeModelBean(result.getString("titre"),result.getString("description"),result.getString("type"),
+                        result.getInt("note"),result.getTime("temps"),result.getInt("personnes"),result.getString("image")));
+            }while (result.next());
+            if(listResult.isEmpty())
+                listResult=null;
 
         } catch (SQLException e) {
             e.printStackTrace();
