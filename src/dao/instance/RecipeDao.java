@@ -26,21 +26,37 @@ public class RecipeDao{
         this.dB_NAME = dB_NAME;
         this.dB_USER = dB_USER;
         this.dB_PWD = dB_PWD;
-    }
-
-    public ArrayList<RecipeModelBean> getAllRecipes() {
 	    try {
-		    String sql = "select * from recette;";
-
-		    connection = java.sql.DriverManager.getConnection("jdbc:mysql://" + dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
-		    Statement query = connection.createStatement();
-		    query.execute(sql);
-		    ResultSet result = query.getResultSet();
-		    System.out.println(result);
-
+		    this.connection = java.sql.DriverManager.getConnection("jdbc:mysql://" + dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
 	    } catch (SQLException e) {
 		    e.printStackTrace();
 	    }
+    }
+
+    public ArrayList<RecipeModelBean> getAllRecipes() {
+	    ArrayList<RecipeModelBean> listResult=null;
+	    try {
+		    String sql = "select * from recette;";
+
+		    Statement query = connection.createStatement();
+		    ResultSet result =  query.executeQuery(sql);
+		    System.out.println(result);
+		    listResult=new ArrayList<>();
+		    do {
+			    listResult.add(new RecipeModelBean(result.getString("titre"),result.getString("description"),result.getString("type"),
+					    result.getInt("note"),result.getTime("temps"),result.getInt("personnes"),result.getString("image")));
+		    }while (result.next());
+		    if(listResult.isEmpty())
+			    listResult=null;
+	    } catch (SQLException e) {
+		    e.printStackTrace();
+	    }
+	    if (listResult != null) {
+		    System.out.println( "retour de la liste des recettes : "+listResult.toString());
+	    }
+	    else
+		    System.out.println("Liste nulle !");
+	    return listResult;
     }
 	public ArrayList<RecipeModelBean> getFilteredRecipe(){
 		//TODO

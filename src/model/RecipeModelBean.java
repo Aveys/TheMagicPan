@@ -20,14 +20,16 @@ public class RecipeModelBean {
 	public RecipeModelBean() {
 	}
 
-	public RecipeModelBean(String titre, String description, String type, Time temps, int personnes, String image) {
+	public RecipeModelBean(String titre, String description, String type,int note, Time temps, int personnes, String image) {
 		this.titre = titre;
 		this.description = description;
 		this.type = type;
+		this.note=note;
 		this.temps = temps;
 		this.personnes = personnes;
 		this.image = image;
 	}
+
 
 	public String getTitre() {
 		return titre;
