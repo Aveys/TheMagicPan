@@ -12,28 +12,46 @@ import javax.faces.context.FacesContext;
 import java.util.ArrayList;
 import java.util.Map;
 
-@ManagedBean
+@ManagedBean(name = "recipeControlerBean")
 @ApplicationScoped
     public class RecipeControlerBean {
 
     private RecipeDao recipeDao;
+    private ArrayList<RecipeModelBean> listRecipe;
+
+    public RecipeDao getRecipeDao() {
+        return recipeDao;
+    }
+
+    public void setRecipeDao(RecipeDao recipeDao) {
+        this.recipeDao = recipeDao;
+    }
+
+    public ArrayList<RecipeModelBean> getListRecipe() {
+        return listRecipe;
+    }
+
+    public void setListRecipe(ArrayList<RecipeModelBean> listRecipe) {
+        this.listRecipe = listRecipe;
+    }
 
     public RecipeControlerBean() {
         this.recipeDao = DaoFabric.getInstance().createRecipeDao();
     }
 
-    public void loadAllRecipe(){
-
-        ArrayList<RecipeModelBean> list = this.recipeDao.getAllRecipes();
+    public String loadAllRecipe(){
+        System.out.println("APPUIE");
+        listRecipe = this.recipeDao.getAllRecipes();
 
         RecipeListModelBean recipeList = new RecipeListModelBean();
-        for(RecipeModelBean recipe:list){
+        for(RecipeModelBean recipe:listRecipe){
             recipeList.addRecipe(recipe);
         }
-        //récupère l'espace de mémoire de JSF
+        /* récupère l'espace de mémoire de JSF
         ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
         Map<String, Object> sessionMap = externalContext.getSessionMap();
         //place la liste de recette dans l'espace de mémoire de JSF
-        sessionMap.put("recipeList" , recipeList);
+        sessionMap.put("recipeList" , recipeList);*/
+        return "";
     }
 }

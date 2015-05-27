@@ -39,10 +39,10 @@ public class RecipeDao{
 		    ResultSet result =  query.executeQuery(sql);
 		    System.out.println(result);
 		    listResult=new ArrayList<>();
-		    do {
+		    while (result.next()){
 			    listResult.add(new RecipeModelBean(result.getString("titre"),result.getString("description"),result.getString("type"),
 					    result.getInt("note"),result.getTime("temps"),result.getInt("personnes"),result.getString("image")));
-		    }while (result.next());
+		    }
 		    if(listResult.isEmpty())
 			    listResult=null;
 	    } catch (SQLException e) {
