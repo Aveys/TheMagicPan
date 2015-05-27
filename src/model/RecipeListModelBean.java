@@ -6,10 +6,10 @@ import java.util.ArrayList;
 /**
  * Created by arthurveys on 27/05/15.
  */
-public class RecipeControlModelBean extends RecipeModelBean{
+public class RecipeListModelBean extends RecipeModelBean{
 	ArrayList<RecipeModelBean> list;
 
-	public RecipeControlModelBean() {
+	public RecipeListModelBean() {
 		list = new ArrayList<>();
 	}
 	public void addRecipe(RecipeModelBean rmb){

@@ -9,10 +9,10 @@ import java.util.ArrayList;
  */
 @ManagedBean
 @RequestScoped
-public class UserControlModelBean extends UserModelBean{
+public class UserListModelBean extends UserModelBean{
 	ArrayList<UserModelBean> list;
 
-	public UserControlModelBean() {
+	public UserListModelBean() {
 		list = new ArrayList<>();
 	}
 	public void addUser(UserModelBean umb){

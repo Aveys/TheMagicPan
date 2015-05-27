@@ -5,10 +5,10 @@ import java.util.ArrayList;
 /**
  * Created by arthurveys on 27/05/15.
  */
-public class IngredientControlModelBean extends IngredientModelBean{
+public class IngredientListModelBean extends IngredientModelBean{
 	private ArrayList<IngredientModelBean> list ;
 
-	public IngredientControlModelBean() {
+	public IngredientListModelBean() {
 		list = new ArrayList<>();
 	}
 
