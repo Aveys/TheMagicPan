@@ -65,4 +65,20 @@ public class UserModelBean {
                 ",[LOGIN]:"+this.getLogin()+
                 ",[PWD]:"+this.getPwd();
     }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
+    }
 }
