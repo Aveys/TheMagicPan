@@ -1,12 +1,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html">
-<head>
-    <title>The Magic Pan - </title>
+<h:head>
+    <title>#{pageManagerBean.title}</title>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
     <link rel="stylesheet" href="css/splash.css" type="text/css"/>
-</head>
+</h:head>
 <body class="selector">
 <div class="site-wrapper">
     <div class="site-wrapper-inner">
@@ -14,18 +14,21 @@
             <div class="inner cover">
                 <div class="cover-heading">
                     <div class="row">
+                        <h:form>
                         <div class="col-lg-4">
-                            <a class="blocSelector emergency" href="template.xhtml">
-                            </a>
+                            <h:commandLink action="#{pageManagerBean.setCategory('emergency')}" styleClass="blocSelector selectorButton emergency">
+                            </h:commandLink>
                         </div>
                         <div class="col-lg-4">
-                            <a class="blocSelector recipes" href="template.xhtml">
-                            </a>
+                            <h:commandLink action="#{pageManagerBean.setCategory('recipes')}" styleClass="blocSelector selectorButton recipes">
+                            </h:commandLink>
+
                         </div>
                         <div class="col-lg-4">
-                            <a class="blocSelector shop" href="template.xhtml">
-                            </a>
+                            <h:commandLink action="#{pageManagerBean.setCategory('shop')}" styleClass="blocSelector selectorButton shop">
+                            </h:commandLink>
                         </div>
+                        </h:form>
                     </div>
                     <div class="row">
                          <img class="selectorFooter" src="img/select.png" alt="Fléches de décoration"/>

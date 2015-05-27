@@ -124,15 +124,15 @@ hr{
     color: rgba(255,255,255,.75);
     border-bottom: 2px solid transparent;
 }
-.masthead-nav > li > a:hover,
-.masthead-nav > li > a:focus {
+.selectorButton:hover,
+.selectorButton:focus {
     background-color: transparent;
     border-bottom-color: #a9a9a9;
     border-bottom-color: rgba(255,255,255,.25);
 }
-.masthead-nav > .active > a,
-.masthead-nav > .active > a:hover,
-.masthead-nav > .active > a:focus {
+.selectorButton,
+.selectorButton:hover,
+.selectorButton:focus {
     color: #fff;
     border-bottom-color: #fff;
 }
