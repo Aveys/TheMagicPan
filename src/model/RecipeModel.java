@@ -3,28 +3,28 @@ package model;
 import java.lang.String;
 import java.sql.Time;
 
-public class RecetteModel {
+public class RecipeModel {
 
-    private int idRecette;
-    private String titre;
+    private int idRecipe;
+    private String title;
     private String description;
     private int note;
     private String type;
-    private Time temps;
-    private int personnes;
+    private Time time;
+    private int nbPeople;
     private String image;
 
-    public RecetteModel(String titre, String description, String type, Time temps, int personnes, String image) {
-        this.titre = titre;
+    public RecipeModel(String title, String description, String type, Time temps, int nbPeople, String image) {
+        this.title = title;
         this.description = description;
         this.type = type;
-        this.temps = temps;
-        this.personnes = personnes;
+        this.time = temps;
+        this.nbPeople = nbPeople;
         this.image = image;
     }
 
-    public String getTitre() {
-        return titre;
+    public String getTitle() {
+        return title;
     }
 
     public String getDescription() {
@@ -39,20 +39,20 @@ public class RecetteModel {
         return type;
     }
 
-    public Time getTemps() {
-        return temps;
+    public Time getTime() {
+        return time;
     }
 
-    public int getPersonnes() {
-        return personnes;
+    public int getNbPeople() {
+        return nbPeople;
     }
 
     public String getImage() {
         return image;
     }
 
-    public void setTitre(String titre) {
-        this.titre = titre;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public void setDescription(String description) {
@@ -63,12 +63,12 @@ public class RecetteModel {
         this.type = type;
     }
 
-    public void setTemps(Time temps) {
-        this.temps = temps;
+    public void setTime(Time time) {
+        this.time = time;
     }
 
-    public void setPersonnes(int personnes) {
-        this.personnes = personnes;
+    public void setNbPeople(int nbPeople) {
+        this.nbPeople = nbPeople;
     }
 
     public void setImage(String image) {
