@@ -2,7 +2,8 @@ package processing;
 
 import dao.fabric.DaoFabric;
 import dao.instance.RecipesDao;
-import model.RecipeModel;
+import model.RecipeControlModelBean;
+import model.RecipeModelBean;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
@@ -23,16 +24,6 @@ import java.util.Map;
 
     public void loadAllRecipe(){
 
-        ArrayList<RecipeModel> list = this.recipeDao.getAllRecipes();
-
-        RecipeListModelBean recipeList = new RecipeListModelBean();
-        for(RecipeModel recipe:list){
-            recipeList.addRecipeList(recipe);
-        }
-        //récupère l'espace de mémoire de JSF
-        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-        Map<String, Object> sessionMap = externalContext.getSessionMap();
-        //place la liste de recette dans l'espace de mémoire de JSF
-        sessionMap.put("recipeList" , recipeList);
+        //TODO
     }
 }
