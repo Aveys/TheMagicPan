@@ -2,7 +2,6 @@ package processing;
 
 import dao.fabric.DaoFabric;
 import dao.instance.RecipesDao;
-import model.RecipeModel;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
