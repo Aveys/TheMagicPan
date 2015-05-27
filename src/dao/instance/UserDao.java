@@ -3,6 +3,7 @@ package dao.instance;
 import model.UserModelBean;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -63,5 +64,34 @@ public class UserDao {
 			e.printStackTrace();
 		}
 		return userList;
+	}
+
+	public UserModelBean checkUser(String login, String password)
+	{
+		UserModelBean user = null;
+		String strQuery = "SELECT lastname, surname, age, mail, login, password, admin from user WHERE login = ? AND password = ?";
+		java.sql.PreparedStatement query;
+
+		try {
+			/* create connection */
+			connection = java.sql.DriverManager.getConnection("jdbc:mysql://"
+					+ dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
+			query = connection.prepareStatement(strQuery);
+			query.setString(1, login);
+			query.setString(2, password);
+
+			ResultSet rs = query.executeQuery();
+
+			if(rs.next())
+			{
+				user = new UserModelBean(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getBoolean(7));
+			}
+
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return user;
 	}
 }
