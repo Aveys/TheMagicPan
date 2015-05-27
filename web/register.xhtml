@@ -1,57 +1,65 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html
-        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-    <title></title>
-</head>
-<body>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+<div class="container">
+<div class="blog-header">
+    <h1 class="blog-title">Register Form</h1>
+</div>
+<div class="row">
+<div id="content" class="col-sm-8 blog-main">
 
 <form class="form-horizontal" method="post" action="lib/control/action.php?action=signup">
     <div class="form-group">
-        <label for="inputUsername" class="col-sm-5 control-label">Nom d'utilisateur</label>
+        <label for="inputUsername" class="col-sm-5 control-label">Username</label>
         <div class="col-sm-7">
-            <input name="inputUsername" type="text" class="form-control" id="inputUsername" placeholder="Nom d'utilisateur"></input>
+            <input name="inputUsername" type="text" class="form-control" id="inputUsername" placeholder="Enter Username..."></input>
         </div>
     </div>
     <div class="form-group">
-        <label for="inputFirstname" class="col-sm-5 control-label">Prénom</label>
+        <label for="inputFirstname" class="col-sm-5 control-label">Firstname</label>
         <div class="col-sm-7">
-            <input name="inputFirstname" type="text" class="form-control" id="inputFirstname" placeholder="Prénom"></input>
+            <input name="inputFirstname" type="text" class="form-control" id="inputFirstname" placeholder="Enter Firstname..."></input>
         </div>
     </div>
     <div class="form-group">
-        <label for="inputLastname" class="col-sm-5 control-label">Nom</label>
+        <label for="inputLastname" class="col-sm-5 control-label">Lastname</label>
         <div class="col-sm-7">
-            <input name="inputLastname" type="text" class="form-control" id="inputLastname" placeholder="Nom"></input>
+            <input name="inputLastname" type="text" class="form-control" id="inputLastname" placeholder="Enter Lastname..."></input>
         </div>
     </div>
     <div class="form-group">
         <label for="inputEmail" class="col-sm-5 control-label">E-Mail</label>
         <div class="col-sm-7">
-            <input name="inputEmail" type="email" class="form-control" id="inputEmail" placeholder="E-Mail"></input>
+            <input name="inputEmail" type="email" class="form-control" id="inputEmail" placeholder="Enter E-Mail..."></input>
         </div>
     </div>
     <div class="form-group">
-        <label for="inputPassword" class="col-sm-5 control-label">Mot de passe</label>
+        <label for="inputAge" class="col-sm-5 control-label">Age</label>
         <div class="col-sm-7">
-            <input name="inputPassword" type="password" class="form-control" id="inputPassword" placeholder="Mot de passe"></input>
+            <input name="inputAge" type="text" class="form-control" id="inputAge" placeholder="Enter Age..."></input>
         </div>
     </div>
     <div class="form-group">
-        <label for="inputPassword2" class="col-sm-5 control-label">Répetez le mot de passe</label>
+        <label for="inputPassword" class="col-sm-5 control-label">Password</label>
         <div class="col-sm-7">
-            <input name="inputPassword2" type="password" class="form-control" id="inputPassword2" placeholder="Mot de passe"></input>
+            <input name="inputPassword" type="password" class="form-control" id="inputPassword" placeholder="Enter Password..."></input>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputPassword2" class="col-sm-5 control-label">Confirm Password</label>
+        <div class="col-sm-7">
+            <input name="inputPassword2" type="password" class="form-control" id="inputPassword2" placeholder="Enter Password..."></input>
         </div>
     </div>
 
     <div class="form-group">
         <div class="col-sm-offset-9 col-sm-7">
-            <button type="submit" class="btn btn-default">Créer le compte</button>
+            <button type="submit" class="btn btn-default">Register</button>
         </div>
     </div>
 </form>
-
-</body>
-</html>
+</div>
+</div></div>
+</ui:composition>
