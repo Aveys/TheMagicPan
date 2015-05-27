@@ -53,13 +53,12 @@ public class DaoFabric {
 				UserDao(DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PWD);
 	}
 
-	public RecipesDao createRecipesDao() {
+	public RecipeDao createRecipeDao() {
 		return new
-				RecipesDao(DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PWD);
+				RecipeDao(DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PWD);
 	}
 	public IngredientDao createIngredientDao(){
-		return new
-				IngredientDao(DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PWD);
+		return new IngredientDao(DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PWD);
 	}
 
 	public CommentDao createCommentDao() {

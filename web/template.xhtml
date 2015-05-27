@@ -6,7 +6,9 @@
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
     <link rel="stylesheet" href="css/template.css" type="text/css"/>
     <link rel="stylesheet" href="css/contents.css" type="text/css"/>
-    <title>The Magic Pan</title>
+    <link rel="stylesheet" href="css/#{pageManagerBean.stylesheet}" type="text/css"/>
+    <title>#{pageManagerBean.title}</title>
+
 </h:head>
 <body>
 <div class="navbar navbar-inverse navbar-static-top">
@@ -21,12 +23,14 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="">Emergency</a></li>
-                <li><a href="">Recipes</a></li>
-                <li><a href="">Shop</a></li>
+                <h:form>
+                <li><h:commandLink action="#{pageManagerBean.setCategory('emergency')}" styleClass="navbarButton">Emergency</h:commandLink></li>
+                <li><h:commandLink action="#{pageManagerBean.setCategory('recipes')}" styleClass="navbarButton">Recipes</h:commandLink></li>
+                <li><h:commandLink action="#{pageManagerBean.setCategory('shop')}" styleClass="navbarButton">Shop</h:commandLink></li>
+                </h:form>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user"/> <span class="caret"/></a>
-                    <form class="form dropdown-menu" role="menu" id="formLogin">
+                    <h:form class="form dropdown-menu" role="menu" id="formLogin">
                         <div class="form-group">
                             <input name="username" class="form-control" id="username" type="text" placeholder="Username"/>
                         </div>
@@ -34,14 +38,15 @@
                             <input name="password" class="form-control" id="password" type="password" placeholder="Password"/>
                         </div>
                         <button type="button" id="btnLogin" class="btn btn-default">Login</button>
-                    </form>
+                        <h:commandLink action="#{pageManagerBean.setActivePage('register.xhtml')}" styleClass="">Register</h:commandLink>
+                    </h:form>
                 </li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
 </div>
 
-<ui:include src="register.xhtml"/>
+<ui:include src="#{pageManagerBean.activePage}"/>
 
 <div class="footer">
     <div class="container">

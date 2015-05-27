@@ -93,11 +93,11 @@ hr {
     border-color: #ff8302;
 }
 
-.navbar-inverse .navbar-nav > li > a {
+.navbarButton {
     color: white;
 }
 
-.navbar-inverse .navbar-nav > li > a:hover {
+.navbarButton:hover {
     color: #222222;
 }
 
