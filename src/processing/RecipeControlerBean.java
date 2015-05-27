@@ -19,7 +19,7 @@ import java.util.Map;
     private RecipeDao recipeDao;
 
     public RecipeControlerBean() {
-        this.recipeDao = DaoFabric.getInstance().createRecipesDao();
+        this.recipeDao = DaoFabric.getInstance().createRecipeDao();
     }
 
     public void loadAllRecipe(){
