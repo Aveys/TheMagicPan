@@ -63,7 +63,7 @@ crashlytics-build.properties
 hs_err_pid*
 
 #Conf DB
-/src/dao/fabric/ConfMysql.java
+src/dao/fabric/ConfMysql.java
 
 
 .gitignore
