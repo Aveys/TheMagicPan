@@ -1,7 +1,7 @@
 package processing;
 
 import dao.fabric.DaoFabric;
-import dao.instance.RecipesDao;
+import dao.instance.RecipeDao;
 import model.RecipeListModelBean;
 import model.RecipeModelBean;
 
@@ -16,7 +16,7 @@ import java.util.Map;
 @ApplicationScoped
     public class RecipeControlerBean {
 
-    private RecipesDao recipeDao;
+    private RecipeDao recipeDao;
 
     public RecipeControlerBean() {
         this.recipeDao = DaoFabric.getInstance().createRecipesDao();
