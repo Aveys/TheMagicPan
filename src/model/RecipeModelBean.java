@@ -1,9 +1,12 @@
 package model;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import java.lang.String;
 import java.sql.Time;
-
-public class RecetteModel {
+@ManagedBean
+@RequestScoped
+public class RecipeModelBean {
 
     private int idRecette;
     private String titre;
@@ -14,7 +17,7 @@ public class RecetteModel {
     private int personnes;
     private String image;
 
-    public RecetteModel(String titre, String description, String type, Time temps, int personnes, String image) {
+    public RecipeModelBean(String titre, String description, String type, Time temps, int personnes, String image) {
         this.titre = titre;
         this.description = description;
         this.type = type;
