@@ -1,6 +1,10 @@
 package model;
 
-import java.lang.String;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+
+@ManagedBean
+@SessionScoped
 public class UserModelBean {
 
     private int idUser;
@@ -21,7 +25,11 @@ public class UserModelBean {
         this.pwd = pwd;
         this.admin = admin;
     }
-    public String getLastname() {
+
+	public UserModelBean() {
+	}
+
+	public String getLastname() {
         return lastname;
     }
     public void setLastname(String lastname) {
