@@ -4,9 +4,10 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xml:lang="en" lang="en">
 <h:head>
-    <title></title>
+    <title>Affichages des recettes</title>
 </h:head>
 <body>
-RECIPES !!!!
+<h:commandButton value="Afficher les recettes"
+                 action="#{RecipeControlerBean.loadAllRecipe()}"/>
 </body>
 </html>

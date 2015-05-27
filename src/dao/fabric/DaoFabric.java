@@ -21,6 +21,7 @@ public class DaoFabric {
 		try {
 		// Chargement du Driver, puis établissement de la connexion
 			Class.forName("com.mysql.jdbc.Driver");
+
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
