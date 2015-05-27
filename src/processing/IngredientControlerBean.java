@@ -2,7 +2,7 @@ package processing;
 
 import dao.fabric.DaoFabric;
 import dao.instance.IngredientDao;
-import dao.instance.RecipesDao;
+import dao.instance.RecipeDao;
 import model.RecipeListModelBean;
 import model.RecipeModelBean;
 

@@ -1,12 +1,15 @@
 package model;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.RequestScoped;
+
+/**
+ * Created by nicolas on 27/05/15.
+ */
 
 @ManagedBean
-@SessionScoped
-public class UserModelBean {
-
+@RequestScoped
+public class UserSubmissionModelBean {
     private int idUser;
     private String lastname;
     private String surname;
@@ -16,54 +19,36 @@ public class UserModelBean {
     private String pwd;
     private boolean admin;
 
-    public UserModelBean(String lastname, String surname, int age, String mail, String login, String pwd, boolean admin) {
-        this.lastname = lastname;
-        this.surname = surname;
-        this.age = age;
-        this.mail = mail;
-        this.login = login;
-        this.pwd = pwd;
-        this.admin = admin;
+    public int getIdUser() {
+        return idUser;
     }
 
-	public UserModelBean() {
-	}
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
+    }
 
-	public String getLastname() {
+    public String getLastname() {
         return lastname;
     }
+
     public void setLastname(String lastname) {
-        this.lastname = lastname; }
+        this.lastname = lastname;
+    }
+
     public String getSurname() {
         return surname;
     }
+
     public void setSurname(String surname) {
         this.surname = surname;
     }
+
     public int getAge() {
         return age;
     }
+
     public void setAge(int age) {
-        this.age = age;}
-    public String getLogin() {
-        return login;
-    }
-    public void setLogin(String login) {
-        this.login = login;
-    }
-    public String getPwd() {
-        return pwd;
-    }
-    public void setPwd(String pwd) {
-        this.pwd = pwd;
-    }
-    @Override
-    public String toString() {
-        return  "[SURNAME]:" + this.getSurname()+
-                ",[LASTNAME]:"+this.getLastname()+
-                ",[AGE]:"+this.getAge()+
-                ",[LOGIN]:"+this.getLogin()+
-                ",[PWD]:"+this.getPwd();
+        this.age = age;
     }
 
     public String getMail() {
@@ -72,6 +57,22 @@ public class UserModelBean {
 
     public void setMail(String mail) {
         this.mail = mail;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPwd() {
+        return pwd;
+    }
+
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
     }
 
     public boolean isAdmin() {
