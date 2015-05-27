@@ -8,31 +8,29 @@ import java.sql.Time;
 @RequestScoped
 public class RecipeModelBean {
 
-	private int idRecette;
-	private String titre;
+	private int idRecipe;
+	private String title;
 	private String description;
 	private int note;
 	private String type;
-	private Time temps;
-	private int personnes;
+	private Time time;
+	private int nbPeople;
 	private String image;
 
 	public RecipeModelBean() {
 	}
 
-	public RecipeModelBean(String titre, String description, String type,int note, Time temps, int personnes, String image) {
-		this.titre = titre;
+	public RecipeModelBean(String title, String description, String type, Time time, int nbPeople, String image) {
+		this.title = title;
 		this.description = description;
 		this.type = type;
-		this.note=note;
-		this.temps = temps;
-		this.personnes = personnes;
+		this.time = time;
+		this.nbPeople = nbPeople;
 		this.image = image;
 	}
 
-
-	public String getTitre() {
-		return titre;
+	public String getTitle() {
+		return title;
 	}
 
 	public String getDescription() {
@@ -47,20 +45,20 @@ public class RecipeModelBean {
 		return type;
 	}
 
-	public Time getTemps() {
-		return temps;
+	public Time getTime() {
+		return time;
 	}
 
-	public int getPersonnes() {
-		return personnes;
+	public int getNbPeople() {
+		return nbPeople;
 	}
 
 	public String getImage() {
 		return image;
 	}
 
-	public void setTitre(String titre) {
-		this.titre = titre;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public void setDescription(String description) {
@@ -71,12 +69,12 @@ public class RecipeModelBean {
 		this.type = type;
 	}
 
-	public void setTemps(Time temps) {
-		this.temps = temps;
+	public void setTime(Time time) {
+		this.time = time;
 	}
 
-	public void setPersonnes(int personnes) {
-		this.personnes = personnes;
+	public void setNbPeople(int nbPeople) {
+		this.nbPeople = nbPeople;
 	}
 
 	public void setImage(String image) {

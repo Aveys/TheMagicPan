@@ -2,10 +2,7 @@ package dao.instance;
 
 import model.RecipeModelBean;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 
 /**
@@ -58,8 +55,41 @@ public class RecipeDao{
 		    System.out.println("Liste nulle !");
 	    return listResult;
     }
-	public ArrayList<RecipeModelBean> getFilteredRecipe(){
-		//TODO
-		return null;
-	}
+
+	public ArrayList<RecipeModelBean> getFilteredRecipe(String title, int note, String type, Time time, int nbPeople){
+
+        try {
+            connection = java.sql.DriverManager.getConnection("jdbc:mysql://" + dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
+            Statement query = connection.createStatement();
+            StringBuilder sql=new StringBuilder();
+            sql.append("SELECT * FROM recette WHERE 1=1 ");
+
+            if(!title.equals(null)) {sql.append("AND titre = ? ");}
+
+            if(note != 0 ) {sql.append("AND note = ? ");}
+
+            if(!type.equals(null)) {sql.append("AND type = ? ");}
+
+            if(!time.equals(null)) {sql.append("AND temps = ? ");}
+
+            if(nbPeople != 0) {sql.append("AND personnes = ? ");}
+
+
+            PreparedStatement recherchePersonne = connection.prepareStatement(sql.toString());
+            int i = 1;
+            if(!title.equals(null)){recherchePersonne.setString(i,title);i++;}
+
+            if(note != 0 ){recherchePersonne.setInt(i, note);i++;}
+
+            if(!type.equals(null)){recherchePersonne.setString(i,type);i++;}
+
+            if(!time.equals(null)){recherchePersonne.setTime(i,time);i++;}
+
+            if(nbPeople != 0){recherchePersonne.setInt(i,nbPeople);i++;}
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
