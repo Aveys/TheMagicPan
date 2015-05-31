@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:c="http://java.sun.com/jsp/jstl/core">
+      xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 <h:head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
@@ -24,26 +24,36 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <h:form>
-                <li><h:commandLink action="#{pageManagerBean.setCategory('emergency')}" styleClass="navbarButton">Emergency</h:commandLink></li>
-                <li><h:commandLink action="#{pageManagerBean.setCategory('recipes')}" styleClass="navbarButton">Recipes</h:commandLink></li>
-                <li><h:commandLink action="#{pageManagerBean.setCategory('shop')}" styleClass="navbarButton">Shop</h:commandLink></li>
-                </h:form>
+                <li>
+                    <h:form>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><h:commandLink action="#{pageManagerBean.setCategory('emergency')}" styleClass="navbarButton">Emergency</h:commandLink></li>
+                            <li><h:commandLink action="#{pageManagerBean.setCategory('recipes')}" styleClass="navbarButton">Recipes</h:commandLink></li>
+                            <li><h:commandLink action="#{pageManagerBean.setCategory('shop')}" styleClass="navbarButton">Shop</h:commandLink></li>
+                        </ul>
+                    </h:form>
+                </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user"/> <span class="caret"/></a>
+
                     <c:if test="#{empty sessionScope.loggedUser}">
-                        <h:form class="form dropdown-menu" role="menu" id="formLogin">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Sign in<span class="glyphicon glyphicon-user"/><span class="caret"/></a>
+                        <div class="form dropdown-menu">
+                        <h:form role="menu" id="formLogin">
                             <div class="form-group">
-                                <h:inputText name="username" styleClass="form-control" value="#{loginBean.login}" id="username" type="text" placeholder="Username" required="true"/>
+                                <h:inputText name="username" styleClass="form-control" value="#{loginBean.login}" id="username" type="text" a:placeholder="Username" required="true"/>
                             </div>
                             <div class="form-group">
-                                <h:inputSecret name="password" styleClass="form-control" value="#{loginBean.pwd}" id="password" type="password" placeholder="Password" required="true"/>
+                                <h:inputSecret name="password" styleClass="form-control" value="#{loginBean.pwd}" id="password" type="password" a:placeholder="Password" required="true"/>
                             </div>
                             <h:commandButton  id="btnLogin" styleClass="btn btn-default" value="Sign in!" action="#{userControlerBean.checkUser(loginBean)}"/>
+                        </h:form>
+                        <h:form>
                             <h:commandLink action="#{pageManagerBean.setActivePage('register.xhtml')}" styleClass="">Register</h:commandLink>
                         </h:form>
+                        </div>
                     </c:if>
                     <c:if test="#{not empty sessionScope.loggedUser}">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><h:outputText value="#{sessionScope.loggedUser.surname}"/><span class="glyphicon glyphicon-user"/><span class="caret"/></a>
                         <div class="dropdown-menu">
                             <div>Welcome <h:outputText value="#{sessionScope.loggedUser.surname}"/></div>
                         </div>

@@ -1,8 +1,7 @@
-
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:ui="http://java.sun.com/jsf/facelets">
+                xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 <div class="container">
 <div class="blog-header">
     <h1 class="blog-title">Register Form</h1>
@@ -10,56 +9,56 @@
 <div class="row">
 <div id="content" class="col-sm-8 blog-main">
 
-<form class="form-horizontal" method="post" action="lib/control/action.php?action=signup">
+<h:form class="form-horizontal" method="post" action="lib/control/action.php?action=signup">
     <div class="form-group">
         <label for="inputUsername" class="col-sm-5 control-label">Username</label>
         <div class="col-sm-7">
-            <input name="inputUsername" type="text" class="form-control" id="inputUsername" placeholder="Enter Username..."></input>
+            <h:inputText value="#{userSubmissionModelBean.login}" name="inputUsername" type="text" styleClass="form-control" id="inputUsername" a:placeholder="Enter Username..."></h:inputText>
         </div>
     </div>
     <div class="form-group">
         <label for="inputFirstname" class="col-sm-5 control-label">Firstname</label>
         <div class="col-sm-7">
-            <input name="inputFirstname" type="text" class="form-control" id="inputFirstname" placeholder="Enter Firstname..."></input>
+            <h:inputText value="#{userSubmissionModelBean.surname}" name="inputFirstname" type="text" styleClass="form-control" id="inputFirstname" a:placeholder="Enter Firstname..."></h:inputText>
         </div>
     </div>
     <div class="form-group">
         <label for="inputLastname" class="col-sm-5 control-label">Lastname</label>
         <div class="col-sm-7">
-            <input name="inputLastname" type="text" class="form-control" id="inputLastname" placeholder="Enter Lastname..."></input>
+            <h:inputText value="#{userSubmissionModelBean.lastname}" name="inputLastname" type="text" styleClass="form-control" id="inputLastname" a:placeholder="Enter Lastname..."></h:inputText>
         </div>
     </div>
     <div class="form-group">
         <label for="inputEmail" class="col-sm-5 control-label">E-Mail</label>
         <div class="col-sm-7">
-            <input name="inputEmail" type="text" class="form-control" id="inputEmail" placeholder="Enter E-Mail..."></input>
+            <h:inputText value="#{userSubmissionModelBean.mail}" name="inputEmail" type="text" styleClass="form-control" id="inputEmail" a:placeholder="Enter E-Mail..."></h:inputText>
         </div>
     </div>
     <div class="form-group">
         <label for="inputAge" class="col-sm-5 control-label">Age</label>
         <div class="col-sm-7">
-            <input name="inputAge" type="text" class="form-control" id="inputAge" placeholder="Enter Age..."></input>
+            <h:inputText value="#{userSubmissionModelBean.age}" name="inputAge" type="text" styleClass="form-control" id="inputAge" a:placeholder="Enter Age..."></h:inputText>
         </div>
     </div>
     <div class="form-group">
         <label for="inputPassword" class="col-sm-5 control-label">Password</label>
         <div class="col-sm-7">
-            <input name="inputPassword" type="password" class="form-control" id="inputPassword" placeholder="Enter Password..."></input>
+            <h:inputText value="#{userSubmissionModelBean.pwd}" name="inputPassword" type="password" styleClass="form-control" id="inputPassword" a:placeholder="Enter Password..."></h:inputText>
         </div>
     </div>
     <div class="form-group">
         <label for="inputPassword2" class="col-sm-5 control-label">Confirm Password</label>
         <div class="col-sm-7">
-            <input name="inputPassword2" type="password" class="form-control" id="inputPassword2" placeholder="Enter Password..."></input>
+            <h:inputText value="#{userSubmissionModelBean.pwd2}" name="inputPassword2" type="password" class="form-control" id="inputPassword2" a:placeholder="Enter Password..."></h:inputText>
         </div>
     </div>
 
     <div class="form-group">
         <div class="col-sm-offset-9 col-sm-7">
-            <button type="submit" class="btn btn-default">Register</button>
+            <h:commandButton type="submit" class="btn btn-default" action="#{userControlerBean.checkAndAddUser(userSubmissionModelBean)}">Register</h:commandButton>
         </div>
     </div>
-</form>
+</h:form>
 </div>
 </div></div>
 </ui:composition>

@@ -17,6 +17,7 @@ public class UserSubmissionModelBean {
     private String mail;
     private String login;
     private String pwd;
+    private String pwd2;
     private boolean admin;
 
     public int getIdUser() {
@@ -81,5 +82,13 @@ public class UserSubmissionModelBean {
 
     public void setAdmin(boolean admin) {
         this.admin = admin;
+    }
+
+    public String getPwd2() {
+        return pwd2;
+    }
+
+    public void setPwd2(String pwd2) {
+        this.pwd2 = pwd2;
     }
 }
