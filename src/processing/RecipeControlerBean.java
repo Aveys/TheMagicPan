@@ -37,10 +37,10 @@ import java.util.Map;
 
     public RecipeControlerBean() {
         this.recipeDao = DaoFabric.getInstance().createRecipeDao();
+        loadAllRecipe();
     }
 
     public String loadAllRecipe(){
-        System.out.println("APPUIE");
         listRecipe = this.recipeDao.getAllRecipes();
 
         RecipeListModelBean recipeList = new RecipeListModelBean();
@@ -54,4 +54,5 @@ import java.util.Map;
         sessionMap.put("recipeList" , recipeList);*/
         return "";
     }
+
 }

@@ -37,7 +37,6 @@ public class RecipeDao{
 
 		    Statement query = connection.createStatement();
 		    ResultSet result =  query.executeQuery(sql);
-		    System.out.println(result);
 		    listResult=new ArrayList<>();
 		    while (result.next()){
 			    listResult.add(new RecipeModelBean(result.getString("titre"),result.getString("description"),result.getString("type"),
@@ -48,11 +47,11 @@ public class RecipeDao{
 	    } catch (SQLException e) {
 		    e.printStackTrace();
 	    }
-	    if (listResult != null) {
+	    /*if (listResult != null) {
 		    System.out.println( "retour de la liste des recettes : "+listResult.toString());
 	    }
 	    else
-		    System.out.println("Liste nulle !");
+		    System.out.println("Liste nulle !");*/
 	    return listResult;
     }
 

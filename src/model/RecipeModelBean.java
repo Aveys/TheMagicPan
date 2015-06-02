@@ -14,19 +14,19 @@ public class RecipeModelBean {
 	private int note;
 	private String type;
 	private Time time;
-	private int nbPeople;
+	private int nbServings;
 	private String image;
 
 	public RecipeModelBean() {
 	}
 
-	public RecipeModelBean(String title, String description, String type,int note, Time time, int nbPeople, String image) {
+	public RecipeModelBean(String title, String description, String type,int note, Time time, int nbServings, String image) {
 		this.title = title;
 		this.description = description;
 		this.note = note;
 		this.type = type;
 		this.time = time;
-		this.nbPeople = nbPeople;
+		this.nbServings = nbServings;
 		this.image = image;
 	}
 
@@ -51,8 +51,8 @@ public class RecipeModelBean {
 		return time;
 	}
 
-	public int getNbPeople() {
-		return nbPeople;
+	public int getNbServings() {
+		return nbServings;
 	}
 
 	public String getImage() {
@@ -75,8 +75,8 @@ public class RecipeModelBean {
 		this.time = time;
 	}
 
-	public void setNbPeople(int nbPeople) {
-		this.nbPeople = nbPeople;
+	public void setNbServings(int nbServings) {
+		this.nbServings = nbServings;
 	}
 
 	public void setImage(String image) {
