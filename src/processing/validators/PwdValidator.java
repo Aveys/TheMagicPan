@@ -2,6 +2,7 @@ package processing.validators;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
+import javax.faces.component.UIInput;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.FacesValidator;
 import javax.faces.validator.Validator;
@@ -27,8 +28,24 @@ public class PwdValidator implements Validator {
     public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException
     {
         matcher = pattern.matcher(value.toString());
-        if(!matcher.matches())
+        UIInput uiInputConfirmPassword;
+        if(component.getId().equals("confirmPassword"))
         {
+            uiInputConfirmPassword = (UIInput) component.getAttributes()
+                    .get("firstPassword");
+        }else {
+            uiInputConfirmPassword = (UIInput) component.getAttributes()
+                    .get("confirmPassword");
+        }
+
+
+        String confirmPassword = uiInputConfirmPassword.getSubmittedValue()
+                .toString();
+
+        if(!matcher.matches() || !confirmPassword.equals(value.toString()))
+        {
+
+
             FacesMessage msg = new FacesMessage(component.getId() + " validation failed.", "Please follow the constraint: " + PATTERN);
             msg.setSeverity(FacesMessage.SEVERITY_ERROR);
             throw new ValidatorException(msg);
