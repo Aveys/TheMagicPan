@@ -1,14 +1,16 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+                xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:p="http://primefaces.org/ui">
 <div class="container">
 <div class="blog-header">
     <h1 class="blog-title">Register Form</h1>
 </div>
 <div class="row">
 <div id="content" class="col-sm-8 blog-main">
-
+    <p:tooltip />
 <h:form class="form-horizontal" method="post" action="lib/control/action.php?action=signup">
     <div class="form-group">
         <label for="inputUsername" class="col-sm-5 control-label">Username</label>
@@ -49,14 +51,14 @@
     <div class="form-group">
         <label for="inputPassword2" class="col-sm-5 control-label">Confirm Password</label>
         <div class="col-sm-7">
-            <h:inputText value="#{userSubmissionModelBean.pwd2}" name="inputPassword2" type="password" class="form-control" id="inputPassword2" a:placeholder="Enter Password..."></h:inputText>
+            <!--<p:inputText value="#{userSubmissionModelBean.pwd2}" name="inputPassword2" type="password" class="form-control" id="inputPassword2"  pt:data-tooltip="Tooltip for an input"></p:inputText>-->
+            <p:inputText value="#{userSubmissionModelBean.pwd2}" name="inputPassword2" type="password" styleClass="form-control" id="inputPassword2" title="Only letters and numbers." a:placeholder="Enter Password..."></p:inputText>
+            <p:tooltip global="true" myPosition="left center" atPosition="right center"/>
         </div>
-    </div>
 
-    <div class="form-group">
-        <div class="col-sm-offset-9 col-sm-7">
-            <h:commandButton type="submit" class="btn btn-default" action="#{userControlerBean.checkAndAddUser(userSubmissionModelBean)}">Register</h:commandButton>
-        </div>
+
+
+
     </div>
 </h:form>
 </div>
