@@ -12,53 +12,81 @@
 <div id="content" class="col-sm-8 blog-main">
     <p:tooltip />
 <h:form class="form-horizontal" method="post" action="lib/control/action.php?action=signup">
+    <h:messages styleClass="alert-danger"></h:messages>
     <div class="form-group">
         <label for="inputUsername" class="col-sm-5 control-label">Username</label>
         <div class="col-sm-7">
-            <h:inputText value="#{userSubmissionModelBean.login}" name="inputUsername" type="text" styleClass="form-control" id="inputUsername" a:placeholder="Enter Username..."></h:inputText>
+            <h:inputText value="#{userSubmissionModelBean.login}" name="inputUsername" type="text" styleClass="form-control" id="inputUsername" a:placeholder="Enter Username..." title="Only letters, numbers, '.' or '_'">
+                <p:tooltip global="true" myPosition="left center" atPosition="right center"/>
+                <f:validator validatorId="usernameValidator" />
+            </h:inputText>
         </div>
     </div>
     <div class="form-group">
         <label for="inputFirstname" class="col-sm-5 control-label">Firstname</label>
         <div class="col-sm-7">
-            <h:inputText value="#{userSubmissionModelBean.surname}" name="inputFirstname" type="text" styleClass="form-control" id="inputFirstname" a:placeholder="Enter Firstname..."></h:inputText>
+            <h:inputText value="#{userSubmissionModelBean.surname}" name="inputFirstname" type="text" styleClass="form-control" id="inputFirstname" a:placeholder="Enter Firstname..." title="Only letters.">
+                <p:tooltip global="true" myPosition="left center" atPosition="right center"/>
+                <f:validator validatorId="textValidator" />
+            </h:inputText>
+            <p:tooltip global="true" myPosition="left center" atPosition="right center"/>
         </div>
     </div>
     <div class="form-group">
         <label for="inputLastname" class="col-sm-5 control-label">Lastname</label>
         <div class="col-sm-7">
-            <h:inputText value="#{userSubmissionModelBean.lastname}" name="inputLastname" type="text" styleClass="form-control" id="inputLastname" a:placeholder="Enter Lastname..."></h:inputText>
+            <h:inputText value="#{userSubmissionModelBean.lastname}" name="inputLastname" type="text" styleClass="form-control" id="inputLastname" a:placeholder="Enter Lastname..." title="Only letters.">
+                <p:tooltip global="true" myPosition="left center" atPosition="right center"/>
+                <f:validator validatorId="textValidator" />
+            </h:inputText>
+            <p:tooltip global="true" myPosition="left center" atPosition="right center"/>
         </div>
     </div>
     <div class="form-group">
         <label for="inputEmail" class="col-sm-5 control-label">E-Mail</label>
         <div class="col-sm-7">
-            <h:inputText value="#{userSubmissionModelBean.mail}" name="inputEmail" type="text" styleClass="form-control" id="inputEmail" a:placeholder="Enter E-Mail..."></h:inputText>
+            <h:inputText value="#{userSubmissionModelBean.mail}" name="inputEmail" type="text" styleClass="form-control" id="inputEmail" a:placeholder="Enter E-Mail..." title="Only [a-zA-Z0-9-._]+@[a-zA-Z0-9-._].[a-z]+">
+                <p:tooltip global="true" myPosition="left center" atPosition="right center"/>
+                <f:validator validatorId="emailValidator" />
+            </h:inputText>
+            <p:tooltip global="true" myPosition="left center" atPosition="right center"/>
         </div>
     </div>
     <div class="form-group">
         <label for="inputAge" class="col-sm-5 control-label">Age</label>
         <div class="col-sm-7">
-            <h:inputText value="#{userSubmissionModelBean.age}" name="inputAge" type="text" styleClass="form-control" id="inputAge" a:placeholder="Enter Age..."></h:inputText>
+            <h:inputText value="#{userSubmissionModelBean.age}" name="inputAge" type="text" styleClass="form-control" id="inputAge" a:placeholder="Enter Age..." title="Only integer below 100.">
+                <p:tooltip global="true" myPosition="left center" atPosition="right center"/>
+                <f:validator validatorId="ageValidator" />
+            </h:inputText>
+            <p:tooltip global="true" myPosition="left center" atPosition="right center"/>
         </div>
     </div>
     <div class="form-group">
         <label for="inputPassword" class="col-sm-5 control-label">Password</label>
         <div class="col-sm-7">
-            <h:inputText value="#{userSubmissionModelBean.pwd}" name="inputPassword" type="password" styleClass="form-control" id="inputPassword" a:placeholder="Enter Password..."></h:inputText>
+            <h:inputText value="#{userSubmissionModelBean.pwd}" name="inputPassword" type="password" styleClass="form-control" id="inputPassword" a:placeholder="Enter Password..." title="Only letters and numbers.">
+                <p:tooltip global="true" myPosition="left center" atPosition="right center"/>
+                <f:validator validatorId="pwdValidator" />
+            </h:inputText>
+            <p:tooltip global="true" myPosition="left center" atPosition="right center"/>
         </div>
     </div>
     <div class="form-group">
         <label for="inputPassword2" class="col-sm-5 control-label">Confirm Password</label>
         <div class="col-sm-7">
             <!--<p:inputText value="#{userSubmissionModelBean.pwd2}" name="inputPassword2" type="password" class="form-control" id="inputPassword2"  pt:data-tooltip="Tooltip for an input"></p:inputText>-->
-            <p:inputText value="#{userSubmissionModelBean.pwd2}" name="inputPassword2" type="password" styleClass="form-control" id="inputPassword2" title="Only letters and numbers." a:placeholder="Enter Password..."></p:inputText>
+            <p:inputText value="#{userSubmissionModelBean.pwd2}" name="inputPassword2" type="password" styleClass="form-control" id="inputPassword2" title="Only letters and numbers." a:placeholder="Enter Password...">
+                <p:tooltip global="true" myPosition="left center" atPosition="right center"/>
+                <f:validator validatorId="pwdValidator" />
+            </p:inputText>
             <p:tooltip global="true" myPosition="left center" atPosition="right center"/>
         </div>
-
-
-
-
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-9 col-sm-7">
+            <h:commandButton type="submit" styleClass="btn btn-default" action="#{userControlerBean.checkAndAddUser(userSubmissionModelBean)}" value="Register"></h:commandButton>
+        </div>
     </div>
 </h:form>
 </div>
