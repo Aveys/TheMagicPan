@@ -13,7 +13,16 @@ public class UserSubmissionModelBean {
     private int idUser;
     private String lastname;
     private String surname;
-    private int age;
+
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+    private String age;
     private String mail;
     private String login;
     private String pwd;
@@ -44,13 +53,6 @@ public class UserSubmissionModelBean {
         this.surname = surname;
     }
 
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
 
     public String getMail() {
         return mail;
