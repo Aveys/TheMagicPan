@@ -41,7 +41,7 @@ import java.util.Map;
     }
 
     public String loadAllRecipe(){
-        listRecipe = this.recipeDao.getAllRecipes();
+        listRecipe = this.recipeDao.getFilteredRecipe();
 
         RecipeListModelBean recipeList = new RecipeListModelBean();
         for(RecipeModelBean recipe:listRecipe){

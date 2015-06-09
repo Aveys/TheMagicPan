@@ -40,7 +40,7 @@ public class RecipeDao{
 		    listResult=new ArrayList<>();
 		    while (result.next()){
 			    listResult.add(new RecipeModelBean(result.getString("titre"),result.getString("description"),result.getString("type"),
-					    result.getInt("note"),result.getTime("temps"),result.getInt("personnes"),result.getString("image")));
+					    result.getInt("note"),result.getInt("temps"),result.getInt("personnes"),result.getString("image")));
 		    }
 		    if(listResult.isEmpty())
 			    listResult=null;
@@ -90,7 +90,7 @@ public class RecipeDao{
             listResult = new ArrayList<>();
             do {
                 listResult.add(new RecipeModelBean(result.getString("titre"),result.getString("description"),result.getString("type"),
-                        result.getInt("note"),result.getTime("temps"),result.getInt("personnes"),result.getString("image")));
+                        result.getInt("note"),result.getInt("temps"),result.getInt("personnes"),result.getString("image")));
             }while (result.next());
             if(listResult.isEmpty())
                 listResult=null;

@@ -104,7 +104,7 @@ CREATE TABLE IF NOT EXISTS `recette` (
   `description` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
   `note` tinyint(4) NOT NULL,
   `type` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `temps` time NOT NULL,
+  `temps` int NOT NULL,
   `personnes` tinyint(4) NOT NULL,
   `image` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id_recette`),
