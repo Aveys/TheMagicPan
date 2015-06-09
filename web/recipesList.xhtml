@@ -10,11 +10,11 @@
                 <f:facet name="header">
                     Resultat
                 </f:facet>
-                <h:commandLink id="link" action="#{recipeControlerBean.getRecipeByTitle(recipe.title)}">
+                <h:commandLink id="link" action="#{pageManagerBean.setActivePageWithExtension(recipeControlerBean.getRecipeByTitle(recipe.title))}">
                     <h:outputText value="#{recipe.title}"/>
                 </h:commandLink>
             </p:dataList>
-            <h:commandButton styleClass="btn btn-default" value="Retour à la recherche" action="recipes"/>
+            <h:commandButton styleClass="btn btn-default" value="Retour à la recherche" action="#{pageManagerBean.setActivePage('recipes.xhtml')}"/>
         </h:form>
     </div>
 </ui:composition>

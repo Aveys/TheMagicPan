@@ -35,7 +35,7 @@
                      <f:selectItem itemLabel="Dessert" itemValue="dessert"/>
                  </p:selectOneMenu>
              </h:panelGrid>
-                <h:commandButton styleClass="btn btn-default" value="Cookin' Baby !" action="#{recipeControlerBean.loadFilteredRecipe(recipeRequestBean)}"/>
+                <h:commandButton styleClass="btn btn-default" value="Cookin' Baby !" action="#{pageManagerBean.setActivePageWithExtension(recipeControlerBean.loadFilteredRecipe(recipeRequestBean))}"/>
          </h:panelGrid>
         </h:form>
     </div>

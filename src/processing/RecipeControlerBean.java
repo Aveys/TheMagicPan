@@ -72,12 +72,14 @@ import java.util.ArrayList;
         Map<String, Object> sessionMap = externalContext.getSessionMap();
         //place la liste de recette dans l'espace de mémoire de JSF
         sessionMap.put("recipeList" , recipeList);*/
+
         return "recipesList";
     }
 
     public String getRecipeByTitle(String title){
         recipe = this.recipeDao.getRecipeByTitle(title);
         System.out.println(recipe.toString());
+
         return "recipe";
     }
 

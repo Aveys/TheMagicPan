@@ -59,6 +59,9 @@ public class PageManagerBean {
     public void setActivePage(String activePage) {
         this.activePage = activePage;
     }
+    public void setActivePageWithExtension(String activePage) {
+        this.activePage = activePage+".xhtml";
+    }
 
     public String getTitle() {
         return title;
