@@ -46,7 +46,8 @@ public class UserControlerBean {
     public void checkAndAddUser(UserSubmissionModelBean userSubmitted){
     //TODO: Vérifier les propriétés de l'utilisateur
 
+
     // TODO ajout de l'utilisateur à la base de données
-       // this.userDao.addUser(new UserModelBean(userSubmitted.getLastname(), userSubmitted.getSurname(), userSubmitted.getAge(), userSubmitted.getMail(), userSubmitted.getLogin(), userSubmitted.getPwd(), userSubmitted.isAdmin()));
+        this.userDao.addUser(new UserModelBean(userSubmitted.getLastname(), userSubmitted.getSurname(), userSubmitted.getAgeInt(), userSubmitted.getMail(), userSubmitted.getLogin(), userSubmitted.getPwd(), userSubmitted.isAdmin()));
     }
 }

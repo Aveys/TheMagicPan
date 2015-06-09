@@ -22,6 +22,11 @@ public class UserSubmissionModelBean {
         this.age = age;
     }
 
+    public int getAgeInt()
+    {
+        return Integer.parseInt(this.age);
+    }
+
     private String age;
     private String mail;
     private String login;
