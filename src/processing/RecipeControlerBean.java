@@ -4,6 +4,7 @@ import dao.fabric.DaoFabric;
 import dao.instance.RecipeDao;
 import model.RecipeListModelBean;
 import model.RecipeModelBean;
+import model.RecipeRequestBean;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
@@ -37,14 +38,26 @@ import java.util.Map;
 
     public RecipeControlerBean() {
         this.recipeDao = DaoFabric.getInstance().createRecipeDao();
-        loadAllRecipe();
     }
 
     public String loadAllRecipe(){
-        listRecipe = this.recipeDao.getFilteredRecipe();
+        listRecipe = this.recipeDao.getAllRecipes();
 
         RecipeListModelBean recipeList = new RecipeListModelBean();
         for(RecipeModelBean recipe:listRecipe){
+            recipeList.addRecipe(recipe);
+        }
+
+        return "";
+    }
+    public String loadFilteredRecipe(RecipeRequestBean rrb){
+        System.out.println(rrb.getType().equals(""));
+        System.out.println(rrb);
+        listRecipe = this.recipeDao.getFilteredRecipe(rrb.getTitle(),rrb.getNote(),rrb.getType(),rrb.getTime(),rrb.getNbServings());
+
+        RecipeListModelBean recipeList = new RecipeListModelBean();
+        for(RecipeModelBean recipe:listRecipe){
+            System.out.println("recette ajoutée : "+recipe);
             recipeList.addRecipe(recipe);
         }
         /* récupère l'espace de mémoire de JSF
@@ -52,7 +65,7 @@ import java.util.Map;
         Map<String, Object> sessionMap = externalContext.getSessionMap();
         //place la liste de recette dans l'espace de mémoire de JSF
         sessionMap.put("recipeList" , recipeList);*/
-        return "";
+        return "recipesList";
     }
 
 }

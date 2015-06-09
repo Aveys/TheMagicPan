@@ -55,35 +55,35 @@ public class RecipeDao{
 	    return listResult;
     }
 
-	public ArrayList<RecipeModelBean> getFilteredRecipe(String title, int note, String type, Time time, int nbPeople){
+	public ArrayList<RecipeModelBean> getFilteredRecipe(String title, int note, String type, int time, int nbPeople){
         ArrayList<RecipeModelBean> listResult = null;
         try {
             connection = java.sql.DriverManager.getConnection("jdbc:mysql://" + dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
             StringBuilder sql=new StringBuilder();
             sql.append("SELECT * FROM recette WHERE 1=1 ");
 
-            if(!title.equals(null)) {sql.append("AND titre = ? ");}
+            if(!title.equals("")) {sql.append("AND titre = ? ");}
 
-            if(note != 0 ) {sql.append("AND note = ? ");}
+            if(note > 0 ) {sql.append("AND note = ? ");}
 
-            if(!type.equals(null)) {sql.append("AND type = ? ");}
+            if(!type.equals("")) {sql.append("AND type = ? ");}
 
-            if(!time.equals(null)) {sql.append("AND temps = ? ");}
+            if(time>0) {sql.append("AND temps = ? ");}
 
-            if(nbPeople != 0) {sql.append("AND personnes = ? ");}
+            if(nbPeople > 0) {sql.append("AND personnes = ? ");}
 
 
             PreparedStatement query = connection.prepareStatement(sql.toString());
             int i = 1;
-            if(!title.equals(null)){query.setString(i,title);i++;}
+            if(!title.equals("")){query.setString(i,title);i++;}
 
-            if(note != 0 ){query.setInt(i, note);i++;}
+            if(note > 0 ){query.setInt(i, note);i++;}
 
-            if(!type.equals(null)){query.setString(i,type);i++;}
+            if(!type.equals("")){query.setString(i,type);i++;}
 
-            if(!time.equals(null)){query.setTime(i, time);i++;}
+            if(time > 0){query.setInt(i, time);i++;}
 
-            if(nbPeople != 0){query.setInt(i, nbPeople);i++;}
+            if(nbPeople > 0){query.setInt(i, nbPeople);i++;}
 
             ResultSet result =  query.executeQuery();
             System.out.println(result);

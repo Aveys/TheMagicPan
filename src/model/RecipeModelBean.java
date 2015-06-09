@@ -1,11 +1,12 @@
 package model;
 
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import java.lang.String;
 import java.sql.Time;
 @ManagedBean
-@RequestScoped
+@ApplicationScoped
 public class RecipeModelBean {
 
 	private int idRecipe;
@@ -85,5 +86,19 @@ public class RecipeModelBean {
 
 	public void setImage(String image) {
 		this.image = image;
+	}
+
+	@Override
+	public String toString() {
+		return "RecipeModelBean{" +
+				"idRecipe=" + idRecipe +
+				", title='" + title + '\'' +
+				", description='" + description + '\'' +
+				", note=" + note +
+				", type='" + type + '\'' +
+				", time=" + time +
+				", nbServings=" + nbServings +
+				", image='" + image + '\'' +
+				'}';
 	}
 }
