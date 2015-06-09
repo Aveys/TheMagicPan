@@ -10,7 +10,9 @@
                 <f:facet name="header">
                     Resultat
                 </f:facet>
-                #{recipe.title}, #{recipe.description},#{recipe.note}
+                <h:commandLink id="link" action="#{recipeControlerBean.getRecipeByTitle(recipe.title)}">
+                    <h:outputText value="#{recipe.title}"/>
+                </h:commandLink>
             </p:dataList>
         </h:form>
     </div>

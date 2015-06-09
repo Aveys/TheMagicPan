@@ -2,9 +2,6 @@ package model;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
-import java.lang.String;
-import java.sql.Time;
 @ManagedBean
 @ApplicationScoped
 public class RecipeModelBean {
@@ -31,6 +28,24 @@ public class RecipeModelBean {
 		this.image = image;
 	}
 
+	public RecipeModelBean(int idRecipe, String title, String description, String type,int note, int time, int nbServings, String image) {
+		this.idRecipe = idRecipe;
+		this.title = title;
+		this.description = description;
+		this.note = note;
+		this.type = type;
+		this.time = time;
+		this.nbServings = nbServings;
+		this.image = image;
+	}
+
+	public int getIdRecipe() {
+		return idRecipe;
+	}
+
+	public void setIdRecipe(int idRecipe) {
+		this.idRecipe = idRecipe;
+	}
 
 	public void setNote(int note) {
 		this.note = note;

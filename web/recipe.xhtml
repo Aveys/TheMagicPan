@@ -4,12 +4,11 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui">
     <div class="container">
-    <h1>#{recipeModelBean.title}</h1>
-        <p>#{recipeModelBean.description}</p>
-        <p>#{recipeModelBean.nbServings}</p>
-        <p> #{recipeModelBean.note}</p>
-        <p> #{recipeModelBean.time}</p>
-        <p> #{recipeModelBean.type}</p>
-        <p> #{recipeModelBean.image}</p>
+        <h:form id="form">
+            <f:facet name="header">
+                    Resultat
+                </f:facet>
+                <h:outputText value="#{recipeModelBean.title}"/>
+        </h:form>
     </div>
 </ui:composition>

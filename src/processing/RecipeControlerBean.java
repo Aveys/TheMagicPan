@@ -15,7 +15,12 @@ import java.util.ArrayList;
     public class RecipeControlerBean {
 
     private RecipeDao recipeDao;
+    private RecipeModelBean recipe;
     private ArrayList<RecipeModelBean> listRecipe;
+
+    public RecipeControlerBean() {
+        this.recipeDao = DaoFabric.getInstance().createRecipeDao();
+    }
 
     public RecipeDao getRecipeDao() {
         return recipeDao;
@@ -25,16 +30,20 @@ import java.util.ArrayList;
         this.recipeDao = recipeDao;
     }
 
+    public RecipeModelBean getRecipe() {
+        return recipe;
+    }
+
+    public void setRecipe(RecipeModelBean recipe) {
+        this.recipe = recipe;
+    }
+
     public ArrayList<RecipeModelBean> getListRecipe() {
         return listRecipe;
     }
 
     public void setListRecipe(ArrayList<RecipeModelBean> listRecipe) {
         this.listRecipe = listRecipe;
-    }
-
-    public RecipeControlerBean() {
-        this.recipeDao = DaoFabric.getInstance().createRecipeDao();
     }
 
     public String loadAllRecipe(){
@@ -47,10 +56,11 @@ import java.util.ArrayList;
 
         return "";
     }
+
     public String loadFilteredRecipe(RecipeRequestBean rrb){
         System.out.println(rrb.getType().equals(""));
         System.out.println(rrb);
-        listRecipe = this.recipeDao.getFilteredRecipe(rrb.getTitle(),rrb.getNote(),rrb.getType(),rrb.getTime(),rrb.getNbServings());
+        listRecipe = this.recipeDao.getFilteredRecipe(rrb.getTitle(), rrb.getNote(), rrb.getType(), rrb.getTime(), rrb.getNbServings());
 
         RecipeListModelBean recipeList = new RecipeListModelBean();
         for(RecipeModelBean recipe:listRecipe){
@@ -63,6 +73,11 @@ import java.util.ArrayList;
         //place la liste de recette dans l'espace de mémoire de JSF
         sessionMap.put("recipeList" , recipeList);*/
         return "recipesList";
+    }
+
+    public String getRecipeByTitle(String title){
+        recipe = this.recipeDao.getRecipeByTitle(title);
+        return "recipe";
     }
 
 }

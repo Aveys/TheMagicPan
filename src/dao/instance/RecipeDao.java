@@ -100,4 +100,64 @@ public class RecipeDao{
         }
         return listResult;
     }
+
+    public RecipeModelBean getRecipeByTitle(String title){
+
+        RecipeModelBean recipe = new RecipeModelBean();
+
+        try {
+            connection = java.sql.DriverManager.getConnection("jdbc:mysql://" + dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
+            StringBuilder sql=new StringBuilder();
+            sql.append("SELECT * FROM recette WHERE titre = ? ");
+
+            PreparedStatement query = connection.prepareStatement(sql.toString());
+            query.setString(1,title);
+            ResultSet result =  query.executeQuery();
+            System.out.println(result);
+
+            result.next();
+            recipe.setIdRecipe(result.getInt("id_recette"));
+            recipe.setTitle(result.getString("titre"));
+            recipe.setDescription(result.getString("description"));
+            recipe.setType(result.getString("type"));
+            recipe.setNote(result.getInt("note"));
+            recipe.setTime(result.getInt("temps"));
+            recipe.setNbServings(result.getInt("personnes"));
+            recipe.setImage(result.getString("image"));
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return recipe;
+    }
+
+    public RecipeModelBean getRecipeById(int idRecipe){
+
+        RecipeModelBean recipe = new RecipeModelBean();
+
+        try {
+            connection = java.sql.DriverManager.getConnection("jdbc:mysql://" + dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
+            StringBuilder sql=new StringBuilder();
+            sql.append("SELECT * FROM recette WHERE id_recette = ? ");
+
+            PreparedStatement query = connection.prepareStatement(sql.toString());
+            query.setInt(1,idRecipe);
+            ResultSet result =  query.executeQuery();
+            System.out.println(result);
+
+            result.next();
+            recipe.setIdRecipe(result.getInt("id_recette"));
+            recipe.setTitle(result.getString("titre"));
+            recipe.setDescription(result.getString("description"));
+            recipe.setType(result.getString("type"));
+            recipe.setNote(result.getInt("note"));
+            recipe.setTime(result.getInt("temps"));
+            recipe.setNbServings(result.getInt("personnes"));
+            recipe.setImage(result.getString("image"));
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return recipe;
+    }
 }
