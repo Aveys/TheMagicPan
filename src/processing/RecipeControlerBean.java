@@ -57,16 +57,22 @@ import java.util.ArrayList;
         return "";
     }
 
-    public String loadFilteredRecipe(RecipeRequestBean rrb){
+    public String loadFilteredRecipe(RecipeRequestBean rrb) {
         System.out.println(rrb.getType().equals(""));
         System.out.println(rrb);
         listRecipe = this.recipeDao.getFilteredRecipe(rrb.getTitle(), rrb.getNote(), rrb.getType(), rrb.getTime(), rrb.getNbServings());
 
         RecipeListModelBean recipeList = new RecipeListModelBean();
-        for(RecipeModelBean recipe:listRecipe){
-            System.out.println("recette ajoutée : "+recipe);
-            recipeList.addRecipe(recipe);
+        if (listRecipe.size()>0){
+            for (RecipeModelBean recipe : listRecipe) {
+                System.out.println("recette ajoutée : " + recipe);
+                recipeList.addRecipe(recipe);
+            }
         }
+        else {
+            recipeList.getList().clear();
+        }
+
         /* récupère l'espace de mémoire de JSF
         ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
         Map<String, Object> sessionMap = externalContext.getSessionMap();

@@ -72,6 +72,7 @@ public class RecipeDao{
 
             if(nbPeople > 0) {sql.append("AND personnes = ? ");}
 
+            System.out.println(sql.toString());
 
             PreparedStatement query = connection.prepareStatement(sql.toString());
             int i = 1;
@@ -85,6 +86,8 @@ public class RecipeDao{
 
             if(nbPeople > 0){query.setInt(i, nbPeople);i++;}
 
+            System.out.println(query.toString());
+
             ResultSet result =  query.executeQuery();
             System.out.println(result);
             listResult = new ArrayList<>();
@@ -92,8 +95,8 @@ public class RecipeDao{
                 listResult.add(new RecipeModelBean(result.getString("titre"),result.getString("description"),result.getString("type"),
                         result.getInt("note"),result.getInt("temps"),result.getInt("personnes"),result.getString("image")));
             }
-            if(listResult.isEmpty())
-                listResult=null;
+            /*if(listResult.isEmpty())
+                listResult=null;*/
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -141,7 +144,7 @@ public class RecipeDao{
             sql.append("SELECT * FROM recette WHERE id_recette = ? ");
 
             PreparedStatement query = connection.prepareStatement(sql.toString());
-            query.setInt(1,idRecipe);
+            query.setInt(1, idRecipe);
             ResultSet result =  query.executeQuery();
             System.out.println(result);
 
