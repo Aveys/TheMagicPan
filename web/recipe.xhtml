@@ -1,16 +1,15 @@
-
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:ui="http://java.sun.com/jsf/facelets">
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
     <div class="container">
-        <div class="blog-header">
-            <h1 class="blog-title">Recipe</h1>
-        </div>
-        <div class="row">
-            <div id="content" class="col-sm-8 blog-main">
-
-
-            </div>
-        </div></div>
+    <h1>#{recipeModelBean.title}</h1>
+        <p>#{recipeModelBean.description}</p>
+        <p>#{recipeModelBean.nbServings}</p>
+        <p> #{recipeModelBean.note}</p>
+        <p> #{recipeModelBean.time}</p>
+        <p> #{recipeModelBean.type}</p>
+        <p> #{recipeModelBean.image}</p>
+    </div>
 </ui:composition>

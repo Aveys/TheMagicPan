@@ -8,10 +8,7 @@ import model.RecipeRequestBean;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
 import java.util.ArrayList;
-import java.util.Map;
 
 @ManagedBean(name = "recipeControlerBean")
 @ApplicationScoped

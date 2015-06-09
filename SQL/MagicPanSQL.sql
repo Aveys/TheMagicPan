@@ -117,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `recette` (
 --
 
 INSERT INTO `recette` (`id_recette`, `titre`, `description`, `note`, `type`, `temps`, `personnes`, `image`) VALUES
-  (1, 'Tomate Mozzarella', 'Une tomate mozza quoi! ', 5, 'Salade', '00:00:00', 4, '');
+  (1, 'Tomate Mozzarella', 'Une tomate mozza quoi! ', 5, 'Salade', '10', 4, '');
 
 -- --------------------------------------------------------
 
