@@ -77,6 +77,7 @@ import java.util.ArrayList;
 
     public String getRecipeByTitle(String title){
         recipe = this.recipeDao.getRecipeByTitle(title);
+        System.out.println(recipe.toString());
         return "recipe";
     }
 
