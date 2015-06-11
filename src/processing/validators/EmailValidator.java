@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
  */
 @FacesValidator(value="emailValidator")
 public class EmailValidator implements Validator {
-    private static final String PATTERN = "[a-zA-Z0-9-._]+@[a-zA-Z0-9-._].[a-z]+";
+    private static final String PATTERN = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$";
     private Pattern pattern;
     private Matcher matcher;
 
@@ -35,4 +35,3 @@ public class EmailValidator implements Validator {
         }
     }
 }
-
