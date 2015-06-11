@@ -4,10 +4,11 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import java.io.IOException;
+import java.io.Serializable;
 
 @ManagedBean
 @SessionScoped
-public class PageManagerBean {
+public class PageManagerBean implements Serializable {
     private String stylesheet;
     private String category;
     private String activePage;

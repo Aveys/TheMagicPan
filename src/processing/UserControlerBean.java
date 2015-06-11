@@ -14,6 +14,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @ManagedBean
 @ApplicationScoped
@@ -43,11 +45,27 @@ public class UserControlerBean {
         }
     }
 
-    public void checkAndAddUser(UserSubmissionModelBean userSubmitted){
+    public String checkAndAddUser(UserSubmissionModelBean userSubmitted){
     //TODO: Vérifier les propriétés de l'utilisateur
 
+        if(Pattern.compile("^[0-9]+").matcher(userSubmitted.getAge()).matches() &&
+                Pattern.compile("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$").matcher(userSubmitted.getMail()).matches() &&
+                Pattern.compile("^[A-Za-z]+").matcher(userSubmitted.getPwd()).matches() &&
+                Pattern.compile("^[A-Za-z]+").matcher(userSubmitted.getPwd2()).matches() &&
+                Pattern.compile("^[A-Za-z]+").matcher(userSubmitted.getLastname()).matches() &&
+                Pattern.compile("^[A-Za-z]+").matcher(userSubmitted.getSurname()).matches() &&
+                Pattern.compile("^[A-Za-z]+").matcher(userSubmitted.getLogin()).matches() && userSubmitted.getPwd().equals(userSubmitted.getPwd2())
+            )
+        {
+            // TODO ajout de l'utilisateur à la base de données
+            this.userDao.addUser(new UserModelBean(userSubmitted.getLastname(), userSubmitted.getSurname(), userSubmitted.getAgeInt(), userSubmitted.getMail(), userSubmitted.getLogin(), userSubmitted.getPwd(), userSubmitted.isAdmin()));
+            return "ActivitySelector.xhtml";
+        }
 
-    // TODO ajout de l'utilisateur à la base de données
-        this.userDao.addUser(new UserModelBean(userSubmitted.getLastname(), userSubmitted.getSurname(), userSubmitted.getAgeInt(), userSubmitted.getMail(), userSubmitted.getLogin(), userSubmitted.getPwd(), userSubmitted.isAdmin()));
+        return "";
+
+
+
+
     }
 }
