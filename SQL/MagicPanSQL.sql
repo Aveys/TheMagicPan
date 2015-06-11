@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 26 Mai 2015 à 17:04
+-- Généré le :  Mer 27 Mai 2015 à 16:08
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -31,6 +31,16 @@ CREATE TABLE IF NOT EXISTS `assoc_recette_ingredients` (
   `id_ingredient` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Contenu de la table `assoc_recette_ingredients`
+--
+
+INSERT INTO `assoc_recette_ingredients` (`id_recette`, `id_ingredient`) VALUES
+  (1, 1),
+  (1, 3),
+  (1, 8),
+  (1, 9);
+
 -- --------------------------------------------------------
 
 --
@@ -45,7 +55,14 @@ CREATE TABLE IF NOT EXISTS `commentaire` (
   `contenu` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id_commentaire`),
   UNIQUE KEY `id_commentaire` (`id_commentaire`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `commentaire`
+--
+
+INSERT INTO `commentaire` (`id_commentaire`, `id_user`, `id_recette`, `titre`, `contenu`) VALUES
+  (1, 1, 1, 'Recette de ouf', 'C''eest trop bon avec un peu de vinaigre balsamique en plus');
 
 -- --------------------------------------------------------
 
@@ -58,7 +75,22 @@ CREATE TABLE IF NOT EXISTS `ingredients` (
   `nom` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id_ingredient`),
   UNIQUE KEY `id_ingredient` (`id_ingredient`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=10 ;
+
+--
+-- Contenu de la table `ingredients`
+--
+
+INSERT INTO `ingredients` (`id_ingredient`, `nom`) VALUES
+  (1, 'Tomate'),
+  (2, 'Emmental'),
+  (3, 'Mozzarella'),
+  (4, 'Anchois'),
+  (5, 'Riz'),
+  (6, 'Poulet'),
+  (7, 'Boeuf'),
+  (8, 'Basilic'),
+  (9, 'Huile d''olive');
 
 -- --------------------------------------------------------
 
@@ -72,13 +104,20 @@ CREATE TABLE IF NOT EXISTS `recette` (
   `description` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
   `note` tinyint(4) NOT NULL,
   `type` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `temps` time NOT NULL,
+  `temps` int NOT NULL,
   `personnes` tinyint(4) NOT NULL,
   `image` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id_recette`),
   UNIQUE KEY `id_recette` (`id_recette`),
   UNIQUE KEY `id_recette_2` (`id_recette`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `recette`
+--
+
+INSERT INTO `recette` (`id_recette`, `titre`, `description`, `note`, `type`, `temps`, `personnes`, `image`) VALUES
+  (1, 'Tomate Mozzarella', 'Une tomate mozza quoi! ', 5, 'Salad', '10', 4, '');
 
 -- --------------------------------------------------------
 
@@ -97,7 +136,14 @@ CREATE TABLE IF NOT EXISTS `user` (
   `admin` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_user`),
   UNIQUE KEY `id_user` (`id_user`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `user`
+--
+
+INSERT INTO `user` (`id_user`, `lastname`, `surname`, `age`, `mail`, `login`, `password`, `admin`) VALUES
+  (1, 'admin', 'admin', 20, 'admin@admin.com', 'admin', 'admin', 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

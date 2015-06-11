@@ -1,12 +1,42 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html
-        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xml:lang="en" lang="en">
-<h:head>
-    <title></title>
-</h:head>
-<body>
-RECIPES !!!!
-</body>
-</html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+    <div class="container">
+
+        <h:form id="form">
+            <p:growl id="growl" showDetail="true" />
+            <h:panelGrid columns="2" styleClass="searchPanel" layout="grid" style="margin-bottom:10px" cellpadding="5">
+                <h:panelGrid columns="1" layout="grid" style="margin-bottom:10px" cellpadding="5">
+                    <h:outputText for="titre" value="Nom de la recette: "/>
+                    <p:inputText id="titre" value="#{recipeRequestBean.title}"/>
+                </h:panelGrid>
+
+                <h:panelGrid columns="1" layout="grid" style="margin-bottom:10px" cellpadding="5">
+                    <h:outputText for="step" value="Durée de préparation: "/>
+                    <p:spinner id="step" value="#{recipeRequestBean.time}" stepFactor="1" min="0"/> <!--TODO : probléme de conversion d'une string en sql.time -->
+                </h:panelGrid>
+            <h:panelGrid columns="1" style="margin-bottom: 10px">
+                <h:outputText id="output" value="#{recipeRequestBean.nbServings} servings" />
+                <h:inputHidden id="txt2" value="#{recipeRequestBean.nbServings}" />
+                <p:slider for="txt2" display="output" minValue="0" maxValue="12" style="width: 200px" displayTemplate="{value}" />
+            </h:panelGrid>
+            <h:panelGrid columns="1"  layout="grid" style="margin-bottom:10px" cellpadding="5">
+                 <h:outputText value="Stars:"/>
+                 <p:rating value="#{recipeRequestBean.note}"/>
+             </h:panelGrid>
+             <h:panelGrid columns="1" layout="grid"  style="margin-bottom:10px" cellpadding="5">
+                 <h:outputLabel for="console" value="liste:"/>
+                 <p:selectOneMenu id="console" value="#{recipeRequestBean.type}" style="width:125px">
+                     <f:selectItem itemLabel="Select One" itemValue=""/>
+                     <f:selectItem itemLabel="Salad" itemValue="Salad"/>
+                     <f:selectItem itemLabel="BBQ" itemValue="BBQ"/>
+                     <f:selectItem itemLabel="Dessert" itemValue="dessert"/>
+                 </p:selectOneMenu>
+             </h:panelGrid>
+                <h:commandButton styleClass="btn btn-default" value="Cookin' Baby !" action="#{pageManagerBean.setActivePageWithExtension(recipeControlerBean.loadFilteredRecipe(recipeRequestBean))}"/>
+         </h:panelGrid>
+        </h:form>
+    </div>
+</ui:composition>

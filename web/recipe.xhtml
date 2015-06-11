@@ -1,0 +1,18 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+    <div class="container">
+        <h:form id="form">
+            <h:outputText value="#{recipeControlerBean.recipe.title}"/>
+            <h:outputText value="#{recipeControlerBean.recipe.description}"/>
+            <h:outputText value="#{recipeControlerBean.recipe.type}"/>
+            <h:outputText value="#{recipeControlerBean.recipe.time}"/>
+            <h:outputText value="#{recipeControlerBean.recipe.note}"/>
+            <h:outputText value="#{recipeControlerBean.recipe.nbServings}"/>
+            <h:outputText value="#{recipeControlerBean.recipe.image}"/>
+            <h:commandButton styleClass="btn btn-default" value="Retour" action="#{pageManagerBean.setActivePage('recipesList.xhtml')}"/>
+        </h:form>
+    </div>
+</ui:composition>
