@@ -7,6 +7,7 @@ package processing;
 import dao.fabric.DaoFabric;
 import dao.instance.UserDao;
 import model.UserModelBean;
+import model.UserSubmissionModelBean;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
@@ -23,28 +24,28 @@ public class UserControlerBean {
         this.userDao = DaoFabric.getInstance().createUserDao();
     }
 
-   /* TODO : check
+
    public String checkUser(LoginBean loginBean){
         UserModelBean user = this.userDao.checkUser(loginBean.getLogin(), loginBean.getPwd());
         if(user!=null){
-        //récupère l'espace de mémoire de JSF
-        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-        Map<String, Object> sessionMap = externalContext.getSessionMap();
-        //place l'utilisateur dans l' espace  de mémoire de JSF
-        sessionMap.put("loggedUser", user);
-//redirect the current page
-            return "userdisplay.xhtml";
+            //récupère l'espace de mémoire de JSF
+            ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+            Map<String, Object> sessionMap = externalContext.getSessionMap();
+            //place l'utilisateur dans l' espace  de mémoire de JSF
+            sessionMap.put("loggedUser", user);
+            //redirect the current page
+            return "";
         }
         else
         {
-//redirect the current page
-            return "userLogin.xhtml";
+            //redirect the current page
+            return "";
         }
     }
 
     public void checkAndAddUser(UserSubmissionModelBean userSubmitted){
     //Vérifier les propriétés de l'utilisateur
     // TODO ajout de l'utilisateur à la base de données
-        this.userDao.addUser(userSubmitted);
-    }*/
+        this.userDao.addUser(new UserModelBean(userSubmitted.getLastname(), userSubmitted.getSurname(), userSubmitted.getAge(), userSubmitted.getMail(), userSubmitted.getLogin(), userSubmitted.getPwd(), userSubmitted.isAdmin()));
+    }
 }

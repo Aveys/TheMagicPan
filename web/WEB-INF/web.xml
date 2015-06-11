@@ -15,6 +15,7 @@
         <param-name>javax.faces.PROJECT_STAGE</param-name>
         <param-value>Development</param-value>
     </context-param>
+
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
         <welcome-file>index.xhtml</welcome-file>
