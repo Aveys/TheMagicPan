@@ -6,14 +6,35 @@
     <div class="container">
 
         <h:form id="form">
-            <p:dataList value="#{recipeControlerBean.listRecipe}" var="recipe" type="unordered">
+            <p:dataTable value="#{recipeControlerBean.listRecipe}" var="recipe">
                 <f:facet name="header">
-                    Resultat
+                    Results
                 </f:facet>
-                <h:commandLink id="link" action="#{pageManagerBean.setActivePageWithExtension(recipeControlerBean.getRecipeByTitle(recipe.title))}">
-                    <h:outputText value="#{recipe.title}"/>
-                </h:commandLink>
-            </p:dataList>
+                <p:column headerText="">
+                    <h:commandLink id="link" action="#{pageManagerBean.setActivePageWithExtension(recipeControlerBean.getRecipeByTitle(recipe.title))}">
+                        <span class="glyphicon glyphicon-search" style="color: #949494;" aria-hidden="true"></span>
+                    </h:commandLink>
+                </p:column>
+                <p:column headerText="Name">
+                    <h:outputText value="#{recipe.title}" />
+                </p:column>
+
+                <p:column headerText="Description">
+                    <h:outputText value="#{recipe.description}" />
+                </p:column>
+
+                <p:column headerText="Note">
+                    <h:outputText value="#{recipe.note}/5" />
+                </p:column>
+
+                <p:column headerText="Servings">
+                    <h:outputText value="#{recipe.nbServings}" />
+                </p:column>
+                <p:column headerText="Preparation time">
+                    <h:outputText value="#{recipe.time}" />
+                </p:column>
+
+            </p:dataTable>
             <h:commandButton styleClass="btn btn-default" value="Retour à la recherche" action="#{pageManagerBean.setActivePage('recipes.xhtml')}"/>
         </h:form>
     </div>

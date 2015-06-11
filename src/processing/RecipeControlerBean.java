@@ -63,7 +63,7 @@ import java.util.ArrayList;
         listRecipe = this.recipeDao.getFilteredRecipe(rrb.getTitle(), rrb.getNote(), rrb.getType(), rrb.getTime(), rrb.getNbServings());
 
         RecipeListModelBean recipeList = new RecipeListModelBean();
-        if (listRecipe.size()>0){
+        if (listRecipe!=null){
             for (RecipeModelBean recipe : listRecipe) {
                 System.out.println("recette ajoutée : " + recipe);
                 recipeList.addRecipe(recipe);
