@@ -209,6 +209,18 @@ hr {
     margin-top: 20px;
 }
 
-#register{
+a.register{
+    text-align: center;
+}
+
+img.logoImg{
+    margin-top: -30px;
+}
+
+li.mainMenu{
+    margin-right: 30px;
+    padding-top: 11px;
+}
+div.dropdownForm{
     text-align: center;
 }

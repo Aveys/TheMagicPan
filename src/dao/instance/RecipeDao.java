@@ -60,7 +60,10 @@ public class RecipeDao{
         try {
             connection = java.sql.DriverManager.getConnection("jdbc:mysql://" + dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
             StringBuilder sql=new StringBuilder();
-            sql.append("SELECT * FROM recette WHERE 1=1 ");
+            sql.append("SELECT * FROM recette r " +
+                    "JOIN commentaire c ON c.id_recette = r.id_recette " +
+                    "JOIN user u ON u.id_user = c.id_user " +
+                    "WHERE 1=1 ");
 
             if(!title.equals("")) {sql.append("AND titre = ? ");}
 

@@ -14,6 +14,7 @@ public class RecipeModelBean {
 	private int time;
 	private int nbServings;
 	private String image;
+	private CommentListModelBean listComment;
 
 	public RecipeModelBean() {
 	}

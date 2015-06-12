@@ -27,11 +27,11 @@
                 <span class="icon-bar"/>
                 <span class="icon-bar"/>
             </button>
-            <a class="navbar-brand" href="#"><img src="img/magicPanLogoHeader.png" alt="logo de the magic pan "/></a>
+            <a class="navbar-brand" href="#"><img class="logoImg" src="img/magicPanLogoHeader.png" alt="logo de the magic pan "/></a>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li>
+                <li class="mainMenu">
                     <h:form>
                         <ul class="nav navbar-nav navbar-right">
                             <li><h:commandLink action="#{pageManagerBean.setCategory('emergency')}" styleClass="navbarButton">Emergency</h:commandLink></li>
@@ -56,8 +56,8 @@
                                 </div>
                                 <p:commandButton  id="btnLogin" update="loginDropdown" process="loginDropdown" styleClass="btn btn-default" value="Sign in!" actionListener="#{userControlerBean.checkUser(loginBean)}"/>
                             </h:form>
-                            <h:form id="register">
-                                <h:commandLink action="#{pageManagerBean.setActivePage('register.xhtml')}" styleClass="">Register</h:commandLink>
+                            <h:form>
+                                <h:commandLink action="#{pageManagerBean.setActivePage('register.xhtml')}" styleClass="register">Register</h:commandLink>
                             </h:form>
                             </div>
                         </c:if>
