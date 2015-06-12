@@ -1,10 +1,7 @@
 package dao.fabric;
 
 
-import dao.instance.CommentDao;
-import dao.instance.IngredientDao;
-import dao.instance.RecipeDao;
-import dao.instance.UserDao;
+import dao.instance.*;
 
 public class DaoFabric {
 
@@ -65,7 +62,9 @@ public class DaoFabric {
 	public IngredientDao createIngredientDao(){
 		return new IngredientDao(ConfMysql.DB_HOST, ConfMysql.DB_PORT, ConfMysql.DB_NAME, ConfMysql.DB_USER, ConfMysql.DB_PWD);
 	}
-
+	public AdminDao createAdminDao(){
+		return new AdminDao(ConfMysql.DB_HOST, ConfMysql.DB_PORT, ConfMysql.DB_NAME, ConfMysql.DB_USER, ConfMysql.DB_PWD);
+	}
 	public CommentDao createCommentDao() {
 		return null;
 	}
