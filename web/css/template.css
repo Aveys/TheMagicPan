@@ -204,6 +204,7 @@ hr {
 .glyphicon {
     font-size: 40px;
     color: #ffffff;
+    margin: 0 10px;
 }
 .logoMini{
     margin-top: 20px;
@@ -223,4 +224,8 @@ li.mainMenu{
 }
 div.dropdownForm{
     text-align: center;
+}
+
+a.noBG :hover :focus{
+    background: none;
 }

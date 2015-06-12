@@ -45,8 +45,8 @@
                 <li class="dropdown">
                     <p:outputPanel id="loginDropdown">
                         <c:if test="#{empty sessionScope.loggedUser}">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Sign in<span class="glyphicon glyphicon-user"/><span class="caret"/></a>
-                            <div class="form dropdown-menu">
+                            <a href="#" class="dropdown-toggle noBG" data-toggle="dropdown" role="button" aria-expanded="false">Sign in<span class="glyphicon glyphicon-user"/><span class="caret"/></a>
+                            <div class="form dropdown-menu dropdownForm">
                             <h:form role="menu" id="formLogin">
                                 <div class="form-group">
                                     <h:inputText name="username" styleClass="form-control" value="#{loginBean.login}" id="username" type="text" a:placeholder="Username" required="true"/>
@@ -63,7 +63,7 @@
                         </c:if>
                         <c:if test="#{not empty sessionScope.loggedUser}">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><h:outputText value="#{sessionScope.loggedUser.surname}"/><span class="glyphicon glyphicon-user"/><span class="caret"/></a>
-                            <div class="dropdown-menu">
+                            <div class="dropdown-menu dropdownForm">
                                 <div>
                                     Welcome <h:outputText value="#{sessionScope.loggedUser.surname}"/>
                                     <h:form>
