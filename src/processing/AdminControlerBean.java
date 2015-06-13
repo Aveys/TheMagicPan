@@ -5,6 +5,7 @@ import dao.instance.AdminDao;
 import dao.instance.UserDao;
 import model.AdminStatsBean;
 import model.UserListModelBean;
+import model.UserModelBean;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -53,6 +54,10 @@ public class AdminControlerBean implements Serializable {
 	}
 	public String delUser(int id){
 		userDao.deleteUser(id);
+		return "adminUsers";
+	}
+	public String updUser(int id, UserModelBean umb){
+		userDao.updUser(id,umb);
 		return "adminUsers";
 	}
 

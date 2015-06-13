@@ -100,4 +100,5 @@ public class UserModelBean implements Serializable{
     public void setIdUser(int idUser) {
         this.idUser = idUser;
     }
+
 }

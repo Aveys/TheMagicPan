@@ -3,10 +3,7 @@ package dao.instance;
 import model.UserListModelBean;
 import model.UserModelBean;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 
 /**
@@ -112,6 +109,30 @@ public class UserDao {
 			Statement statement = connection.createStatement();
 			res=statement.executeUpdate(DeleteQuery);
 
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return res;
+	}
+
+	public int updUser(int id, UserModelBean umb) {
+
+		String updQuery = "update user SET lastname=?, surname=?,age=?,mail=?,login=?,password=?,admin=? WHERE id_user = ?";
+		int res=-1;
+		try {
+			/* create connection */
+			connection = java.sql.DriverManager.getConnection("jdbc:mysql://"
+					+ dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
+			PreparedStatement statement = connection.prepareStatement(updQuery);
+			statement.setString(1,umb.getLastname());
+			statement.setString(2,umb.getSurname());
+			statement.setInt(3,umb.getAge());
+			statement.setString(4,umb.getMail());
+			statement.setString(5,umb.getLogin());
+			statement.setString(6,umb.getPwd());
+			statement.setBoolean(7,umb.isAdmin());
+			res=statement.executeUpdate(updQuery);
+			statement.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
