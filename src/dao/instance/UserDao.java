@@ -121,16 +121,18 @@ public class UserDao {
 		int res=-1;
 		try {
 			/* create connection */
+			System.out.println("Modification avec cet objet :"+umb.toString() );
 			connection = java.sql.DriverManager.getConnection("jdbc:mysql://"
 					+ dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
 			PreparedStatement statement = connection.prepareStatement(updQuery);
 			statement.setString(1,umb.getLastname());
 			statement.setString(2,umb.getSurname());
-			statement.setInt(3,umb.getAge());
+			statement.setInt(3, umb.getAge());
 			statement.setString(4,umb.getMail());
 			statement.setString(5,umb.getLogin());
 			statement.setString(6,umb.getPwd());
 			statement.setBoolean(7,umb.isAdmin());
+			System.out.println("Requête d'update : "+statement.toString());
 			res=statement.executeUpdate(updQuery);
 			statement.close();
 		} catch (SQLException e) {
