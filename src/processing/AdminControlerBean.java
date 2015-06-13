@@ -67,24 +67,26 @@ public class AdminControlerBean implements Serializable {
 		return getAdminUserPage();
 	}
 	public String updUser(int id, UserModelBean umb){
-		if(umb.getLastname()==null){
+		System.out.println("ID à modifier : "+id+"\nObjet sauvegardé :"+selectedUser.toString());
+		if(umb.getLastname().equals("")){
 			umb.setLastname(selectedUser.getLastname());
 		}
-		if(umb.getSurname()==null){
+		if(umb.getSurname().equals("")){
 			umb.setSurname(selectedUser.getSurname());
 		}
 		if(umb.getAge()==0){
 			umb.setAge(selectedUser.getAge());
 		}
-		if(umb.getMail()==null){
+		if(umb.getMail().equals("")){
 			umb.setMail(selectedUser.getMail());
 		}
-		if(umb.getLogin()==null){
+		if(umb.getLogin().equals("")){
 			umb.setLogin(selectedUser.getLogin());
 		}
-		if(umb.getPwd()==null){
+		if(umb.getPwd().equals("")){
 			umb.setPwd(selectedUser.getPwd());
 		}
+		System.out.println("envoi de UMB : ");
 		userDao.updUser(id,umb);
 		return getAdminUserPage();
 	}
