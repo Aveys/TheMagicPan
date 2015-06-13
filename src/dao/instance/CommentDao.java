@@ -1,10 +1,10 @@
 package dao.instance;
 
+import model.CommentAdminModelBean;
+import model.CommentListModelBean;
 import model.CommentModelBean;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 /**
@@ -54,31 +54,62 @@ public class CommentDao {
 
     }
 
-    public void addUser(CommentModelBean user) {
-        // Création de la requête
-        java.sql.Statement query;
+    public ArrayList<CommentAdminModelBean> getAllComments() {
+        ArrayList<CommentAdminModelBean> listComment = new ArrayList<>();
+        String query= "SELECT c.id_commentaire,c.titre,c.contenu,c.note,r.titre as \"recipeName\",u.login from commentaire c join recette r on c.id_recette=r.id_recette join user u on c.id_user=u.id_user;";
+        CommentAdminModelBean com ;
+        try {
+            // create connection
+            connection = java.sql.DriverManager.getConnection("jdbc:mysql://" + dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(query);
+            while(rs.next()){
+                com= new CommentAdminModelBean(rs.getInt("note"),rs.getString("titre"),rs.getString("contenu"),rs.getString("login"),rs.getString("recipeName"));
+                com.setIdCommentaire(rs.getInt("id_commentaire"));
+                System.out.println("Objet ajouté "+com.toString());
+                listComment.add(com);
+            }
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return listComment;
+    }
+    public int updComment(CommentAdminModelBean camb){
+        System.out.println("Commentaire recu : "+camb.toString());
+        String updQuery = "UPDATE commentaire SET titre=?, contenu=?, note=? WHERE id_commentaire=?";
+        int res=-1;
         try {
 			/* create connection */
             connection = java.sql.DriverManager.getConnection("jdbc:mysql://"
                     + dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
-            //TODO A l’image de DB.java créer une réquète permettant d’ajout l’utilisateur à la base de données
-            connection.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+            PreparedStatement statement = connection.prepareStatement(updQuery);
+            statement.setString(1,camb.getTitle());
+            statement.setString(2,camb.getContent());
+            statement.setInt(3, camb.getNote());
+            statement.setInt(4,camb.getIdCommentaire());
+            System.out.println("commande executée : "+statement.toString());
+            res=statement.executeUpdate();
+            statement.close();
 
-    public ArrayList<CommentModelBean> getAllComments() {
-        //return value
-        ArrayList<CommentModelBean> userList = new ArrayList<CommentModelBean>();
-        try {
-            // create connection
-            connection = java.sql.DriverManager.getConnection("jdbc:mysql://" + dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
-            //TODO A l’image de DB.java créer une réquète permettant de récupérer l’ensemble des utilisateurs contenu dans la base et de les placer dans unliste
-            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return userList;
+        return res;
+    }
+    public int delComment(int id){
+        String DeleteQuery = "delete from commentaire where id_commentaire="+id;
+        int res=-1;
+        try {
+			/* create connection */
+            connection = java.sql.DriverManager.getConnection("jdbc:mysql://"
+                    + dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
+            Statement statement = connection.createStatement();
+            res=statement.executeUpdate(DeleteQuery);
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return res;
     }
 }

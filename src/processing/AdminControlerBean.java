@@ -2,6 +2,7 @@ package processing;
 
 import dao.fabric.DaoFabric;
 import dao.instance.AdminDao;
+import dao.instance.CommentDao;
 import dao.instance.RecipeDao;
 import dao.instance.UserDao;
 import model.*;
@@ -9,6 +10,7 @@ import model.*;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * Created by arthurveys on 11/06/15 for TheMagicPan.
@@ -25,9 +27,14 @@ public class AdminControlerBean implements Serializable {
 	public RecipeListModelBean listRecipe;
 	public RecipeModelBean selectedRecipe;
 
+	public ArrayList<CommentAdminModelBean> listComment;
+	public CommentAdminModelBean selectedComment;
+
+
 	private final AdminDao adminDAO;
 	private final UserDao userDao;
 	private final RecipeDao recipeDao;
+	private final CommentDao commentDao;
 
 	public UserModelBean getSelectedUser() {
 		return selectedUser;
@@ -61,6 +68,22 @@ public class AdminControlerBean implements Serializable {
 		this.selectedRecipe = selectedRecipe;
 	}
 
+	public ArrayList<CommentAdminModelBean> getListComment() {
+		return listComment;
+	}
+
+	public void setListComment(ArrayList<CommentAdminModelBean> listComment) {
+		this.listComment = listComment;
+	}
+
+	public CommentModelBean getSelectedComment() {
+		return selectedComment;
+	}
+
+	public void setSelectedComment(CommentAdminModelBean selectedComment) {
+		this.selectedComment = selectedComment;
+	}
+
 	public RecipeListModelBean getListRecipe() {
 		return listRecipe;
 	}
@@ -73,6 +96,7 @@ public class AdminControlerBean implements Serializable {
 		adminDAO = DaoFabric.getInstance().createAdminDao();
 		userDao = DaoFabric.getInstance().createUserDao();
 		recipeDao = DaoFabric.getInstance().createRecipeDao();
+		commentDao = DaoFabric.getInstance().createCommentDao();
 	}
 
 	public String getStats(){
@@ -152,6 +176,34 @@ public class AdminControlerBean implements Serializable {
 		recipeDao.updRecipe(id, rmb);
 		return getAdminRecipePage();
 	}
+	public String addRecipe(RecipeModelBean rmb){
+		recipeDao.addRecipe(rmb);
+		return getAdminRecipePage();
+	}
+
+	public String getAdminCommentPage(){
+		listComment=commentDao.getAllComments();
+		return "adminComment";
+	}
+	public String updComment(CommentAdminModelBean camb){
+		System.out.println("Commentaire recu dans le controlleur : "+camb.toString());
+		System.out.println("Commentaire présent en selectioné :"+ selectedComment.toString());
+		if(camb.getTitle().equals(""))
+			camb.setTitle(selectedComment.getTitle());
+		if(camb.getContent().equals(""))
+			camb.setContent(selectedComment.getContent());
+		if(camb.getNote()<=0)
+			camb.setNote(selectedComment.getNote());
+		camb.setIdCommentaire(selectedComment.getIdCommentaire());
+		commentDao.updComment(camb);
+		return getAdminCommentPage();
+	}
+	public String delComment(int id){
+		commentDao.delComment(id);
+		return getAdminCommentPage();
+	}
+
+
 
 
 
