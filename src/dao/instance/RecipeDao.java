@@ -226,4 +226,28 @@ public class RecipeDao{
         }
         return res;
     }
+    public int addRecipe( RecipeModelBean rmb) {
+
+        String addQuery = "INSERT INTO recette(titre, description, note, type, temps, personnes)  VALUES (?, ?, ?, ?, ?, ?)";
+        int res=-1;
+        try {
+			/* create connection */
+            System.out.println("Modification avec cet objet :"+rmb.toString() );
+            connection = java.sql.DriverManager.getConnection("jdbc:mysql://"
+                    + dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
+            PreparedStatement statement = connection.prepareStatement(addQuery);
+            statement.setString(1,rmb.getTitle());
+            statement.setString(2,rmb.getDescription());
+            statement.setInt(3, rmb.getNote());
+            statement.setString(4,rmb.getType());
+            statement.setInt(5, rmb.getTime());
+            statement.setInt(6, rmb.getNbServings());
+            //System.out.println("Requête d'update : "+statement.toString());
+            res=statement.executeUpdate();
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return res;
+    }
 }

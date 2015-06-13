@@ -122,8 +122,9 @@
                                 <a href="tables.html"><i class="fa fa-users fa-fw"></i> Users</a>
                             </li>
                             <li>
-                                <a href="forms.html"><i class="fa fa-file-text fa-fw"></i> Recipe</a>
-                            </li>
+                                <h:form>
+                                    <i class="fa fa-file-text fa-fw"></i> <h:commandLink value="Recipe" action="#{adminControlerBean.getAdminRecipePage()}"/>
+                                </h:form>                            </li>
                             <li>
                                 <a href="forms.html"><i class="fa fa-comment fa-fw"></i> Comment</a>
                             </li>

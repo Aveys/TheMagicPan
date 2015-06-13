@@ -96,25 +96,15 @@
                                 <i class="fa fa-dashboard fa-fw"></i><p:commandLink ajax="false" value="Dashboard" action="#{adminControlerBean.getStats()}"/>
                             </h:form>
                         </li>
-                        <!--<li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="flot.html">Flot Charts</a>
-                                </li>
-                                <li>
-                                    <a href="morris.html">Morris.js Charts</a>
-                                </li>
-                            </ul>
-                            &lt;!&ndash; /.nav-second-level &ndash;&gt;
-                        </li>-->
                         <li>
                             <h:form>
-                                <i class="fa fa-dashboard fa-fw"></i><h:commandLink value="Users" action="#{adminControlerBean.getAdminUserPage()}"/>
+                                <i class="fa fa-users fa-fw"></i><h:commandLink value="Users" action="#{adminControlerBean.getAdminUserPage()}"/>
                             </h:form>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-file-text fa-fw"></i> Recipe</a>
+                            <h:form>
+                            <i class="fa fa-file-text fa-fw"></i> <h:commandLink value="Recipe" action="#{adminControlerBean.getAdminRecipePage()}"/>
+                            </h:form>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-comment fa-fw"></i> Comment</a>
@@ -208,6 +198,49 @@
                             </p:outputPanel>
                         </p:overlayPanel>
                     </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h2 class="page-header"><i class="fa fa-user-plus fa-fw"></i>Add user</h2>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h:form>
+                            <p:panelGrid  columns="2" columnClasses="lbl,value">
+                                <f:facet name="header">
+                                    <h:outputText value="User"/>
+                                </f:facet>
+
+
+                                <h:outputText value="Lastname"/>
+                                <p:inputText value="#{userModelBean.lastname}" placeholder="#{adminControlerBean.selectedUser.lastname}"/>
+
+                                <h:outputText value="Surname"/>
+                                <p:inputText value="#{userModelBean.surname}" placeholder="#{adminControlerBean.selectedUser.surname}"/>
+
+                                <h:outputText value="Age"/>
+                                <p:spinner value="#{userModelBean.age}" placeholder="#{adminControlerBean.selectedUser.age}"/>
+
+                                <h:outputText value="Mail"/>
+                                <p:inputText value="#{userModelBean.mail}" placeholder="#{adminControlerBean.selectedUser.mail}"/>
+
+                                <h:outputText value="Login"/>
+                                <p:inputText value="#{userModelBean.login}" placeholder="#{adminControlerBean.selectedUser.login}"/>
+
+                                <h:outputText value="Password"/>
+                                <p:inputText value="#{userModelBean.pwd}" placeholder="#{adminControlerBean.selectedUser.pwd}"/>
+
+                                <h:outputText value="Admin"/>
+                                <p:selectBooleanButton  value="#{userModelBean.admin}" onLabel="Yes" offLabel="No" onIcon="ui-icon-check" offIcon="ui-icon-close" style="width:60px">
+                                </p:selectBooleanButton>
+
+                                <p:commandButton value="Add" actionListener="#{adminControlerBean.addUser(userModelBean)}" ajax="false" />
+                            </p:panelGrid>
+                        </h:form>
+                    </div>
+                    <!-- /.col-lg-12 -->
                 </div>
 
             </div>

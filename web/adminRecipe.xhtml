@@ -69,12 +69,13 @@
 
                         <li>
                             <h:form>
-                                <i class="fa fa-dashboard fa-fw"></i><h:commandLink value="Users" action="#{adminControlerBean.getAdminUserPage()}"/>
+                                <i class="fa fa-users fa-fw"></i><h:commandLink value="Users" action="#{adminControlerBean.getAdminUserPage()}"/>
                             </h:form>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-file-text fa-fw"></i> <h:commandLink value="Users" action="#{adminControlerBean.getAdminRecipePage()}"/></a>
-                        </li>
+                            <h:form>
+                                <i class="fa fa-file-text fa-fw"></i> <h:commandLink value="Recipe" action="#{adminControlerBean.getAdminRecipePage()}"/>
+                            </h:form>                        </li>
                         <li>
                             <a href="#"><i class="fa fa-comment fa-fw"></i> Comment</a>
                         </li>
@@ -143,7 +144,7 @@
                                         <p:inputText value="#{recipeModelBean.title}" placeholder="#{adminControlerBean.selectedRecipe.title}"/>
 
                                         <h:outputText value="Description"/>
-                                        <p:inputTextarea value="#{recipeModelBean.description}" placeholder="#{adminControlerBean.selectedRecipe.description}"/>
+                                        <p:inputTextarea value="#{recipeModelBean.description}" placeholder="#{adminControlerBean.selectedRecipe.description}" autoResize="true"/>
 
                                         <h:outputText value="note"/>
                                         <p:spinner min="0" value="#{recipeModelBean.note}" placeholder="#{adminControlerBean.selectedRecipe.note}"/>
@@ -169,6 +170,50 @@
                         </p:overlayPanel>
                     </div>
                 </div>
+                div class="row">
+                <div class="col-lg-12">
+                    <h2 class="page-header"><i class="fa fa-user-plus fa-fw"></i>Add user</h2>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <h:form>
+                        <p:panelGrid  columns="2"  columnClasses="lbl,value">
+                            <f:facet name="header">
+                                <h:outputText value="Recipe"/>
+                            </f:facet>
+
+
+                            <h:outputText value="Title"/>
+                            <p:inputText value="#{recipeModelBean.title}" "/>
+
+                            <h:outputText value="Description"/>
+                            <p:inputTextarea value="#{recipeModelBean.description}"  autoResize="true"/>
+
+                            <h:outputText value="note"/>
+                            <p:spinner min="0" value="#{recipeModelBean.note}"/>
+
+                            <h:outputText value="Type"/>
+                            <p:selectOneMenu id="typeRecipe" value="#{recipeModelBean.type}" style="width:125px">
+                                <f:selectItem itemLabel="Type select" itemValue=""/>
+                                <f:selectItem itemLabel="Salad" itemValue="Salad"/>
+                                <f:selectItem itemLabel="BBQ" itemValue="BBQ"/>
+                                <f:selectItem itemLabel="Dessert" itemValue="dessert"/>
+                            </p:selectOneMenu>
+
+                            <h:outputText value="Time"/>
+                            <p:spinner min="0" value="#{recipeModelBean.time}" />
+
+                            <h:outputText value="Servings"/>
+                            <p:spinner min="0" max="12" value="#{recipeModelBean.nbServings}" />
+
+                            <p:commandButton value="Submit" id="nonAjax" actionListener="#{adminControlerBean.adminControlerBean.selectedRecipe.idRecipe,recipeModelBean)}" ajax="false" />
+                        </p:panelGrid>
+                    </h:form>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
 
             </div>
             <!-- /.container-fluid -->
