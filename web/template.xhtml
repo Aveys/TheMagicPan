@@ -67,7 +67,7 @@
                                 <div>
                                     Welcome <h:outputText value="#{sessionScope.loggedUser.surname}"/>
                                     <h:form>
-                                        <p:commandButton update="loginDropdown" actionListener="#{userControlerBean.logout()}" styleClass="">Register</p:commandButton>
+                                        <p:commandButton update="loginDropdown" actionListener="#{userControlerBean.logout()}" styleClass="" value="Logout"></p:commandButton>
                                     </h:form>
                                 </div>
                             </div>
