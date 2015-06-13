@@ -17,6 +17,7 @@ public class PageManagerBean implements Serializable {
     public PageManagerBean()
     {
         this.title = "The Magic Pan";
+
         try {
             FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
         } catch (IOException e) {
