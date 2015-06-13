@@ -2,10 +2,11 @@ package model;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import java.io.Serializable;
 
 @ManagedBean
 @SessionScoped
-public class UserModelBean {
+public class UserModelBean implements Serializable{
 
     private int idUser;
     private String lastname;
@@ -17,6 +18,16 @@ public class UserModelBean {
     private boolean admin;
 
     public UserModelBean(String lastname, String surname, int age, String mail, String login, String pwd, boolean admin) {
+        this.lastname = lastname;
+        this.surname = surname;
+        this.age = age;
+        this.mail = mail;
+        this.login = login;
+        this.pwd = pwd;
+        this.admin = admin;
+    }
+    public UserModelBean(int idUser,String lastname, String surname, int age, String mail, String login, String pwd, boolean admin) {
+        this.idUser=idUser;
         this.lastname = lastname;
         this.surname = surname;
         this.age = age;
@@ -80,5 +91,13 @@ public class UserModelBean {
 
     public void setAdmin(boolean admin) {
         this.admin = admin;
+    }
+
+    public int getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
     }
 }

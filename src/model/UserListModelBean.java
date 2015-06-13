@@ -2,6 +2,7 @@ package model;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -9,12 +10,17 @@ import java.util.ArrayList;
  */
 @ManagedBean
 @RequestScoped
-public class UserListModelBean extends UserModelBean{
+public class UserListModelBean extends UserModelBean implements Serializable{
 	ArrayList<UserModelBean> list;
 
 	public UserListModelBean() {
 		list = new ArrayList<>();
 	}
+
+	public UserListModelBean(ArrayList<UserModelBean> list) {
+		this.list = list;
+	}
+
 	public void addUser(UserModelBean umb){
 		list.add(umb);
 	}

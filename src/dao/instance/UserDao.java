@@ -1,10 +1,12 @@
 package dao.instance;
 
+import model.UserListModelBean;
 import model.UserModelBean;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
@@ -52,18 +54,23 @@ public class UserDao {
 		}
 	}
 
-	public ArrayList<UserModelBean> getAllUser() {
+	public UserListModelBean getAllUser() {
 		//return value
 		ArrayList<UserModelBean> userList = new ArrayList<UserModelBean>();
+		String sqlQuery = "Select * from user";
 		try {
 			// create connection
 			connection = java.sql.DriverManager.getConnection("jdbc:mysql://" + dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
-			//TODO A l’image de DB.java créer une réquète permettant de récupérer l’ensemble des utilisateurs contenu dans la base et de les placer dans unliste
+			Statement query = connection.createStatement();
+			ResultSet rs = query.executeQuery(sqlQuery);
+			while(rs.next()){
+				userList.add(new UserModelBean(rs.getInt("id_user"),rs.getString("lastname"),rs.getString("surname"),rs.getInt("age"),rs.getString("mail"),rs.getString("login"),rs.getString("password"),rs.getBoolean("admin")));
+			}
 			connection.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return userList;
+		return new UserListModelBean(userList);
 	}
 
 	public UserModelBean checkUser(String login, String password)
