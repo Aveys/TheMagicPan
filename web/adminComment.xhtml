@@ -27,6 +27,8 @@
 
 
     <div id="wrapper">
+        <c:choose>
+        <c:when test="#{not empty sessionScope.loggedUser and sessionScope.loggedUser.admin=='true'}">
 
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
@@ -179,7 +181,13 @@
             <!-- /.container-fluid -->
         </div>
         <!-- /#page-wrapper -->
-
+        </c:when>
+            <c:otherwise>
+                <div class="alert alert-danger" role="alert">
+                    Vous devez posséder les droits administrateur pour accéder à cette section.
+                </div>
+            </c:otherwise>
+        </c:choose>
     </div>
     <script src="js/bootstrap.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="js/admin/metisMenu.min.js"></script>
