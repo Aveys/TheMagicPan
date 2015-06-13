@@ -15,12 +15,15 @@ import java.io.Serializable;
 @ManagedBean
 @RequestScoped
 public class AdminControlerBean implements Serializable {
-	public AdminStatsBean stats;
+	public AdminStatsBean appStats;
 	private AdminDao adminDAO;
 
+	public AdminStatsBean getAppStats() {
+		return appStats;
+	}
 
-	public void setStats(AdminStatsBean stats) {
-		this.stats = stats;
+	public void setAppStats(AdminStatsBean appStats) {
+		this.appStats = appStats;
 	}
 
 	public AdminControlerBean() {
@@ -28,8 +31,8 @@ public class AdminControlerBean implements Serializable {
 	}
 
 	public String getStats(){
-		stats = this.adminDAO.getStats();
-		System.out.println(stats.toString());
+		appStats = this.adminDAO.getStats();
+		//System.out.println(appStats.toString());
 		return "admin";
 	}
 

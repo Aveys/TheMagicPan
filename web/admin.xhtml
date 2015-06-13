@@ -77,9 +77,9 @@
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><i class="fa fa-user fa-fw"></i> Welcome User</li>
+                        <li><i class="fa fa-user fa-fw"></i> Welcome <h:outputText value="#{sessionScope.loggedUser.surname}"/></li>
                         <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li> <h:link value="logout" outcome="ActivitySelector"><i class="fa fa-sign-out fa-fw"></i></h:link>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -152,7 +152,7 @@
                                         <i class="fa fa-file-text-o fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge"><h:outputText value="#{adminControlerBean.stats.cptRecipe}"/> </div>
+                                        <div class="huge"><h:outputText value="#{adminControlerBean.appStats.cptRecipe}"/> </div>
                                         <div>Recipe</div>
                                     </div>
                                 </div>
@@ -174,7 +174,7 @@
                                         <i class="fa fa-comments fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">XX</div>
+                                        <div class="huge"><h:outputText value="#{adminControlerBean.appStats.cptCom}"/> </div>
                                         <div>Comments</div>
                                     </div>
                                 </div>
@@ -197,7 +197,7 @@
                                         <i class="fa fa-users fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">XX</div>
+                                        <div class="huge"><h:outputText value="#{adminControlerBean.appStats.cptUsers}"/> </div>
                                         <div>Users</div>
                                     </div>
                                 </div>
