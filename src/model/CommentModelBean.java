@@ -19,6 +19,12 @@ public class CommentModelBean {
         this.content = content;
     }
 
+    public CommentModelBean(int note, String title, String content) {
+        this.note = note;
+        this.title = title;
+        this.content = content;
+    }
+
     public String getTitle() {
         return title;
     }

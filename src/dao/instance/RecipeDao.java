@@ -34,7 +34,7 @@ public class RecipeDao{
 	    ArrayList<RecipeModelBean> listResult=null;
 	    try {
 		    String sql = "select * from recette;";
-
+            connection = java.sql.DriverManager.getConnection("jdbc:mysql://" + dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
 		    Statement query = connection.createStatement();
 		    ResultSet result =  query.executeQuery(sql);
 		    listResult=new ArrayList<>();
@@ -169,7 +169,7 @@ public class RecipeDao{
                 comment.setTitle(result.getString("c.titre"));
                 comment.setContent(result.getString("contenu"));
                     commentList.addComment(comment);
-            while(result.next()) {
+            while (result.next()) {
                 CommentModelBean comment2 = new CommentModelBean();
                 comment2.setUser(result.getString("u.login"));
                 comment2.setNote(result.getInt("c.note"));

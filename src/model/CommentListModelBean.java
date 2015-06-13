@@ -15,6 +15,12 @@ public class CommentListModelBean {
     public CommentListModelBean() {
         commentList = new ArrayList<CommentModelBean>();
     }
+
+
+    public CommentListModelBean(ArrayList<CommentModelBean> commentList) {
+        this.commentList = commentList;
+    }
+
     public void addComment(CommentModelBean comment){
 
         this.commentList.add(comment);
