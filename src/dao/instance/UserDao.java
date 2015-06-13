@@ -101,4 +101,20 @@ public class UserDao {
 
 		return user;
 	}
+
+	public int deleteUser(int id){
+		String DeleteQuery = "delete from user where id_user="+id;
+		int res=-1;
+		try {
+			/* create connection */
+			connection = java.sql.DriverManager.getConnection("jdbc:mysql://"
+					+ dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
+			Statement statement = connection.createStatement();
+			res=statement.executeUpdate(DeleteQuery);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return res;
+	}
 }

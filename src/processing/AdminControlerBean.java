@@ -2,6 +2,7 @@ package processing;
 
 import dao.fabric.DaoFabric;
 import dao.instance.AdminDao;
+import dao.instance.UserDao;
 import model.AdminStatsBean;
 import model.UserListModelBean;
 
@@ -19,6 +20,7 @@ public class AdminControlerBean implements Serializable {
 	public AdminStatsBean appStats;
 	public UserListModelBean listUsers;
 	private AdminDao adminDAO;
+	private UserDao userDao;
 
 	public AdminStatsBean getAppStats() {
 		return appStats;
@@ -38,15 +40,19 @@ public class AdminControlerBean implements Serializable {
 
 	public AdminControlerBean() {
 		adminDAO = DaoFabric.getInstance().createAdminDao();
+		userDao = DaoFabric.getInstance().createUserDao();
 	}
 
 	public String getStats(){
 		appStats = this.adminDAO.getStats();
-		//System.out.println(appStats.toString());
 		return "admin";
 	}
 	public String getAdminUserPage(){
-		listUsers = DaoFabric.getInstance().createUserDao().getAllUser();
+		listUsers = userDao.getAllUser();
+		return "adminUsers";
+	}
+	public String delUser(int id){
+		userDao.deleteUser(id);
 		return "adminUsers";
 	}
 
