@@ -13,20 +13,32 @@
             <h:outputText value="#{recipeControlerBean.recipe.image}"/>
             <h:commandButton styleClass="btn btn-default" value="Retour" action="#{pageManagerBean.setActivePage('recipesList.xhtml')}"/>
 
+
+            <p:outputPanel id="commentPanel">
+                <h:form id="comments">
+                    <p:dataList value="#{recipeControlerBean.recipe.listComment.commentList}" var="comm" type="ordered">
+                        <h:outputText value="#{comm.user}"/>
+                        <h:outputText value="#{comm.note}"/>
+                        <h:outputText value="#{comm.title}"/>
+                        <h:outputText value="#{comm.content}"/>
+                    </p:dataList>
+                </h:form>
+                    <c:choose>
+                    <c:when test="#{not empty sessionScope.loggedUser}">
+                        <p:rating value="#{commentSubmissionModelBean.note}"/>
+                        <p:inputText value="#{commentSubmissionModelBean.title}" />
+                        <p:inputTextarea value="#{commentSubmissionModelBean.content}" />
+                        <p:commandButton id="btnComment" process="commentPanel" styleClass="btn btn-default" value="Commenter" update="commentPanel" actionListener="#{recipeControlerBean.addComment(commentSubmissionModelBean, sessionScope.loggedUser.idUser, sessionScope.loggedUser.login)}"/>
+                    </c:when>
+                        <c:otherwise>
+                            <div class="alert alert-danger" role="alert">
+                                Veuillez vous connecter pour ajouter des commentaires.
+                            </div>
+                        </c:otherwise>
+                    </c:choose>
+            </p:outputPanel>
         </h:form>
-        <p:outputPanel id="commentPanel">
-            <h:form id="comments">
-                <p:dataList value="#{recipeControlerBean.recipe.listComment.commentList}" var="comm" type="ordered">
-                    <h:outputText value="#{comm.user}"/>
-                    <h:outputText value="#{comm.note}"/>
-                    <h:outputText value="#{comm.title}"/>
-                    <h:outputText value="#{comm.content}"/>
-                </p:dataList>
-                <p:rating value="#{commentSubmissionModelBean.note}"/>
-                <p:inputText value="#{commentSubmissionModelBean.title}" />
-                <p:inputTextarea value="#{commentSubmissionModelBean.content}" />
-                <p:commandButton id="btnComment" process="commentPanel" styleClass="btn btn-default" value="Commenter" update="commentPanel" actionListener="#{recipeControlerBean.addComment(commentSubmissionModelBean, sessionScope.loggedUser.idUser, sessionScope.loggedUser.login)}"/>
-            </h:form>
-        </p:outputPanel>
+
+
     </div>
 </ui:composition>
