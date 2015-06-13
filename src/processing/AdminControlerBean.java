@@ -2,10 +2,9 @@ package processing;
 
 import dao.fabric.DaoFabric;
 import dao.instance.AdminDao;
+import dao.instance.RecipeDao;
 import dao.instance.UserDao;
-import model.AdminStatsBean;
-import model.UserListModelBean;
-import model.UserModelBean;
+import model.*;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -18,11 +17,18 @@ import java.io.Serializable;
 @ManagedBean
 @SessionScoped
 public class AdminControlerBean implements Serializable {
+
 	public AdminStatsBean appStats;
+
 	public UserListModelBean listUsers;
 	public UserModelBean selectedUser;
-	private AdminDao adminDAO;
-	private UserDao userDao;
+
+	public RecipeListModelBean listRecipe;
+	public RecipeModelBean selectedRecipe;
+
+	private final AdminDao adminDAO;
+	private final UserDao userDao;
+	private final RecipeDao recipeDao;
 
 	public UserModelBean getSelectedUser() {
 		return selectedUser;
@@ -48,9 +54,26 @@ public class AdminControlerBean implements Serializable {
 		this.listUsers = listUsers;
 	}
 
+	public RecipeModelBean getSelectedRecipe() {
+		return selectedRecipe;
+	}
+
+	public void setSelectedRecipe(RecipeModelBean selectedRecipe) {
+		this.selectedRecipe = selectedRecipe;
+	}
+
+	public RecipeListModelBean getListRecipe() {
+		return listRecipe;
+	}
+
+	public void setListRecipe(RecipeListModelBean listRecipe) {
+		this.listRecipe = listRecipe;
+	}
+
 	public AdminControlerBean() {
 		adminDAO = DaoFabric.getInstance().createAdminDao();
 		userDao = DaoFabric.getInstance().createUserDao();
+		recipeDao = DaoFabric.getInstance().createRecipeDao();
 	}
 
 	public String getStats(){
@@ -88,6 +111,38 @@ public class AdminControlerBean implements Serializable {
 		}
 		System.out.println("envoi de UMB : ");
 		userDao.updUser(id,umb);
+		return getAdminUserPage();
+	}
+	public String getAdminRecipePage(){
+		listRecipe = recipeDao.getAllRecipes();
+		return "adminRecipe";
+	}
+	public String delRecipe(int id){
+		recipeDao.delRecipe(id);
+		return getAdminUserPage();
+	}
+	public String updRecipe(int id, RecipeModelBean rmb){
+		System.out.println("ID à modifier : "+id+"\nObjet sauvegardé :"+selectedUser.toString());
+		if(rmb.getTitle().equals(""))
+			rmb.setTitle(selectedRecipe.getTitle());
+
+		if(rmb.getDescription().equals(""))
+			rmb.setDescription(selectedRecipe.getDescription());
+
+		if(rmb.getNote()<=0)
+			rmb.setNote(selectedRecipe.getNote());
+
+		if(rmb.getType().equals(""))
+			rmb.setType(selectedRecipe.getType());
+
+		if(rmb.getTime()<=0)
+			rmb.setTime(selectedRecipe.getTime());
+
+		if (rmb.getNbServings()<=0)
+			rmb.setNbServings(selectedRecipe.getNbServings());
+
+		System.out.println("envoi de UMB : ");
+		recipeDao.updRecipe(id,rmb);
 		return getAdminUserPage();
 	}
 

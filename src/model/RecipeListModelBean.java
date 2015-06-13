@@ -16,6 +16,11 @@ public class RecipeListModelBean extends RecipeModelBean{
 	public RecipeListModelBean() {
 		list = new ArrayList<>();
 	}
+
+	public RecipeListModelBean(ArrayList<RecipeModelBean> list) {
+		this.list = list;
+	}
+
 	public void addRecipe(RecipeModelBean rmb){
 		list.add(rmb);
 	}
