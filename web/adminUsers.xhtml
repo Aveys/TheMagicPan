@@ -141,9 +141,9 @@
                         <p:dataTable var="user" value="#{adminControlerBean.listUsers.list}">
                             <p:column headerText="Action">
                                 <h:form>
-                                    <h:commandLink action="#{adminControlerBean.delUser(user.idUser)}">
+                                    <p:commandLink action="#{adminControlerBean.delUser(user.idUser)}" value="supprimer">
                                         <i class="fa fa-trash-o fa-fw"></i>
-                                    </h:commandLink>
+                                    </p:commandLink>
                                 </h:form>
                             </p:column>
 
