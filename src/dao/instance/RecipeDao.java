@@ -146,7 +146,7 @@ public class RecipeDao{
             StringBuilder sql = new StringBuilder();
             sql.append("SELECT * FROM recette r " +
                     "JOIN commentaire c ON r.id_recette = c.id_recette " +
-                    "JOIN user u ON u.id_user = c.id_user" +
+                    "JOIN user u ON u.id_user = c.id_user " +
                     "WHERE c.id_recette = ? ;");
             System.out.println(sql.toString());
             PreparedStatement query = connection.prepareStatement(sql.toString());
@@ -164,18 +164,18 @@ public class RecipeDao{
             recipe.setNbServings(result.getInt("personnes"));
             recipe.setImage(result.getString("image"));
             CommentModelBean comment = new CommentModelBean();
-                comment.setTitle(result.getString("u.login"));
-                comment.setContent(result.getString("c.note"));
+                comment.setUser(result.getString("u.login"));
+                comment.setNote(result.getInt("c.note"));
                 comment.setTitle(result.getString("c.titre"));
                 comment.setContent(result.getString("contenu"));
                     commentList.addComment(comment);
             while(result.next()) {
-                    CommentModelBean comment2 = new CommentModelBean();
-                comment2.setTitle(result.getString("u.login"));
-                comment2.setContent(result.getString("c.note"));
+                CommentModelBean comment2 = new CommentModelBean();
+                comment2.setUser(result.getString("u.login"));
+                comment2.setNote(result.getInt("c.note"));
                 comment2.setTitle(result.getString("c.titre"));
                 comment2.setContent(result.getString("contenu"));
-                        commentList.addComment(comment2);
+                commentList.addComment(comment2);
             }
             recipe.setListComment(commentList);
 

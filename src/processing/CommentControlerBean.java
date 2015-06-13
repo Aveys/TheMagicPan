@@ -2,40 +2,40 @@ package processing;
 
 import dao.fabric.DaoFabric;
 import dao.instance.CommentDao;
-import model.CommentListModelBean;
 import model.CommentModelBean;
+import model.CommentSubmissionModelBean;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
-import java.util.ArrayList;
-import java.util.Map;
 
 /**
  * Created by Paul on 27/05/2015.
  */
-@ManagedBean
+@ManagedBean(name = "commentControlerBean")
 @ApplicationScoped
 public class CommentControlerBean {
     private CommentDao commentDao;
+    private CommentModelBean comment;
 
     public CommentControlerBean() {
         this.commentDao = DaoFabric.getInstance().createCommentDao();
     }
 
-    public void loadAllRecipe(){
+    public CommentModelBean getComment() {
+        return comment;
+    }
 
-        ArrayList<CommentModelBean> list = this.commentDao.getAllComments();
+    public void setComment(CommentModelBean comment) {
+        this.comment = comment;
+    }
 
-        CommentListModelBean commentList = new CommentListModelBean();
-        for(CommentModelBean comment:list){
-            commentList.addComment(comment);
-        }
-        //récupère l'espace de mémoire de JSF
-        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-        Map<String, Object> sessionMap = externalContext.getSessionMap();
-        //place la liste de recette dans l'espace de mémoire de JSF
-        sessionMap.put("commentList" , commentList);
+    public CommentDao getCommentDao() {
+        return commentDao;
+    }
+
+    public void addComment(CommentSubmissionModelBean subBean){
+        String value = FacesContext.getCurrentInstance().
+                getExternalContext().getRequestParameterMap().get("hidden1");
+        commentDao.addComment(subBean.getIdRecipe(),subBean.getIdUser(),subBean.getTitle(), subBean.getContent(),subBean.getNote());
     }
 }

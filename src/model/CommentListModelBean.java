@@ -16,6 +16,7 @@ public class CommentListModelBean {
         commentList = new ArrayList<CommentModelBean>();
     }
     public void addComment(CommentModelBean comment){
+
         this.commentList.add(comment);
     }
     public ArrayList<CommentModelBean> getCommentList() {

@@ -12,7 +12,9 @@ public class CommentModelBean {
 
     public CommentModelBean() {}
 
-    public CommentModelBean(String user, String title, String content) {
+    public CommentModelBean(String user, int note, String title, String content) {
+        this.user = user;
+        this.note = note;
         this.title = title;
         this.content = content;
     }

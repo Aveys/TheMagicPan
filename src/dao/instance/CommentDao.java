@@ -3,6 +3,7 @@ package dao.instance;
 import model.CommentModelBean;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -24,6 +25,31 @@ public class CommentDao {
         dB_NAME = DB_NAME;
         dB_USER = DB_USER;
         dB_PWD = DB_PWD;
+    }
+
+    public void addComment(int idRecipe, int idUser, String titre, String contenu, int note){
+
+        try {
+			/* create connection */
+            connection = java.sql.DriverManager.getConnection("jdbc:mysql://" + dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
+
+            StringBuilder sql = new StringBuilder();
+            sql.append("INSERT INTO commentaire (id_user,id_recette,titre,contenu,note " +
+                    "VALUES (?,?,?,?,?)" );
+            System.out.println(sql.toString());
+            PreparedStatement query = connection.prepareStatement(sql.toString());
+            query.setInt(1, idRecipe);
+            query.setInt(2, idUser);
+            query.setString(3, titre);
+            query.setString(4, contenu);
+            query.setInt(5, note);
+
+            //System.out.println(result);
+
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void addUser(CommentModelBean user) {
