@@ -139,14 +139,16 @@ public class RecipeDao{
     public RecipeModelBean getRecipeById(int idRecipe){
 
         RecipeModelBean recipe = new RecipeModelBean();
-        CommentModelBean comment = new CommentModelBean();
+
         CommentListModelBean commentList = new CommentListModelBean();
 
         try {
             connection = java.sql.DriverManager.getConnection("jdbc:mysql://" + dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
+
             StringBuilder sql = new StringBuilder();
             sql.append("SELECT * FROM recette r " +
                     "JOIN commentaire c ON r.id_recette = c.id_recette " +
+                    "JOIN user u ON u.id_user = c.id_user" +
                     "WHERE c.id_recette = ? ;");
             System.out.println(sql.toString());
             PreparedStatement query = connection.prepareStatement(sql.toString());
@@ -163,21 +165,16 @@ public class RecipeDao{
             recipe.setTime(result.getInt("temps"));
             recipe.setNbServings(result.getInt("personnes"));
             recipe.setImage(result.getString("image"));
-                comment.setTitle(result.getString("titre"));
+            CommentModelBean comment = new CommentModelBean();
+                comment.setTitle(result.getString("u.titre"));
+                comment.setTitle(result.getString("c.titre"));
                 comment.setContent(result.getString("contenu"));
                     commentList.addComment(comment);
             while(result.next()) {
-                recipe.setIdRecipe(result.getInt("id_recette"));
-                recipe.setTitle(result.getString("titre"));
-                recipe.setDescription(result.getString("description"));
-                recipe.setType(result.getString("type"));
-                recipe.setNote(result.getInt("note"));
-                recipe.setTime(result.getInt("temps"));
-                recipe.setNbServings(result.getInt("personnes"));
-                recipe.setImage(result.getString("image"));
-                    comment.setTitle(result.getString("titre"));
-                    comment.setContent(result.getString("contenu"));
-                        commentList.addComment(comment);
+                    CommentModelBean comment2 = new CommentModelBean();
+                comment2.setTitle(result.getString("c.titre"));
+                comment2.setContent(result.getString("contenu"));
+                        commentList.addComment(comment2);
             }
             recipe.setListComment(commentList);
 

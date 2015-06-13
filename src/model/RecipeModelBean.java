@@ -123,6 +123,7 @@ public class RecipeModelBean {
 				", time=" + time +
 				", nbServings=" + nbServings +
 				", image='" + image + '\'' +
+				", listComment=" + listComment +
 				'}';
 	}
 }

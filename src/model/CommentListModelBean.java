@@ -19,6 +19,8 @@ public class CommentListModelBean {
         this.commentList.add(comment);
     }
     public ArrayList<CommentModelBean> getCommentList() {
+        System.out.println(commentList.toString());
         return commentList;
     }
+
 }
