@@ -33,9 +33,8 @@ public class CommentControlerBean {
         return commentDao;
     }
 
-    public void addComment(CommentSubmissionModelBean subBean){
-        String value = FacesContext.getCurrentInstance().
-                getExternalContext().getRequestParameterMap().get("hidden1");
-        commentDao.addComment(subBean.getIdRecipe(),subBean.getIdUser(),subBean.getTitle(), subBean.getContent(),subBean.getNote());
+    public void addComment(CommentSubmissionModelBean subBean, int idUser, int idRecipe){
+        System.out.println(subBean.toString() + "idUser : " + idUser + "idRecipe : " + idRecipe);
+        commentDao.addComment(idRecipe, idUser, subBean.getTitle(), subBean.getContent(), subBean.getNote());
     }
 }

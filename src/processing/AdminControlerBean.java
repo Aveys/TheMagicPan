@@ -7,7 +7,6 @@ import dao.instance.UserDao;
 import model.*;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import java.io.Serializable;
 
@@ -154,8 +153,6 @@ public class AdminControlerBean implements Serializable {
 		return getAdminRecipePage();
 	}
 
-	public String addRecipe(RecipeModelBean rmb){
-		recipeDao.
-	}
+
 
 }

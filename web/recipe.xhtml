@@ -23,12 +23,10 @@
                     <h:outputText value="#{comm.title}"/>
                     <h:outputText value="#{comm.content}"/>
                 </p:dataList>
-                <h:inputHidden value="#{commentSubmissionModelBean.idRecipe} recipeControlerBean.recipe.idRecipe}" id="hiddenField" />
-                <h:inputHidden value="#{commentSubmissionModelBean.idUser} sessionScope.loggedUser.idUser}" id="hiddenField" />
                 <p:rating value="#{commentSubmissionModelBean.note}"/>
-                <p:inputText value="#{commentSubmissionModelBean.comment.title}" />
-                <p:inputTextarea value="#{commentSubmissionModelBean.comment.content}" />
-                <p:commandButton styleClass="btn btn-default" value="Commenter" process="commentPanel" update="commentPanel" actionListener="#{commentControlerBean.addComment(commentSubmissionModelBean)}"/>
+                <p:inputText value="#{commentSubmissionModelBean.title}" />
+                <p:inputTextarea value="#{commentSubmissionModelBean.content}" />
+                <p:commandButton styleClass="btn btn-default" value="Commenter" process="commentPanel" update="commentPanel" actionListener="#{commentControlerBean.addComment(commentSubmissionModelBean, sessionScope.loggedUser.idUser, recipeControlerBean.recipe.idRecipe)}"/>
             </h:form>
         </p:outputPanel>
     </div>

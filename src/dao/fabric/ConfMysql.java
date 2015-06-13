@@ -5,8 +5,8 @@ package dao.fabric;
  */
 public class ConfMysql {
     public static String DB_HOST = "localhost";
-    public static String DB_PORT = "8889";
+    public static String DB_PORT = "3306";
     public static String DB_NAME = "themagicpanbd";
     public static String DB_USER = "root";
-    public static String DB_PWD = "root";
+    public static String DB_PWD = "";
 }
