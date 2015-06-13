@@ -53,12 +53,13 @@ public class AdminControlerBean implements Serializable {
 		return "adminUsers";
 	}
 	public String delUser(int id){
+		System.out.println("Suppression de l'utilisateur avec l'id  :"+id);
 		userDao.deleteUser(id);
-		return "adminUsers";
+		return getAdminUserPage();
 	}
 	public String updUser(int id, UserModelBean umb){
 		userDao.updUser(id,umb);
-		return "adminUsers";
+		return getAdminUserPage();
 	}
 
 }
