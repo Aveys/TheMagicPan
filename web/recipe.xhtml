@@ -4,21 +4,39 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
     <div class="container">
         <h:form id="form">
-            <h:outputText value="#{recipeControlerBean.recipe.title}"/>
-            <h:outputText value="#{recipeControlerBean.recipe.description}"/>
-            <h:outputText value="#{recipeControlerBean.recipe.type}"/>
-            <h:outputText value="#{recipeControlerBean.recipe.time}"/>
-            <h:outputText value="#{recipeControlerBean.recipe.note}"/>
-            <h:outputText value="#{recipeControlerBean.recipe.nbServings}"/>
-            <h:outputText value="#{recipeControlerBean.recipe.image}"/>
+            <p:outputPanel styleClass="recipeTitle">
+                <h:outputText value="#{recipeControlerBean.recipe.title}"/>
+            </p:outputPanel>
+            <p:outputPanel styleClass="recipeInfo">
+                <h:outputText value="#{recipeControlerBean.recipe.type}"/>
+            </p:outputPanel>
+            <p:outputPanel styleClass="recipeInfo">
+                <h:outputText value="#{recipeControlerBean.recipe.time}"/>
+            </p:outputPanel>
+            <p:outputPanel styleClass="recipeInfo">
+                <h:outputText value="#{recipeControlerBean.recipe.note}"/>
+            </p:outputPanel>
+            <p:outputPanel styleClass="recipeInfo">
+                <h:outputText value="#{recipeControlerBean.recipe.nbServings}"/>
+            </p:outputPanel>
+            <p:outputPanel styleClass="recipeDesc">
+                <h:outputText value="#{recipeControlerBean.recipe.description}"/>
+            </p:outputPanel>
+
+            <p:outputPanel id="recipeImg">
+                <h:outputText value="#{recipeControlerBean.recipe.image}"/>
+            </p:outputPanel>
             <h:commandButton styleClass="btn btn-default" value="Retour" action="#{pageManagerBean.setActivePage('recipesList.xhtml')}"/>
 
         </h:form>
         <p:outputPanel id="commentPanel">
             <h:form id="comments">
                 <p:dataList value="#{recipeControlerBean.recipe.listComment.commentList}" var="comm" type="ordered">
-                    <h:outputText value="#{comm.user}"/>
-                    <h:outputText value="#{comm.note}"/>
+                    <p:outputPanel id="commentUser">
+                        #{comm.user}
+                    </p:outputPanel>
+
+                    <p:rating value="#{comm.note}" readonly="true"/>
                     <h:outputText value="#{comm.title}"/>
                     <h:outputText value="#{comm.content}"/>
                 </p:dataList>

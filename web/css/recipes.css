@@ -5,3 +5,14 @@
 .searchPanel{
 
  }
+
+.recipeTitle{
+    text-align: center;
+    font-size: 2em;
+    color: #14CCA8;
+
+}
+
+.recipeDesc{
+    text-align: justify;
+}
