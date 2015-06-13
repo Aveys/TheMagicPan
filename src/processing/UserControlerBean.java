@@ -21,6 +21,7 @@ import java.util.regex.Pattern;
 @ApplicationScoped
 
 public class UserControlerBean {
+
     private UserDao userDao;
     public UserControlerBean() {
         this.userDao = DaoFabric.getInstance().createUserDao();
