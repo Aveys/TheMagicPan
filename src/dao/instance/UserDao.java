@@ -73,7 +73,7 @@ public class UserDao {
 	public UserModelBean checkUser(String login, String password)
 	{
 		UserModelBean user = null;
-		String strQuery = "SELECT lastname, surname, age, mail, login, password, admin from user WHERE login = ? AND password = ?";
+		String strQuery = "SELECT id_user, lastname, surname, age, mail, login, password, admin from user WHERE login = ? AND password = ?";
 		java.sql.PreparedStatement query;
 
 		try {
@@ -88,7 +88,7 @@ public class UserDao {
 
 			if(rs.next())
 			{
-				user = new UserModelBean(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getBoolean(7));
+				user = new UserModelBean(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getBoolean(8));
 			}
 
 			connection.close();
