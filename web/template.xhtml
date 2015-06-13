@@ -37,8 +37,6 @@
                             <li><h:commandLink action="#{pageManagerBean.setCategory('emergency')}" styleClass="navbarButton">Emergency</h:commandLink></li>
                             <li><h:commandLink action="#{pageManagerBean.setCategory('recipes')}" styleClass="navbarButton">Recipes</h:commandLink></li>
                             <li><h:commandLink action="#{pageManagerBean.setCategory('shop')}" styleClass="navbarButton">Shop</h:commandLink></li>
-                            <li><h:commandLink action="#{adminControlerBean.getStats()}" styleClass="navbarButton">Admin</h:commandLink></li>
-
                         </ul>
                     </h:form>
                 </li>
@@ -65,9 +63,12 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><h:outputText value="#{sessionScope.loggedUser.surname}"/><span class="glyphicon glyphicon-user"/><span class="caret"/></a>
                             <div class="dropdown-menu dropdownForm">
                                 <div>
-                                    Welcome <h:outputText value="#{sessionScope.loggedUser.surname}"/>
+                                    <p>Welcome <h:outputText value="#{sessionScope.loggedUser.surname}"/></p>
                                     <h:form>
-                                        <p:commandButton update="loginDropdown" actionListener="#{userControlerBean.logout()}" styleClass="">Register</p:commandButton>
+                                        <c:if test="#{not empty sessionScope.loggedUser and sessionScope.loggedUser.admin=='true'}">
+                                            <li><h:commandLink action="#{adminControlerBean.getStats()}">Admin Page</h:commandLink></li>
+                                        </c:if>
+                                        <p:commandButton update="loginDropdown" actionListener="#{userControlerBean.logout()}" styleClass="" value="Logout"></p:commandButton>
                                     </h:form>
                                 </div>
                             </div>

@@ -21,6 +21,7 @@ import java.util.regex.Pattern;
 @ApplicationScoped
 
 public class UserControlerBean {
+
     private UserDao userDao;
     public UserControlerBean() {
         this.userDao = DaoFabric.getInstance().createUserDao();
@@ -63,9 +64,15 @@ public class UserControlerBean {
         }
 
         return "";
+    }
 
-
-
-
+    public void logout()
+    {
+        //récupère l'espace de mémoire de JSF
+        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+        Map<String, Object> sessionMap = externalContext.getSessionMap();
+        //place l'utilisateur dans l' espace  de mémoire de JSF
+        sessionMap.remove("loggedUser");
+        //redirect the current page
     }
 }

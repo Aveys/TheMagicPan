@@ -117,7 +117,7 @@ public class UserDao {
 
 	public int updUser(int id, UserModelBean umb) {
 
-		String updQuery = "update user SET lastname=?, surname=?,age=?,mail=?,login=?,password=?,admin=? WHERE id_user = ?";
+		String updQuery = "update user SET lastname=?, surname=?, age=?, mail=?, login=?, password=?, admin=? WHERE id_user = ?";
 		int res=-1;
 		try {
 			/* create connection */
@@ -132,6 +132,7 @@ public class UserDao {
 			statement.setString(5,umb.getLogin());
 			statement.setString(6,umb.getPwd());
 			statement.setBoolean(7,umb.isAdmin());
+			statement.setInt(8,id);
 			System.out.println("Requête d'update : "+statement.toString());
 			res=statement.executeUpdate(updQuery);
 			statement.close();
