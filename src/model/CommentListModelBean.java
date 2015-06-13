@@ -1,25 +1,24 @@
 package model;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Paul on 27/05/2015.
  */
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class CommentListModelBean {
 
-    private List<CommentModelBean> commentList;
+    private ArrayList<CommentModelBean> commentList;
     public CommentListModelBean() {
         commentList = new ArrayList<CommentModelBean>();
     }
     public void addComment(CommentModelBean comment){
         this.commentList.add(comment);
     }
-    public List<CommentModelBean> getCommentList() {
+    public ArrayList<CommentModelBean> getCommentList() {
         return commentList;
     }
 }

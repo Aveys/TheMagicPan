@@ -1,5 +1,7 @@
 package dao.instance;
 
+import model.CommentListModelBean;
+import model.CommentModelBean;
 import model.RecipeModelBean;
 
 import java.sql.*;
@@ -39,7 +41,7 @@ public class RecipeDao{
 		    ResultSet result =  query.executeQuery(sql);
 		    listResult=new ArrayList<>();
 		    while (result.next()){
-			    listResult.add(new RecipeModelBean(result.getString("titre"),result.getString("description"),result.getString("type"),
+			    listResult.add(new RecipeModelBean(result.getInt("id_recette"),result.getString("titre"),result.getString("description"),result.getString("type"),
 					    result.getInt("note"),result.getInt("temps"),result.getInt("personnes"),result.getString("image")));
 		    }
 		    if(listResult.isEmpty())
@@ -60,10 +62,7 @@ public class RecipeDao{
         try {
             connection = java.sql.DriverManager.getConnection("jdbc:mysql://" + dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
             StringBuilder sql=new StringBuilder();
-            sql.append("SELECT * FROM recette r " +
-                    "JOIN commentaire c ON c.id_recette = r.id_recette " +
-                    "JOIN user u ON u.id_user = c.id_user " +
-                    "WHERE 1=1 ");
+            sql.append("SELECT * FROM recette r WHERE 1=1 ");
 
             if(!title.equals("")) {sql.append("AND titre = ? ");}
 
@@ -95,7 +94,7 @@ public class RecipeDao{
             System.out.println(result);
             listResult = new ArrayList<>();
             while (result.next()) {
-                listResult.add(new RecipeModelBean(result.getString("titre"),result.getString("description"),result.getString("type"),
+                listResult.add(new RecipeModelBean(result.getInt("id_recette"),result.getString("titre"),result.getString("description"),result.getString("type"),
                         result.getInt("note"),result.getInt("temps"),result.getInt("personnes"),result.getString("image")));
             }
             /*if(listResult.isEmpty())
@@ -140,12 +139,16 @@ public class RecipeDao{
     public RecipeModelBean getRecipeById(int idRecipe){
 
         RecipeModelBean recipe = new RecipeModelBean();
+        CommentModelBean comment = new CommentModelBean();
+        CommentListModelBean commentList = new CommentListModelBean();
 
         try {
             connection = java.sql.DriverManager.getConnection("jdbc:mysql://" + dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
-            StringBuilder sql=new StringBuilder();
-            sql.append("SELECT * FROM recette WHERE id_recette = ? ");
-
+            StringBuilder sql = new StringBuilder();
+            sql.append("SELECT * FROM recette r " +
+                    "JOIN commentaire c ON r.id_recette = c.id_recette " +
+                    "WHERE c.id_recette = ? ;");
+            System.out.println(sql.toString());
             PreparedStatement query = connection.prepareStatement(sql.toString());
             query.setInt(1, idRecipe);
             ResultSet result =  query.executeQuery();
@@ -160,6 +163,23 @@ public class RecipeDao{
             recipe.setTime(result.getInt("temps"));
             recipe.setNbServings(result.getInt("personnes"));
             recipe.setImage(result.getString("image"));
+                comment.setTitle(result.getString("titre"));
+                comment.setContent(result.getString("contenu"));
+                    commentList.addComment(comment);
+            while(result.next()) {
+                recipe.setIdRecipe(result.getInt("id_recette"));
+                recipe.setTitle(result.getString("titre"));
+                recipe.setDescription(result.getString("description"));
+                recipe.setType(result.getString("type"));
+                recipe.setNote(result.getInt("note"));
+                recipe.setTime(result.getInt("temps"));
+                recipe.setNbServings(result.getInt("personnes"));
+                recipe.setImage(result.getString("image"));
+                    comment.setTitle(result.getString("titre"));
+                    comment.setContent(result.getString("contenu"));
+                        commentList.addComment(comment);
+            }
+            recipe.setListComment(commentList);
 
         } catch (SQLException e) {
             e.printStackTrace();

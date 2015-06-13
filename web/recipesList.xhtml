@@ -11,7 +11,7 @@
                     Results
                 </f:facet>
                 <p:column headerText="">
-                    <h:commandLink id="link" action="#{pageManagerBean.setActivePageWithExtension(recipeControlerBean.getRecipeByTitle(recipe.title))}">
+                    <h:commandLink id="link" action="#{pageManagerBean.setActivePageWithExtension(recipeControlerBean.getRecipeById(recipe.idRecipe))}">
                         <span class="glyphicon glyphicon-search" style="color: #949494;" aria-hidden="true"></span>
                     </h:commandLink>
                 </p:column>

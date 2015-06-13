@@ -104,6 +104,14 @@ public class RecipeModelBean {
 		this.image = image;
 	}
 
+	public CommentListModelBean getListComment() {
+		return listComment;
+	}
+
+	public void setListComment(CommentListModelBean listComment) {
+		this.listComment = listComment;
+	}
+
 	@Override
 	public String toString() {
 		return "RecipeModelBean{" +

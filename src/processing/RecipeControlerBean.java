@@ -89,4 +89,12 @@ import java.util.ArrayList;
         return "recipe";
     }
 
+    public String getRecipeById(int idRecipe){
+        System.out.println("Id de la recette appelée : " + idRecipe);
+        recipe = this.recipeDao.getRecipeById(idRecipe);
+        System.out.println(recipe.toString());
+
+        return "recipe";
+    }
+
 }

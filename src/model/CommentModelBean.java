@@ -8,6 +8,8 @@ public class CommentModelBean {
     private String title;
     private String content;
 
+    public CommentModelBean() {}
+
     public CommentModelBean(String title, String content) {
         this.title = title;
         this.content = content;

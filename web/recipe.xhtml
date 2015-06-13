@@ -13,6 +13,17 @@
             <h:outputText value="#{recipeControlerBean.recipe.nbServings}"/>
             <h:outputText value="#{recipeControlerBean.recipe.image}"/>
             <h:commandButton styleClass="btn btn-default" value="Retour" action="#{pageManagerBean.setActivePage('recipesList.xhtml')}"/>
+
+            <p:dataList value="#{recipeControlerBean.recipe.listComment}" var="comment" type="ordered">
+                <f:facet name="title">
+                    Titre
+                </f:facet>
+                #{comment.title}
+                <f:facet name="description">
+                    Contenu
+                </f:facet>
+                #{comment.content}
+            </p:dataList>
         </h:form>
     </div>
 </ui:composition>
