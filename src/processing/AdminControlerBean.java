@@ -141,9 +141,8 @@ public class AdminControlerBean implements Serializable {
 		if (rmb.getNbServings()<=0)
 			rmb.setNbServings(selectedRecipe.getNbServings());
 
-		System.out.println("envoi de UMB : ");
 		recipeDao.updRecipe(id,rmb);
-		return getAdminUserPage();
+		return getAdminRecipePage();
 	}
 
 }

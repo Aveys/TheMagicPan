@@ -47,7 +47,7 @@ import java.util.ArrayList;
     }
 
     public RecipeListModelBean loadAllRecipe(){
-        listRecipe = this.recipeDao.getAllRecipes();
+        listRecipe = this.recipeDao.getAllRecipes().getList();
 
         RecipeListModelBean recipeList = new RecipeListModelBean();
         for(RecipeModelBean recipe:listRecipe){
