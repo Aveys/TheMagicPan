@@ -30,11 +30,11 @@ public class CommentDao {
     public void addComment(int idRecipe, int idUser, String titre, String contenu, int note){
 
         try {
-			/* create connection */
+			/* create connection*/
             connection = java.sql.DriverManager.getConnection("jdbc:mysql://" + dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
 
             StringBuilder sql = new StringBuilder();
-            sql.append("INSERT INTO commentaire (id_user,id_recette,titre,contenu,note " +
+            sql.append("INSERT INTO commentaire (id_user,id_recette,titre,contenu,note) " +
                     "VALUES (?,?,?,?,?)" );
             System.out.println(sql.toString());
             PreparedStatement query = connection.prepareStatement(sql.toString());
@@ -43,13 +43,15 @@ public class CommentDao {
             query.setString(3, titre);
             query.setString(4, contenu);
             query.setInt(5, note);
-
+            System.out.println(sql.toString());
+            query.executeUpdate();
             //System.out.println(result);
 
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
     }
 
     public void addUser(CommentModelBean user) {

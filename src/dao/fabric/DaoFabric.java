@@ -66,6 +66,7 @@ public class DaoFabric {
 		return new AdminDao(ConfMysql.DB_HOST, ConfMysql.DB_PORT, ConfMysql.DB_NAME, ConfMysql.DB_USER, ConfMysql.DB_PWD);
 	}
 	public CommentDao createCommentDao() {
-		return null;
+		return new
+				CommentDao(ConfMysql.DB_HOST, ConfMysql.DB_PORT, ConfMysql.DB_NAME, ConfMysql.DB_USER, ConfMysql.DB_PWD);
 	}
 }

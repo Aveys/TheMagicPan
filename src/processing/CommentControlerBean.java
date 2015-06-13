@@ -5,14 +5,14 @@ import dao.instance.CommentDao;
 import model.CommentModelBean;
 import model.CommentSubmissionModelBean;
 
-import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 
 /**
  * Created by Paul on 27/05/2015.
  */
 @ManagedBean(name = "commentControlerBean")
-@ApplicationScoped
+@RequestScoped
 public class CommentControlerBean {
     private CommentDao commentDao;
     private CommentModelBean comment;
