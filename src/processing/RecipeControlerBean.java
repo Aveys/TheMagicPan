@@ -2,9 +2,7 @@ package processing;
 
 import dao.fabric.DaoFabric;
 import dao.instance.RecipeDao;
-import model.RecipeListModelBean;
-import model.RecipeModelBean;
-import model.RecipeRequestBean;
+import model.*;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
@@ -95,6 +93,13 @@ import java.util.ArrayList;
         System.out.println(recipe.toString());
 
         return "recipe";
+    }
+
+    public void addComment(CommentSubmissionModelBean subBean, int idUser,String username){
+        System.out.println("$$$$$$$$$$$$$ AJOUT D'UN COMMENTAIRE $$$$$$$$$$$$$$");
+        CommentControlerBean commentControlerBean = new CommentControlerBean();
+        commentControlerBean.addComment(subBean, idUser, this.getRecipe().getIdRecipe());
+        this.getRecipe().getListComment().getCommentList().add(new CommentModelBean(username, subBean.getNote(), subBean.getTitle(), subBean.getContent()));
     }
 
 }
