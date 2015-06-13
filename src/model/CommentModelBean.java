@@ -6,6 +6,7 @@ package model;
 public class CommentModelBean {
 
     private String user;
+    private int note;
     private String title;
     private String content;
 
@@ -40,10 +41,19 @@ public class CommentModelBean {
         this.user = user;
     }
 
+    public int getNote() {
+        return note;
+    }
+
+    public void setNote(int note) {
+        this.note = note;
+    }
+
     @Override
     public String toString() {
         return "CommentModelBean{" +
                 "user='" + user + '\'' +
+                ", note=" + note +
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
                 '}';

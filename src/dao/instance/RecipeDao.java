@@ -166,12 +166,15 @@ public class RecipeDao{
             recipe.setNbServings(result.getInt("personnes"));
             recipe.setImage(result.getString("image"));
             CommentModelBean comment = new CommentModelBean();
-                comment.setTitle(result.getString("u.titre"));
+                comment.setTitle(result.getString("u.login"));
+                comment.setContent(result.getString("c.note"));
                 comment.setTitle(result.getString("c.titre"));
                 comment.setContent(result.getString("contenu"));
                     commentList.addComment(comment);
             while(result.next()) {
                     CommentModelBean comment2 = new CommentModelBean();
+                comment2.setTitle(result.getString("u.login"));
+                comment2.setContent(result.getString("c.note"));
                 comment2.setTitle(result.getString("c.titre"));
                 comment2.setContent(result.getString("contenu"));
                         commentList.addComment(comment2);
