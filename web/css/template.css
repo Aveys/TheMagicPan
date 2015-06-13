@@ -204,11 +204,28 @@ hr {
 .glyphicon {
     font-size: 40px;
     color: #ffffff;
+    margin: 0 10px;
 }
 .logoMini{
     margin-top: 20px;
 }
 
-#register{
+a.register{
     text-align: center;
+}
+
+img.logoImg{
+    margin-top: -30px;
+}
+
+li.mainMenu{
+    margin-right: 30px;
+    padding-top: 11px;
+}
+div.dropdownForm{
+    text-align: center;
+}
+
+a.noBG :hover :focus{
+    background: none;
 }

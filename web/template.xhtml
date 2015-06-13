@@ -27,11 +27,11 @@
                 <span class="icon-bar"/>
                 <span class="icon-bar"/>
             </button>
-            <a class="navbar-brand" href="#"><img src="img/magicPanLogoHeader.png" alt="logo de the magic pan "/></a>
+            <a class="navbar-brand" href="#"><img class="logoImg" src="img/magicPanLogoHeader.png" alt="logo de the magic pan "/></a>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li>
+                <li class="mainMenu">
                     <h:form>
                         <ul class="nav navbar-nav navbar-right">
                             <li><h:commandLink action="#{pageManagerBean.setCategory('emergency')}" styleClass="navbarButton">Emergency</h:commandLink></li>
@@ -45,8 +45,8 @@
                 <li class="dropdown">
                     <p:outputPanel id="loginDropdown">
                         <c:if test="#{empty sessionScope.loggedUser}">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Sign in<span class="glyphicon glyphicon-user"/><span class="caret"/></a>
-                            <div class="form dropdown-menu">
+                            <a href="#" class="dropdown-toggle noBG" data-toggle="dropdown" role="button" aria-expanded="false">Sign in<span class="glyphicon glyphicon-user"/><span class="caret"/></a>
+                            <div class="form dropdown-menu dropdownForm">
                             <h:form role="menu" id="formLogin">
                                 <div class="form-group">
                                     <h:inputText name="username" styleClass="form-control" value="#{loginBean.login}" id="username" type="text" a:placeholder="Username" required="true"/>
@@ -56,14 +56,14 @@
                                 </div>
                                 <p:commandButton  id="btnLogin" update="loginDropdown" process="loginDropdown" styleClass="btn btn-default" value="Sign in!" actionListener="#{userControlerBean.checkUser(loginBean)}"/>
                             </h:form>
-                            <h:form id="register">
-                                <h:commandLink action="#{pageManagerBean.setActivePage('register.xhtml')}" styleClass="">Register</h:commandLink>
+                            <h:form>
+                                <h:commandLink action="#{pageManagerBean.setActivePage('register.xhtml')}" styleClass="register">Register</h:commandLink>
                             </h:form>
                             </div>
                         </c:if>
                         <c:if test="#{not empty sessionScope.loggedUser}">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><h:outputText value="#{sessionScope.loggedUser.surname}"/><span class="glyphicon glyphicon-user"/><span class="caret"/></a>
-                            <div class="dropdown-menu">
+                            <div class="dropdown-menu dropdownForm">
                                 <div>
                                     Welcome <h:outputText value="#{sessionScope.loggedUser.surname}"/>
                                     <h:form>
