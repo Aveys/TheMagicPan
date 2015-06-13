@@ -186,8 +186,6 @@ public class AdminControlerBean implements Serializable {
 		return "adminComment";
 	}
 	public String updComment(CommentAdminModelBean camb){
-		System.out.println("Commentaire recu dans le controlleur : "+camb.toString());
-		System.out.println("Commentaire présent en selectioné :"+ selectedComment.toString());
 		if(camb.getTitle().equals(""))
 			camb.setTitle(selectedComment.getTitle());
 		if(camb.getContent().equals(""))

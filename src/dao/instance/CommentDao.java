@@ -76,7 +76,6 @@ public class CommentDao {
         return listComment;
     }
     public int updComment(CommentAdminModelBean camb){
-        System.out.println("Commentaire recu : "+camb.toString());
         String updQuery = "UPDATE commentaire SET titre=?, contenu=?, note=? WHERE id_commentaire=?";
         int res=-1;
         try {
@@ -88,7 +87,6 @@ public class CommentDao {
             statement.setString(2,camb.getContent());
             statement.setInt(3, camb.getNote());
             statement.setInt(4,camb.getIdCommentaire());
-            System.out.println("commande executée : "+statement.toString());
             res=statement.executeUpdate();
             statement.close();
 
