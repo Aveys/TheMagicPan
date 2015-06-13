@@ -38,8 +38,8 @@ public class CommentDao {
                     "VALUES (?,?,?,?,?)" );
             System.out.println(sql.toString());
             PreparedStatement query = connection.prepareStatement(sql.toString());
-            query.setInt(1, idRecipe);
-            query.setInt(2, idUser);
+            query.setInt(1, idUser);
+            query.setInt(2, idRecipe);
             query.setString(3, titre);
             query.setString(4, contenu);
             query.setInt(5, note);
