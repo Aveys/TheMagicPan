@@ -30,7 +30,8 @@
         </h:form>
 
             <p:outputPanel id="commentPanel">
-                <h:form id="comments">
+                <h2>Comments</h2>
+                <h:form id="comments" class="form-horizontal">
                     <p:dataList value="#{recipeControlerBean.recipe.listComment.commentList}" var="comm" type="ordered">
                         <p:outputPanel id="commentUser">
                             #{comm.user}
@@ -42,10 +43,31 @@
                     </p:dataList>
                     <c:choose>
                         <c:when test="#{not empty sessionScope.loggedUser}">
-                            <p:rating value="#{commentSubmissionModelBean.note}"/>
-                            <p:inputText value="#{commentSubmissionModelBean.title}" />
-                            <p:inputTextarea value="#{commentSubmissionModelBean.content}" />
-                            <p:commandButton id="btnComment" process="commentPanel" styleClass="btn btn-default" value="Commenter" update="commentPanel" actionListener="#{recipeControlerBean.addComment(commentSubmissionModelBean, sessionScope.loggedUser.idUser, sessionScope.loggedUser.login)}"/>
+                            <h2>Add Comment</h2>
+                            <div class="form-group">
+                                <label for="ratingInput" class="col-sm-2 control-label">Rating</label>
+                                <div class="col-sm-10">
+                                    <p:rating id="ratingInput" value="#{commentSubmissionModelBean.note}"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="titleInput" class="col-sm-2 control-label">Title</label>
+                                <div class="col-sm-10">
+                                    <p:inputText id="titleInput" value="#{commentSubmissionModelBean.title}" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="commentInput" class="col-sm-2 control-label">Comment</label>
+                                <div class="col-sm-10">
+                                    <p:inputTextarea id="commentInput" value="#{commentSubmissionModelBean.content}" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                            <div class="col-sm-2"></div>
+                                 <div class="col-sm-4">
+                                    <p:commandButton id="btnComment" process="commentPanel" styleClass="btn btn-default" value="Commenter" update="commentPanel" actionListener="#{recipeControlerBean.addComment(commentSubmissionModelBean, sessionScope.loggedUser.idUser, sessionScope.loggedUser.login)}"/>
+                                 </div>
+                            </div>
                         </c:when>
                         <c:otherwise>
                             <div class="alert alert-danger" role="alert">
