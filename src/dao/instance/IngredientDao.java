@@ -25,14 +25,14 @@ public class IngredientDao {
 		this.dB_USER = dB_USER;
 		this.dB_PWD = dB_PWD;
 	}
-	public void addRecipe(RecipeModelBean recipe) {
+	public void addIngredient(RecipeModelBean recipe) {
 		// Création de la requête
 		java.sql.Statement query;
 		try {
 			/* create connection */
 			connection = java.sql.DriverManager.getConnection("jdbc:mysql://"
 					+ dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
-			//TODO A l’image de DB.java créer une réquète permettant d’ajout l’utilisateur à la base de données
+
 			connection.close();
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -117,7 +117,7 @@
                                         <i class="fa fa-trash-o fa-fw"></i>
                                     </p:commandLink>
                                     <p:commandButton update="commentDetail"
-                                                     oncomplete="PF('commentOP').show('#{component.clientId}')"
+                                                     oncomplete="PF('commentOP').show('#{component.clientId}');$(&quot;input[role='textbox']&quot;).val('');$(&quot;textarea[role='textbox']&quot;).val('');"
                                                      icon="ui-icon-pencil" title="Update">
                                         <f:setPropertyActionListener value="#{comment}"
                                                                      target="#{adminControlerBean.selectedComment}"/>
@@ -189,6 +189,12 @@
             </c:otherwise>
         </c:choose>
     </div>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("input[role='textbox']").val('');
+            $("textarea[role='textbox']").val('');
+        })
+    </script>
     <script src="js/bootstrap.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="js/admin/metisMenu.min.js"></script>
     <script type="text/javascript" src="js/admin/sb-admin-2.js"></script>
