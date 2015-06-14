@@ -4,10 +4,31 @@
 }
 .searchPanel{
     border-radius: 5px;
-    box-shadow: 0px 0px 10px 0px #656565;
+    box-shadow: 5px 5px 0px 0px #656565;
     margin: 0px 25% 3%;
     background-color: #F8F8F8;
  }
+
+.displayPanel{
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px #656565;
+    margin: 0px 15% 3%;
+}
+
+.blocGauche{
+    border-radius: 5px;
+    box-shadow: 5px 5px 0px 0px #656565;
+    background-color: rgb(50, 130, 156);
+    margin: 2%;
+    color: #ffffff;
+}
+
+.blocDroite{
+    border-radius: 5px;
+    box-shadow: 5px 5px 0px 0px #656565;
+    background-color: #F8F8F8;
+    margin: 2%;
+}
 
 .centerClass{
     margin: 2% auto;
@@ -26,9 +47,16 @@
     text-align: center;
     font-size: 2em;
     color: #14CCA8;
-
 }
 
 .recipeDesc{
     text-align: justify;
+}
+
+#commentPanel{
+    margin-top: 2%;
+}
+
+.commentaire{
+    margin:2% 0px;
 }
