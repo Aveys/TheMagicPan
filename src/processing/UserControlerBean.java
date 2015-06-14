@@ -9,10 +9,12 @@ import dao.instance.UserDao;
 import model.UserModelBean;
 import model.UserSubmissionModelBean;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.print.attribute.standard.Severity;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -37,11 +39,17 @@ public class UserControlerBean {
             //place l'utilisateur dans l' espace  de mémoire de JSF
             sessionMap.put("loggedUser", user);
             //redirect the current page
+            FacesContext context = FacesContext.getCurrentInstance();
+
+            context.addMessage(null, new FacesMessage("Successful", "Welcome " + user.getSurname() + " " + user.getLastname()));
             return "";
         }
         else
         {
             //redirect the current page
+            FacesContext context = FacesContext.getCurrentInstance();
+
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error", "Cannot connect."));
             return "";
         }
     }
