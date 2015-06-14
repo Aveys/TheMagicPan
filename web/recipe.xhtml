@@ -8,37 +8,38 @@
                 <h:outputText value="#{recipeControlerBean.recipe.title}"/>
             </p:outputPanel>
             <p:outputPanel styleClass="recipeInfo">
-                <h:outputText value="#{recipeControlerBean.recipe.type}"/>
+                Type: <h:outputText value="#{recipeControlerBean.recipe.type}"/>
             </p:outputPanel>
             <p:outputPanel styleClass="recipeInfo">
-                <h:outputText value="#{recipeControlerBean.recipe.time}"/>
+                Time: <h:outputText value="#{recipeControlerBean.recipe.time}"/>
             </p:outputPanel>
             <p:outputPanel styleClass="recipeInfo">
-                <h:outputText value="#{recipeControlerBean.recipe.note}"/>
+                Note: <p:rating value="#{recipeControlerBean.recipe.note}" readonly="true"/><br/>
             </p:outputPanel>
             <p:outputPanel styleClass="recipeInfo">
-                <h:outputText value="#{recipeControlerBean.recipe.nbServings}"/>
+                NB Servings: <h:outputText value="#{recipeControlerBean.recipe.nbServings}"/>
             </p:outputPanel>
             <p:outputPanel styleClass="recipeDesc">
-                <h:outputText value="#{recipeControlerBean.recipe.description}"/>
+                Description: <br/><h:outputText value="#{recipeControlerBean.recipe.description}"/>
             </p:outputPanel>
 
             <p:outputPanel id="recipeImg">
                 <h:outputText value="#{recipeControlerBean.recipe.image}"/>
             </p:outputPanel>
             <h:commandButton styleClass="btn btn-default" value="Retour" action="#{pageManagerBean.setActivePage('recipesList.xhtml')}"/>
+
+            <br/>
         </h:form>
 
             <p:outputPanel id="commentPanel">
                 <h2>Comments</h2>
                 <h:form id="comments" class="form-horizontal">
                     <p:dataList value="#{recipeControlerBean.recipe.listComment.commentList}" var="comm" type="ordered">
+                        <h3><h:outputText value="#{comm.title}"/></h3>
                         <p:outputPanel id="commentUser">
-                            #{comm.user}
+                            <p:rating value="#{comm.note}" readonly="true"/> #{comm.user}
                         </p:outputPanel>
 
-                        <p:rating value="#{comm.note}" readonly="true"/>
-                        <h:outputText value="#{comm.title}"/>
                         <h:outputText value="#{comm.content}"/>
                     </p:dataList>
                     <c:choose>
