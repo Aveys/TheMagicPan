@@ -14,7 +14,7 @@ Compilé avec Java 1.8.0 & Java 1.7.0.67
 ## Comptes Utilisateurs
 
 login / password
-Admin/Admin : Compte administrateur
+admin/admin : Compte administrateur
 jean/jean : Compte utilisateur
 
 ## Etat du projet
