@@ -54,7 +54,7 @@
                                 <div class="form-group">
                                     <h:inputSecret name="password" styleClass="form-control" value="#{loginBean.pwd}" id="password" type="password" a:placeholder="Password" required="true"/>
                                 </div>
-                                <p:commandButton  id="btnLogin" update="loginDropdown growl" process="loginDropdown" styleClass="btn btn-default" value="Sign in!" actionListener="#{userControlerBean.checkUser(loginBean)}"/>
+                                <p:commandButton  id="btnLogin" update="@(#loginDropdown,#growl,#commentPanel)" process="loginDropdown" styleClass="btn btn-default" value="Sign in!" actionListener="#{userControlerBean.checkUser(loginBean)}"/>
                             </h:form>
                             <h:form>
                                 <h:commandLink action="#{pageManagerBean.setActivePage('register.xhtml')}" styleClass="register">Register</h:commandLink>
@@ -70,7 +70,7 @@
                                         <c:if test="#{not empty sessionScope.loggedUser and sessionScope.loggedUser.admin=='true'}">
                                             <li><h:commandLink action="#{adminControlerBean.getStats()}">Admin Page</h:commandLink></li>
                                         </c:if>
-                                        <p:commandButton update="loginDropdown" actionListener="#{userControlerBean.logout()}" styleClass="" value="Logout"></p:commandButton>
+                                        <p:commandButton update="@(#loginDropdown,#growl,#commentPanel)" actionListener="#{userControlerBean.logout()}" styleClass="" value="Logout"></p:commandButton>
                                     </h:form>
                                 </div>
                             </div>

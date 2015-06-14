@@ -3,7 +3,7 @@
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
                 xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
-                xmlns:p="http://primefaces.org/ui">
+                xmlns:p="http://primefaces.org/ui" xmlns:c="http://java.sun.com/jsp/jstl/core">
 <div class="container">
 <div class="blog-header">
     <h1 class="blog-title col-sm-12">Register Form</h1>
@@ -12,7 +12,10 @@
 <div id="content" class="col-sm-8 blog-main">
     <p:tooltip />
 <h:form class="form-horizontal" method="post" action="lib/control/action.php?action=signup">
+    <c:choose>
+    <c:when test="#{empty sessionScope.loggedUser}">
     <h:messages styleClass="alert-danger"></h:messages>
+
     <div class="form-group">
         <label for="inputUsername" class="col-sm-6 control-label">Username</label>
         <div class="col-sm-6">
@@ -89,6 +92,11 @@
             <h:commandButton type="submit" styleClass="btn btn-default" action="#{userControlerBean.checkAndAddUser(userSubmissionModelBean)}" value="Register"></h:commandButton>
         </div>
     </div>
+    </c:when>
+    <c:otherwise>
+        <div class="alert-success">You are now connected.</div>
+    </c:otherwise>
+    </c:choose>
 </h:form>
 </div>
 </div></div>

@@ -41,7 +41,7 @@ public class UserControlerBean {
             //redirect the current page
             FacesContext context = FacesContext.getCurrentInstance();
 
-            context.addMessage(null, new FacesMessage("Successful", "Welcome " + user.getSurname() + " " + user.getLastname()));
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Successful", "Welcome " + user.getSurname() + " " + user.getLastname()));
             return "";
         }
         else
@@ -64,11 +64,15 @@ public class UserControlerBean {
                 Pattern.compile("^[A-Za-z]+").matcher(userSubmitted.getLastname()).matches() &&
                 Pattern.compile("^[A-Za-z]+").matcher(userSubmitted.getSurname()).matches() &&
                 Pattern.compile("^[A-Za-z]+").matcher(userSubmitted.getLogin()).matches() && userSubmitted.getPwd().equals(userSubmitted.getPwd2())
-            )
+                )
         {
             // TODO ajout de l'utilisateur à la base de données
             this.userDao.addUser(new UserModelBean(userSubmitted.getLastname(), userSubmitted.getSurname(), userSubmitted.getAgeInt(), userSubmitted.getMail(), userSubmitted.getLogin(), userSubmitted.getPwd(), userSubmitted.isAdmin()));
-            return "ActivitySelector.xhtml";
+            LoginBean lb = new LoginBean();
+            lb.setLogin(userSubmitted.getLogin());
+            lb.setPwd(userSubmitted.getPwd());
+            this.checkUser(lb);
+            return "";
         }
 
         return "";
