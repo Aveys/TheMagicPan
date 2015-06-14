@@ -76,7 +76,7 @@ public class AdminControlerBean implements Serializable {
 		this.listComment = listComment;
 	}
 
-	public CommentModelBean getSelectedComment() {
+	public CommentAdminModelBean getSelectedComment() {
 		return selectedComment;
 	}
 
