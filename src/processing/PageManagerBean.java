@@ -29,7 +29,6 @@ public class PageManagerBean implements Serializable {
 
     public String setCategory(String category)
     {
-        System.out.println(category);
         if(category.equals("emergency") || category.equals("recipes") || category.equals("shop"))
         {
             this.category = category;

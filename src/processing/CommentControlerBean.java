@@ -34,7 +34,6 @@ public class CommentControlerBean {
     }
 
     public void addComment(CommentSubmissionModelBean subBean, int idUser, int idRecipe){
-        System.out.println("#################" + subBean.toString() + "idUser : " + idUser + "idRecipe : " + idRecipe);
         commentDao.addComment(idRecipe, idUser, subBean.getTitle(), subBean.getContent(), subBean.getNote());
     }
 }

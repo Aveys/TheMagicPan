@@ -110,12 +110,10 @@ public class AdminControlerBean implements Serializable {
 		return "adminUsers";
 	}
 	public String delUser(int id){
-		//System.out.println("Suppression de l'utilisateur avec l'id  :"+id);
 		userDao.deleteUser(id);
 		return getAdminUserPage();
 	}
 	public String updUser(int id, UserModelBean umb){
-		//System.out.println("ID à modifier : "+id+"\nObjet sauvegardé :"+selectedUser.toString());
 		if(umb.getLastname().equals("")){
 			umb.setLastname(selectedUser.getLastname());
 		}
@@ -134,7 +132,6 @@ public class AdminControlerBean implements Serializable {
 		if(umb.getPwd().equals("")){
 			umb.setPwd(selectedUser.getPwd());
 		}
-		//System.out.println("envoi de UMB : ");
 		userDao.updUser(id,umb);
 		return getAdminUserPage();
 	}
@@ -154,7 +151,6 @@ public class AdminControlerBean implements Serializable {
 		return getAdminUserPage();
 	}
 	public String updRecipe(int id, RecipeModelBean rmb){
-		//System.out.println("ID à modifier : "+id+"\nObjet sauvegardé :"+selectedRecipe.toString());
 		if(rmb.getTitle().equals(""))
 			rmb.setTitle(selectedRecipe.getTitle());
 

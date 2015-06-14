@@ -121,7 +121,6 @@ public class UserDao {
 		int res=-1;
 		try {
 			/* create connection */
-			System.out.println("Modification avec cet objet :"+umb.toString() );
 			connection = java.sql.DriverManager.getConnection("jdbc:mysql://"
 					+ dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
 			PreparedStatement statement = connection.prepareStatement(updQuery);
@@ -133,7 +132,6 @@ public class UserDao {
 			statement.setString(6,umb.getPwd());
 			statement.setBoolean(7,umb.isAdmin());
 			statement.setInt(8,id);
-			System.out.println("Requête d'update : "+statement.toString());
 			res=statement.executeUpdate();
 			statement.close();
 		} catch (SQLException e) {

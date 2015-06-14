@@ -36,16 +36,13 @@ public class CommentDao {
             StringBuilder sql = new StringBuilder();
             sql.append("INSERT INTO commentaire (id_user,id_recette,titre,contenu,note) " +
                     "VALUES (?,?,?,?,?)" );
-            System.out.println(sql.toString());
             PreparedStatement query = connection.prepareStatement(sql.toString());
             query.setInt(1, idUser);
             query.setInt(2, idRecipe);
             query.setString(3, titre);
             query.setString(4, contenu);
             query.setInt(5, note);
-            System.out.println(sql.toString());
             query.executeUpdate();
-            //System.out.println(result);
 
             connection.close();
         } catch (SQLException e) {
@@ -66,7 +63,6 @@ public class CommentDao {
             while(rs.next()){
                 com= new CommentAdminModelBean(rs.getInt("note"),rs.getString("titre"),rs.getString("contenu"),rs.getString("login"),rs.getString("recipeName"));
                 com.setIdCommentaire(rs.getInt("id_commentaire"));
-                System.out.println("Objet ajouté "+com.toString());
                 listComment.add(com);
             }
             statement.close();

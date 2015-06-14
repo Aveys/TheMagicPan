@@ -47,11 +47,7 @@ public class RecipeDao{
 	    } catch (SQLException e) {
 		    e.printStackTrace();
 	    }
-	    /*if (listResult != null) {
-		    System.out.println( "retour de la liste des recettes : "+listResult.toString());
-	    }
-	    else
-		    System.out.println("Liste nulle !");*/
+
 	    return new RecipeListModelBean(listResult);
     }
 
@@ -72,8 +68,6 @@ public class RecipeDao{
 
             if(nbPeople > 0) {sql.append("AND personnes = ? ");}
 
-            System.out.println(sql.toString());
-
             PreparedStatement query = connection.prepareStatement(sql.toString());
             int i = 1;
             if(!title.equals("")){query.setString(i,title);i++;}
@@ -86,10 +80,8 @@ public class RecipeDao{
 
             if(nbPeople > 0){query.setInt(i, nbPeople);i++;}
 
-            System.out.println(query.toString());
 
             ResultSet result =  query.executeQuery();
-            System.out.println(result);
             listResult = new ArrayList<>();
             while (result.next()) {
                 listResult.add(new RecipeModelBean(result.getInt("id_recette"),result.getString("titre"),result.getString("description"),result.getString("type"),
@@ -116,7 +108,6 @@ public class RecipeDao{
             PreparedStatement query = connection.prepareStatement(sql.toString());
             query.setString(1,title);
             ResultSet result =  query.executeQuery();
-            System.out.println(result);
 
             result.next();
             recipe.setIdRecipe(result.getInt("id_recette"));
@@ -148,11 +139,9 @@ public class RecipeDao{
                     "JOIN commentaire c ON r.id_recette = c.id_recette " +
                     "JOIN user u ON u.id_user = c.id_user " +
                     "WHERE c.id_recette = ? ;");
-            System.out.println(sql.toString());
             PreparedStatement query = connection.prepareStatement(sql.toString());
             query.setInt(1, idRecipe);
             ResultSet result =  query.executeQuery();
-            System.out.println(result);
 
             result.next();
             recipe.setIdRecipe(result.getInt("id_recette"));
@@ -207,7 +196,6 @@ public class RecipeDao{
         int res=-1;
         try {
 			/* create connection */
-            System.out.println("Modification avec cet objet :"+rmb.toString() );
             connection = java.sql.DriverManager.getConnection("jdbc:mysql://"
                     + dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
             PreparedStatement statement = connection.prepareStatement(updQuery);
@@ -218,7 +206,6 @@ public class RecipeDao{
             statement.setInt(5, rmb.getTime());
             statement.setInt(6, rmb.getNbServings());
             statement.setInt(7,id);
-            System.out.println("Requête d'update : "+statement.toString());
             res=statement.executeUpdate();
             statement.close();
         } catch (SQLException e) {
@@ -232,7 +219,6 @@ public class RecipeDao{
         int res=-1;
         try {
 			/* create connection */
-            System.out.println("Modification avec cet objet :"+rmb.toString() );
             connection = java.sql.DriverManager.getConnection("jdbc:mysql://"
                     + dB_HOST + ":" + dB_PORT + "/" + dB_NAME, dB_USER, dB_PWD);
             PreparedStatement statement = connection.prepareStatement(addQuery);
@@ -242,7 +228,6 @@ public class RecipeDao{
             statement.setString(4,rmb.getType());
             statement.setInt(5, rmb.getTime());
             statement.setInt(6, rmb.getNbServings());
-            //System.out.println("Requête d'update : "+statement.toString());
             res=statement.executeUpdate();
             statement.close();
         } catch (SQLException e) {

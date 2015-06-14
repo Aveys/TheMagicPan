@@ -56,14 +56,11 @@ import java.util.ArrayList;
     }
 
     public String loadFilteredRecipe(RecipeRequestBean rrb) {
-        System.out.println(rrb.getType().equals(""));
-        System.out.println(rrb);
         listRecipe = this.recipeDao.getFilteredRecipe(rrb.getTitle(), rrb.getNote(), rrb.getType(), rrb.getTime(), rrb.getNbServings());
 
         RecipeListModelBean recipeList = new RecipeListModelBean();
         if (listRecipe!=null){
             for (RecipeModelBean recipe : listRecipe) {
-                System.out.println("recette ajoutée : " + recipe);
                 recipeList.addRecipe(recipe);
             }
         }
@@ -82,21 +79,17 @@ import java.util.ArrayList;
 
     public String getRecipeByTitle(String title){
         recipe = this.recipeDao.getRecipeByTitle(title);
-        System.out.println(recipe.toString());
 
         return "recipe";
     }
 
     public String getRecipeById(int idRecipe){
-        System.out.println("Id de la recette appelée : " + idRecipe);
         recipe = this.recipeDao.getRecipeById(idRecipe);
-        System.out.println(recipe.toString());
 
         return "recipe";
     }
 
     public void addComment(CommentSubmissionModelBean subBean, int idUser,String username){
-        System.out.println("$$$$$$$$$$$$$ AJOUT D'UN COMMENTAIRE $$$$$$$$$$$$$$");
         CommentControlerBean commentControlerBean = new CommentControlerBean();
         commentControlerBean.addComment(subBean, idUser, this.getRecipe().getIdRecipe());
         this.getRecipe().getListComment().getCommentList().add(new CommentModelBean(username, subBean.getNote(), subBean.getTitle(), subBean.getContent()));
