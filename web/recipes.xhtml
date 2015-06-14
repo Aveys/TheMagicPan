@@ -15,7 +15,7 @@
 
                 <h:panelGrid columns="1" layout="grid" style="margin-bottom:10px" cellpadding="5">
                     <h:outputText for="step" value="Durée de préparation: "/>
-                    <p:spinner id="step" value="#{recipeRequestBean.time}" stepFactor="1" min="0"/> <!--TODO : probléme de conversion d'une string en sql.time -->
+                    <p:spinner id="step" value="#{recipeRequestBean.time}" stepFactor="1" min="0"/>
                 </h:panelGrid>
             <h:panelGrid columns="1" style="margin-bottom: 10px">
                 <h:outputText id="output" value="#{recipeRequestBean.nbServings} servings" />

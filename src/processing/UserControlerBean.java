@@ -55,7 +55,6 @@ public class UserControlerBean {
     }
 
     public String checkAndAddUser(UserSubmissionModelBean userSubmitted){
-    //TODO: Vérifier les propriétés de l'utilisateur
 
         if(Pattern.compile("^[0-9]+").matcher(userSubmitted.getAge()).matches() &&
                 Pattern.compile("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$").matcher(userSubmitted.getMail()).matches() &&
@@ -66,7 +65,7 @@ public class UserControlerBean {
                 Pattern.compile("^[A-Za-z]+").matcher(userSubmitted.getLogin()).matches() && userSubmitted.getPwd().equals(userSubmitted.getPwd2())
                 )
         {
-            // TODO ajout de l'utilisateur à la base de données
+
             this.userDao.addUser(new UserModelBean(userSubmitted.getLastname(), userSubmitted.getSurname(), userSubmitted.getAgeInt(), userSubmitted.getMail(), userSubmitted.getLogin(), userSubmitted.getPwd(), userSubmitted.isAdmin()));
             LoginBean lb = new LoginBean();
             lb.setLogin(userSubmitted.getLogin());
