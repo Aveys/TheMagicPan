@@ -3,9 +3,25 @@
     border-color: #14CCA8;
 }
 .searchPanel{
-
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px #656565;
+    margin: 0px 25% 3%;
+    background-color: #F8F8F8;
  }
 
+.centerClass{
+    margin: 2% auto;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.searchItem{
+    margin: 5% auto;
+    color: #14CCA8;
+}
+#step{
+    width: 100%;
+}
 .recipeTitle{
     text-align: center;
     font-size: 2em;

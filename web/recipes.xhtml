@@ -6,37 +6,49 @@
     <div class="container">
 
         <h:form id="form">
-            <p:growl id="growl" showDetail="true" />
-            <h:panelGrid columns="2" styleClass="searchPanel" layout="grid" style="margin-bottom:10px" cellpadding="5">
-                <h:panelGrid columns="1" layout="grid" style="margin-bottom:10px" cellpadding="5">
-                    <h:outputText for="titre" value="Nom de la recette: "/>
-                    <p:inputText id="titre" value="#{recipeRequestBean.title}"/>
-                </h:panelGrid>
 
-                <h:panelGrid columns="1" layout="grid" style="margin-bottom:10px" cellpadding="5">
-                    <h:outputText for="step" value="Durée de préparation: "/>
-                    <p:spinner id="step" value="#{recipeRequestBean.time}" stepFactor="1" min="0"/>
-                </h:panelGrid>
-            <h:panelGrid columns="1" style="margin-bottom: 10px">
-                <h:outputText id="output" value="#{recipeRequestBean.nbServings} servings" />
-                <h:inputHidden id="txt2" value="#{recipeRequestBean.nbServings}" />
-                <p:slider for="txt2" display="output" minValue="0" maxValue="12" style="width: 200px" displayTemplate="{value}" />
+            <p:growl id="growl" showDetail="true" />
+            <h:panelGrid columns="1" styleClass="centerClass col-sm-12" layout="grid" cellpadding="5">
+                <h:outputText value="Recherche de recettes" styleClass="recipeTitle"/>
             </h:panelGrid>
-            <h:panelGrid columns="1"  layout="grid" style="margin-bottom:10px" cellpadding="5">
-                 <h:outputText value="Stars:"/>
-                 <p:rating value="#{recipeRequestBean.note}"/>
-             </h:panelGrid>
-             <h:panelGrid columns="1" layout="grid"  style="margin-bottom:10px" cellpadding="5">
-                 <h:outputLabel for="console" value="liste:"/>
-                 <p:selectOneMenu id="console" value="#{recipeRequestBean.type}" style="width:125px">
-                     <f:selectItem itemLabel="Type select" itemValue=""/>
-                     <f:selectItem itemLabel="Salad" itemValue="Salad"/>
-                     <f:selectItem itemLabel="BBQ" itemValue="BBQ"/>
-                     <f:selectItem itemLabel="Dessert" itemValue="dessert"/>
-                 </p:selectOneMenu>
-             </h:panelGrid>
-                <h:commandButton styleClass="btn btn-default" value="Search!" action="#{pageManagerBean.setActivePageWithExtension(recipeControlerBean.loadFilteredRecipe(recipeRequestBean))}"/>
-         </h:panelGrid>
+
+            <div class="col-sm-6 searchPanel">
+                <h:panelGrid columns="2" styleClass="col-sm-12" layout="grid" cellpadding="5">
+
+                    <h:panelGrid columns="1" styleClass="centerClass" layout="grid" cellpadding="5">
+                        <h:outputText for="titre" value="Nom de la recette: " styleClass="searchItem"/>
+                        <p:inputText id="titre" value="#{recipeRequestBean.title}"/>
+                    </h:panelGrid>
+
+                    <h:panelGrid columns="1" styleClass="centerClass" layout="grid" cellpadding="5">
+                        <h:outputText for="step" value="Durée de préparation: " styleClass="searchItem"/>
+                        <p:spinner id="step" value="#{recipeRequestBean.time}" suffix=" minutes" style="width: 200px;" stepFactor="1" min="0"/> <!--TODO : probléme de conversion d'une string en sql.time -->
+                    </h:panelGrid>
+                    <h:panelGrid columns="1" styleClass="centerClass" >
+                        <h:outputText id="output" value="Nombre de couverts : #{recipeRequestBean.nbServings} " styleClass="searchItem"/>
+                        <h:inputHidden id="txt2" value="#{recipeRequestBean.nbServings}" />
+                        <p:slider for="txt2" display="output" style="width: 173px" minValue="0" maxValue="12" displayTemplate="Nombre de couverts : {value}" />
+                    </h:panelGrid>
+                    <h:panelGrid columns="1"  layout="grid" styleClass="centerClass" cellpadding="5">
+                         <h:outputText for="stars" value="Note :" styleClass="searchItem"/>
+                         <p:rating id="stars" value="#{recipeRequestBean.note}"/>
+                    </h:panelGrid>
+                    <h:panelGrid columns="1" layout="grid" styleClass="centerClass" cellpadding="5">
+                         <h:outputText for="console" value="Type de Plat :" styleClass="searchItem"/>
+                         <p:selectOneMenu id="console" value="#{recipeRequestBean.type}" style="width:125px">
+                             <f:selectItem itemLabel="Type select" itemValue=""/>
+                             <f:selectItem itemLabel="Salad" itemValue="Salad"/>
+                             <f:selectItem itemLabel="BBQ" itemValue="BBQ"/>
+                             <f:selectItem itemLabel="Dessert" itemValue="dessert"/>
+                         </p:selectOneMenu>
+                    </h:panelGrid>
+
+                    <h:panelGrid columns="1" layout="grid" styleClass="centerClass" cellpadding="5">
+                        <h:outputText value=" " styleClass="searchItem"/>
+                        <h:commandButton styleClass="btn btn-default searchItem" value="Start Cookin'!" action="#{pageManagerBean.setActivePageWithExtension(recipeControlerBean.loadFilteredRecipe(recipeRequestBean))}"/>
+                    </h:panelGrid>
+                </h:panelGrid>
+            </div>
         </h:form>
     </div>
 </ui:composition>

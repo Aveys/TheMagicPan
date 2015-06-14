@@ -4,38 +4,39 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui">
     <div class="container">
-
+        <p class="recipeTitle">Résultat de la recherche</p>
         <h:form id="form">
             <p:dataTable value="#{recipeControlerBean.listRecipe}" var="recipe">
                 <f:facet name="header">
                     Results
                 </f:facet>
-                <p:column headerText="">
+                <p:column headerText="Détails">
                     <h:commandLink id="link" action="#{pageManagerBean.setActivePageWithExtension(recipeControlerBean.getRecipeById(recipe.idRecipe))}">
-                        <span class="glyphicon glyphicon-search" style="color: #949494;" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-search centerClass" style="color: #949494;" aria-hidden="true"></span>
+                        <h:outputText value="Plus de détails..." styleClass="searchItem"/>
                     </h:commandLink>
                 </p:column>
-                <p:column headerText="Name">
-                    <h:outputText value="#{recipe.title}" />
+                <p:column headerText="Nom">
+                    <h:outputText value="#{recipe.title}" styleClass="searchItem"/>
                 </p:column>
 
-                <p:column headerText="Description">
+<!--                <p:column headerText="Description">
                     <h:outputText value="#{recipe.description}" />
                 </p:column>
-
+-->
                 <p:column headerText="Note">
-                    <h:outputText value="#{recipe.note}/5" />
+                    <p:rating value="#{recipe.note}" readonly="true" styleClass="centerClass"/>
                 </p:column>
 
-                <p:column headerText="Servings">
-                    <h:outputText value="#{recipe.nbServings}" />
+                <p:column headerText="Couverts">
+                    <h:outputText value="#{recipe.nbServings} personnes" styleClass="searchItem"/>
                 </p:column>
-                <p:column headerText="Preparation time">
-                    <h:outputText value="#{recipe.time}" />
+                <p:column headerText="Temps de préparation">
+                    <h:outputText value="#{recipe.time} minutes" styleClass="searchItem"/>
                 </p:column>
 
             </p:dataTable>
-            <h:commandButton styleClass="btn btn-default" value="Retour à la recherche" action="#{pageManagerBean.setActivePage('recipes.xhtml')}"/>
+            <h:commandButton styleClass="btn btn-default searchItem" value="Retour à la recherche" action="#{pageManagerBean.setActivePage('recipes.xhtml')}"/>
         </h:form>
     </div>
 </ui:composition>
